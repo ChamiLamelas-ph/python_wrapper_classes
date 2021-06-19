@@ -12,6 +12,7 @@ import chardet
 import pickle as pkl
 import re
 import time
+from botocore.exceptions import ClientError
 
 TAB_REPORT_TYPES = {
     'Inventory Report': 'GET_FLAT_FILE_OPEN_LISTINGS_DATA',
@@ -415,7 +416,7 @@ class SpTabReportRetrieval:
         self.__creds = credentials
 
         # will initialize the report later, seems like you can't have multiple instances of a Reports
-        # objects with the same credentials, so we only set this using self.__creds/credentials in 
+        # objects with the same credentials, so we only set this using self.__creds/credentials in
         # retrieve_report()
         self.__rep = None
 
@@ -466,7 +467,7 @@ class SpTabReportRetrieval:
 
         self.__bulk = False
 
-    def retrieve_report(self, marketplace, start_ds, end_ds, credentials = None, report_type_name=None, **output_kwargs):
+    def retrieve_report(self, marketplace, start_ds, end_ds, credentials=None, report_type_name=None, **output_kwargs):
         """
         Retrieve report for marketplace between start and end dates. This method behaves in the following manner:
         1. If no information has been tracked for the provided report_type_name, marketplace, and date range then a report is created.
@@ -507,11 +508,25 @@ class SpTabReportRetrieval:
 
         Notes
         -----
-        The general code for performing bulk retrievals for a specific report type can be done as follows:
-        1. Iterate over each specification s
-        2. If a report hasn't been created for s or s has no document ID, make retrieval to see if report processing can make progress. If a report has been created and has a document ID, we could be done (need to check rest of specifications).
-        3. If retrieval status was `SpReportTrackingStatus.DONE_NOTHING`, then report processing has been moved to FATAL/CANCELLED. If this is the case, we could be done. Other statuses indicate we can keep going.
-        There are other ways to implement this same strategy, including detecting an exception occuring / document generation in step 3 to avoid more future iterations.
+        *   The general code for performing bulk retrievals for a specific report type can be done as follows:
+            1. Iterate over each specification s
+            2. If a report hasn't been created for s or s has no document ID, make retrieval to see if report processing can make progress. If a report has been created and has a document ID, we could be done (need to check rest of specifications).
+            3. If retrieval status was `SpReportTrackingStatus.DONE_NOTHING`, then report processing has been moved to FATAL/CANCELLED. If this is the case, we could be done. Other statuses indicate we can keep going.
+            There are other ways to implement this same strategy, including detecting an exception occuring / document generation in step 3 to avoid more future iterations.
+
+        *   To understand the error messages that will appear in your `SpReportTracker` with type `SellingApiException` better, please view the various links in the references below. A couple particular notes:
+            * If a `ClientError` occurs, most likely has to do with a credentials error.
+            * If a `SellingApiException` occurs when trying to get a document from an ID, it could be that the ID has expired. If you use `DBTracker` it will log times which may be helpful in this case.
+
+        References
+        ----------
+        * [SP-API createReport](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#createreport)
+
+        * [Sp-API getReport](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#getreport)
+
+        * [SP-API getReportDocument](https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reports_2021-06-30.md#getreportdocument)
+
+        * [python sp-api exceptions](https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/base/exceptions.py)
 
         See Also
         --------
@@ -526,6 +541,8 @@ class SpTabReportRetrieval:
         SpTabReportRetrieval.output_report_doc()
 
         SpReportTracker
+
+        DBTracker
         """
 
         # if report type name not specified here, use one from object initialization, if none was provided at initialization, raise error
@@ -556,10 +573,9 @@ class SpTabReportRetrieval:
                 report_type_name, marketplace, start_ds, end_ds, **output_kwargs)
         # if report was already done, just get its document ID from the tracker and use it to get the document
         elif self.__tracker.get_report_document_id(report_type_name, marketplace, start_ds, end_ds) is not None:
-            status = SpReportTrackingStatus.DOCUMENTED_RETURNED
             doc_id = self.__tracker.get_report_document_id(
                 report_type_name, marketplace, start_ds, end_ds)
-            out = self.__get_document_df(
+            status, out = self.__get_document_df(
                 report_type_name, marketplace, start_ds, end_ds, doc_id, **output_kwargs)
         # else : report has reached FATAL/CANCELLED status - do nothing
 
@@ -625,7 +641,7 @@ class SpTabReportRetrieval:
                 report_type_name, marketplace, start_ds, end_ds, report_id, create_res.errors)
             return SpReportTrackingStatus.REPORT_CREATED
 
-        except SellingApiException as e:
+        except (SellingApiException, ClientError) as e:
             # pass exception information onto tracker so user can investigate
             self.__tracker.init_report_tracking(
                 report_type_name, marketplace, start_ds, end_ds, None, "[%s] %s" % (type(e), str(e)))
@@ -638,14 +654,28 @@ class SpTabReportRetrieval:
         self.__wait(SpTabReportRetrieval.__RequestType.GET_REPORT_DOC)
 
         # get document from API and load it into DataFrame
-        doc = self.__rep.get_report_document(doc_id, decrypt=True)
-        doc = doc.payload['document']
-        df = pd.read_csv(StringIO(doc), sep='\t')
+        try:
+            doc = self.__rep.get_report_document(doc_id, decrypt=True)
+            doc = doc.payload['document']
+            df = pd.read_csv(StringIO(doc), sep='\t')
 
-        # pass in dataframe; marketplace, date range, and type of report; and lastly the output keyword arguments passed from retrieve_report()
-        return self.output_report_doc(marketplace, start_ds, end_ds, report_type_name, df, **output_kwargs)
+            # pass in dataframe; marketplace, date range, and type of report; and lastly the output keyword arguments passed from retrieve_report()
+            status = SpReportTrackingStatus.DOCUMENTED_RETURNED
+            output = self.output_report_doc(
+                marketplace, start_ds, end_ds, report_type_name, df, **output_kwargs)
+
+        except (SellingApiException, ClientError) as e:
+            status = self.__tracker.get_report_status(
+                report_type_name, marketplace, start_ds, end_ds)
+            self.__tracker.update_report_status(
+                report_type_name, marketplace, start_ds, end_ds, status, type(e).__name__ + str(e))
+            status = SpReportTrackingStatus.EXCEPTION_OCCURRED
+            output = None
+
+        return status, output
 
     # Usage: update report status for type, marketplace, and date range for a created report
+
     def __update_report_status(self, report_type_name, marketplace, start_ds, end_ds, **output_kwargs):
         try:
             # wait for GET-REPORT request if in bulk mode
@@ -676,7 +706,7 @@ class SpTabReportRetrieval:
                 return SpReportTrackingStatus.DOCUMENTED_RETURNED, out
             else:  # just a status update, return the new status to caller
                 return SpReportTrackingStatus.UPDATED_STATUS, status
-        except SellingApiException as e:
+        except (SellingApiException, ClientError) as e:
             # error occurred in retrieval process, return last status saved in tracker - if error occurred in status update, then this will be the old one.
             # if error occurred in document retrieval, this will be status last returned from api
             status = self.__tracker.get_report_status(
@@ -854,7 +884,7 @@ class DBTracker(SpReportTracker):
     """
 
     REQUIRED_COLUMNS = {'report_type_name', 'marketplace', 'start_ds',
-                        'end_ds', 'report_id', 'status', 'errors', 'document_id'}
+                        'end_ds', 'report_id', 'status_time', 'status', 'error_time', 'errors', 'document_id_time', 'document_id'}
     """
     Columns required in schema on `conn` with name `schema_name` for tracking.
     """
@@ -872,7 +902,7 @@ class DBTracker(SpReportTracker):
         """
 
         self.__conn.insert(self.__schema, [
-                           report_type_name, marketplace, start_ds, end_ds, report_id, None, errors, None])
+                           report_type_name, marketplace, start_ds, end_ds, report_id, None, None, datetime.utcnow(), errors, None, None])
 
     def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
         """
@@ -902,8 +932,9 @@ class DBTracker(SpReportTracker):
 
         existing = self.__conn.key_get(
             self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, :]
+        currtime = datetime.utcnow()
         self.__conn.insert(self.__schema, [report_type_name, marketplace, start_ds,
-                                           end_ds, existing['report_id'], status, errors, existing['document_id']], overwrite=True)
+                                           end_ds, existing['report_id'], currtime, status, currtime, errors, existing['document_id_time'], existing['document_id']], overwrite=True)
 
     def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
         """
@@ -913,7 +944,7 @@ class DBTracker(SpReportTracker):
         existing = self.__conn.key_get(
             self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, :]
         self.__conn.insert(self.__schema, [report_type_name, marketplace, start_ds,
-                                           end_ds, existing['report_id'], existing['status'], existing['errors'], doc_id], overwrite=True)
+                                           end_ds, existing['report_id'], existing['status_time'], existing['status'], existing['error_time'], existing['errors'], datetime.utcnow(), doc_id], overwrite=True)
 
     def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
         """

@@ -1,0 +1,1563 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>amazon_lib API documentation</title>
+<meta name="description" content="--- DEPRECATED 4/2/2021 --- …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>amazon_lib</code></h1>
+</header>
+<section id="section-intro">
+<p>&mdash; DEPRECATED 4/2/2021 &mdash; </p>
+<p>This file contains a collection of classes used for pulling daily order statistics from Amazon. </p>
+<p>The primary user class is AmazonOrderRetrieval. The other classes are used for implementation of this class.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+--- DEPRECATED 4/2/2021 --- 
+
+This file contains a collection of classes used for pulling daily order statistics from Amazon. 
+
+The primary user class is AmazonOrderRetrieval. The other classes are used for implementation of this class.
+&#34;&#34;&#34;
+# Chami Lamelas
+# Last updated 2/9/2021
+
+import pytz
+from tqdm import tqdm
+from mws import mws
+from enum import Enum
+from datetime import datetime,timedelta
+from collections import defaultdict
+import pandas as pd
+import xmltodict
+
+class AmazonOrderRetrievalStatus(Enum):
+    &#34;&#34;&#34;
+    This enum holds the possible statuses of an order retrieval request sent via AmazonOrderRetrieval.
+
+    With the exception of `REQUEST_FAILED`, the instances of this enum will be used to return the status of a call to retrieve_orders() in AmazonOrderRetrieval. The name of `REQUEST_FAILED` is used to set the `processing_status` field of the AmazonReportLogEntry class when no other processing status can be retrieved from Amazon.
+    
+    See Also
+    --------
+    AmazonOrderRetrieval
+    AmazonReportLogEntry
+    &#34;&#34;&#34;
+
+    REQUEST_FAILED = 1
+    &#34;&#34;&#34;
+    This status means that a request to generate a report has failed.
+    &#34;&#34;&#34;
+
+    CREATED_REQUEST = 2
+    &#34;&#34;&#34;
+    This status means that a request to generate a report was created successfully. 
+    &#34;&#34;&#34;
+
+    REQUEST_PROCESSING = 3
+    &#34;&#34;&#34;
+    This status means that the request for a report has not completed.
+    &#34;&#34;&#34;
+
+    SAVED_ORDERS = 4
+    &#34;&#34;&#34;
+    This status means that the orders were retrieved and saved by AmazonOrderRetrieval.
+    &#34;&#34;&#34;
+
+    ORDERS_ALREADY_SAVED = 5
+    &#34;&#34;&#34;
+    This status means that the orders associated with the request have already been saved via AmazonOrderRetrieval.
+    &#34;&#34;&#34;
+
+class AmazonOrderSavingStatus(Enum):
+    &#34;&#34;&#34;
+    This enum is used to hold the possible statuses of saving orders from a report via AmazonOrderRetrieval. 
+
+    The names of these instances are used to set the `saving_status` of AmazonReportLogEntry objects sent to and from the client code of AmazonOrderRetrieval.
+
+    See Also
+    --------
+    AmazonOrderRetrieval
+    AmazonReportLogEntry
+    &#34;&#34;&#34;
+
+    NOT_SAVED = 1
+    &#34;&#34;&#34;
+    This means that no attempt has been made to save a set of orders.
+    &#34;&#34;&#34;
+
+    SAVE_FAILED = 2
+    &#34;&#34;&#34;
+    This means that the last attempt to save a set of orders failed. The reason it has failed will be included in the `last_err_type` field of AmazonReportLogEntry.
+    &#34;&#34;&#34;
+
+    EMPTY_SAVE = 3
+    &#34;&#34;&#34;
+    This means that the last attempt to save a set of orders resulted in an empty save. The client code is able to make additional calls to retrieve_orders() in this case.
+    &#34;&#34;&#34;
+
+    SAVED = 4
+    &#34;&#34;&#34;
+    This means that the last attempt to save orders was successful and resulted in a non-empty save. 
+    &#34;&#34;&#34;
+
+class AmazonReportLogEntry:
+    &#34;&#34;&#34;
+    This class serves to consolidate logging information to be transferred between AmazonOrderRetrieval and the client code.
+
+    The transfer will be implemented as a subclass of AmazonReportLogger. 
+
+    Attributes
+    ----------
+    submitted_date : str or datetime
+        This is the time at which a report was requested.
+    request_id : str
+        This is the ID of the request.
+    report_id : str
+        This is the ID of the report.
+    day : str
+        This is the yyyy-MM-dd representation of the date the report was requested for. 
+    marketplace : str
+        This is the marketplace of the date the report was requested for. 
+    processing_status : str
+        This is the current processing status either reported from Amazon or `REQUEST_FAILED` as discussed above.
+    saving_status : str
+        This is the current saving status of the order data from this report.
+    last_err_type : str
+        This is the type of the last error generated in processing/saving this report.
+
+    Parameters
+    ----------
+    submitted_date : str or datetime
+        This is the time at which a report was requested.
+    request_id : str
+        This is the ID of the request.
+    report_id : str
+        This is the ID of the report.
+    day : str
+        This is the yyyy-MM-dd representation of the date the report was requested for. 
+    marketplace : str
+        This is the marketplace of the date the report was requested for. 
+    processing_status : str
+        This is the current processing status either reported from Amazon or `REQUEST_FAILED` as discussed above.
+    saving_status : str
+        This is the current saving status of the order data from this report.
+    last_err_type : str
+        This is the type of the last error generated in processing/saving this report.
+
+    Warning
+    -------
+    When transfering data from your logging system via AmazonReportLogger into these objects, make sure that all of the information you pass in are strings even though you may be storing fields (like IDs) as other types. 
+
+    See Also
+    --------
+    AmazonOrderRetrieval
+    AmazonReportLogger
+    AmazonOrderRetrievalStatus
+    AmazonOrderSavingStatus
+    &#34;&#34;&#34;
+
+    def __init__(self,submitted_date,request_id,report_id,day,marketplace,processing_status,saving_status,last_err_type):
+        self.submitted_date = submitted_date
+        self.request_id = request_id
+        self.report_id = report_id
+        self.day = day
+        self.marketplace = marketplace
+        self.processing_status = processing_status
+        self.saving_status = saving_status
+        self.last_err_type = last_err_type
+
+    def deepcopy(self):
+        &#34;&#34;&#34;
+        This function provides a deep copy of an AmazonReportLogEntry object. 
+
+        Returns
+        -------
+        AmazonReportLogEntry
+            A deep copy of this object.
+        &#34;&#34;&#34;
+
+        return AmazonReportLogEntry(
+            self.submitted_date,
+            self.request_id,
+            self.report_id,
+            self.day,
+            self.marketplace,
+            self.processing_status,
+            self.saving_status,
+            self.last_err_type
+        )
+
+class AmazonReportLogger:
+    &#34;&#34;&#34;
+    This class provides a template for subclasses which should implement some non-volatile logging system.
+
+    This class will be used by AmazonOrderRetrieval to send and receive information from your logging system. This could be writing to a database or a file. A constructor is omitted from the template, but you should add one if you need to perform any set-up operations for your logging system.
+    &#34;&#34;&#34;
+
+    def log_info(self,log_entry):
+        &#34;&#34;&#34;
+        This function should log the information from an AmazonReportLogEntry object to your system.
+
+        The information passed through this function should not be edited in anyway. When a request is made via get_info() to get this information back, it should be exactly the same. However, in this method, you can add any other information to your logging system.
+
+        Parameters
+        ----------
+        log_entry : AmazonReportLogEntry
+            A log entry to be put into your system. 
+
+        Notes
+        -----
+        This function will be called to update information in your system throughout AmazonOrderRetrieval&#39;s retrieve_orders() method to keep you updated with the progress of your report processing.
+
+        See Also
+        --------
+        AmazonOrderRetrieval
+        AmazonReportLogEntry
+        get_info
+        &#34;&#34;&#34;
+        pass
+
+    def get_info(self,day,marketplace):
+        &#34;&#34;&#34;
+        This function should retrieve a log entry object with the necessary information associated with a day and marketplace. 
+
+        The necessary information should be all the fields in an AmazonReportLogEntry object that would have been passed in via a call to log_info().
+
+        Parameters
+        ----------
+        day : str
+            The day of interest.
+        marketplace : str
+            The marketplace of interest.
+
+        Returns
+        -------
+        AmazonReportLogEntry
+            An object containing the necessary information for this (day,marketplace).
+
+        Notes
+        -----
+        This function will be called to retrieve information about a report request associated with day and marketplace logged in your system throughout AmazonOrderRetrieval&#39;s retrieve_orders() method so that it can act accordingly.
+
+        See Also
+        --------
+        AmazonOrderRetrieval
+        AmazonReportLogEntry
+        log_info
+        &#34;&#34;&#34;
+        pass
+
+class AmazonOrderRetrieval:
+    &#34;&#34;&#34;
+    This class is the primary class in this library and is used for retrieving the orders for a day. 
+
+    Its primary method is retrieve_orders() which will retrieve the ASINs, product names, orders, and revenue totals for each SKU on a particular day and marketplace. retrieve_orders() requests and reads a report of your orders into a customized saving system. 
+
+    Parameters
+    ----------
+    access_key : str
+        MWS access key.
+    secret_key : str
+        MWS secret key.
+    account_id : str
+        MWS account (or seller) ID.
+    rates : dict
+        Dictionary that should map a (day,currency) tuple to a rate. day should be a yyyy-MM-dd date and the currency should be an Amazon recognized currency (included in see also).
+    logger : AmazonReportLogger
+        An instance of a subclass of AmazonReportLogger that implements your logging system. For more information on how this should be implemented, please read the docs on AmazonReportLogger.
+    marketplaces : dict
+        Dictionary that should map how you plan to refer to a marketplace to its marketplace ID. The keys and values in this dictionary should both be strings. 
+    save_orders : function
+        Function that takes a pandas DataFrame, does some preprocessing (adding, renaming columns, rounding revenue etc.), and saves it in some non-volatile saving system. The DataFrame will have the following columns: marketplace (same as `marketplace`), date (same as `day`), sku (the string of a particular SKU), asins (a set with all of the ASINs associated with this SKU on this `day` in `marketplace`), product_names (a set with all of the product names associated with this SKU on this `day` and `marketplace`), order_count (number of orders for this `SKU` on `day` and `marketplace`), these columns will be followed by revenue columns for all revenue types detected for this `day` and `marketplace`. These will be named according to Amazon&#39;s conventions. If some SKUs do not have all of the revenue types, it will have 0 *not* NULL for those revenue types.
+    
+    Notes
+    -----
+    This class is built on top of the MWS Python implementation. In future, it may get updated to the newer sp-api. The current used report type is `_GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_`.
+
+    See Also
+    --------
+    AmazonReportLogger
+    retrieve_orders
+
+    References
+    ----------
+    [Supported Amazon Currencies](https://www.amazon.com/gp/help/customer/display.html/ref=s9_acss_bw_cg_ACCBLand_3a1_w?nodeId=201894850&amp;pf_rd_m=ATVPDKIKX0DER&amp;pf_rd_s=merchandised-search-2&amp;pf_rd_r=FYEXRCKKHT3KFPERXRD0&amp;pf_rd_t=101&amp;pf_rd_p=82bf0150-d0c9-411f-982f-b0c577129b1c&amp;pf_rd_i=388305011)
+
+    [Amazon Order Report Types](http://docs.developer.amazonservices.com/en_US/reports/Reports_ReportType.html#ReportTypeCategories__OrderReports)
+
+    [MWS on PyPi](https://pypi.org/project/mws/)
+
+    [MWS on GitHub](https://github.com/python-amazon-mws)
+    &#34;&#34;&#34;
+
+    # Report type used to retrieve orders
+    __REPORT_TYPE = &#34;_GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_&#34; 
+    
+    def __init__(self, access_key, secret_key, account_id, rates, logger, marketplaces, save_orders):
+        self.__reports_access = mws.Reports(
+            access_key=access_key, 
+            secret_key=secret_key, 
+            account_id=account_id
+        )
+
+        self.__rates = rates
+        self.__logger = logger
+        self.__marketplaces = marketplaces
+        self.__save_orders = save_orders
+
+    def retrieve_orders(self,day,marketplace):
+        &#34;&#34;&#34;
+        This method will retrieve the orders for a particular day and marketplace. 
+
+        This method can provide a variety of responses. 
+
+        Parameters
+        ----------
+        day : str
+            The yyyy-MM-dd date of interest.
+        marketplace : str
+            The name for the marketplace. Its ID should be retrievable from `marketplaces`.
+
+        Returns
+        -------
+        AmazonOrderRetrievalStatus
+            This status is returned in the event that the report request can be successfully accessed. `AmazonOrderRetrievalStatus.CREATED_REQUEST` is returned if a request could be created successfully and its information could be logged using `logger`. `AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED` is returned to signal the method does not thing because orders have already been saved via `save_orders`. `AmazonOrderRetrievalStatus.REQUEST_PROCESSING` is returned to signal that the method checked the status of the report for the `day` and `marketplace` and it is not finished yet. Its most recent processing status is updated and sent via `logger`. `AmazonOrderRetrievalStatus.SAVED_ORDERS` is returned if a report could be read and its order information could be saved successfully using `save_orders` and logged.
+
+        Raises
+        ------
+        MWSError
+            These errors are raised in the event of failures of report requests via the MWS package. This can occur due to requests being throttled or if you have made too many creation requests recently (17 / 5 minutes). If such an error occurs while making a report reuest, then the processing status is set as the name of `AmazonOrderRetrievalStatus.REQUEST_FAILED`, and submission time of the current PST time, and logged via `logger`. If such an error occurs during saving, then the saving status is set as the name of `AmazonOrderSavingStatus.SAVE_FAILED`.
+        Exception
+            Any other exceptions that may occur can also be raised. However, if they occur in request creation, progress update, or order saving their type (which may be MWSError) will be logged in the `logger`. If the exception occurred during request creation or saving, the processing and saving statuses will be updated as above.
+
+        Notes
+        -----
+        Whenever information needs to be updated in your system in this method, AmazonReportLogEntry&#39;s are copied from your system, edited, and passed back via AmazonReportLogger. Any information that needs to be retrieved is requested from AmazonReportLogger as AmazonReportLogEntry. The error type logged in your system is an indication of the type of error that happened and the method should be re-run to actually see a full traceback of the error.
+
+        See Also
+        --------
+        AmazonReportLogger
+        AmazonReportLogEntry
+        AmazonOrderRetrievalStatus
+        AmazonOrderSavingStatus
+
+        References
+        --------
+        [RequestReport Operation](https://docs.developer.amazonservices.com/en_US/reports/Reports_RequestReport.html)
+
+        [GetReportRequestList Operation](https://docs.developer.amazonservices.com/en_US/reports/Reports_GetReportRequestList.html)
+
+        [GetReport Operation](https://docs.developer.amazonservices.com/en_US/reports/Reports_GetReport.html)
+        &#34;&#34;&#34;
+
+        next_day = (datetime.strptime(day,&#34;%Y-%m-%d&#34;) + timedelta(days=1)).strftime(&#34;%Y-%m-%d&#34;)
+        marketplace_id = self.__marketplaces[marketplace]
+        log_entry = self.__logger.get_info(day,marketplace)
+
+        if log_entry is None or log_entry.processing_status == AmazonOrderRetrievalStatus.REQUEST_FAILED.name:
+
+            # make order request for this date range and market place and collect request response
+            try:
+              request_response = xmltodict.parse(self.__reports_access.request_report(AmazonOrderRetrieval.__REPORT_TYPE, day, next_day, marketplace_id).original)
+              request_response = request_response[&#39;RequestReportResponse&#39;][&#39;RequestReportResult&#39;][&#39;ReportRequestInfo&#39;]
+              request_info = xmltodict.parse(self.__reports_access.get_report_request_list(request_response[&#39;ReportRequestId&#39;]).original)
+              request_info = request_info[&#39;GetReportRequestListResponse&#39;][&#39;GetReportRequestListResult&#39;][&#39;ReportRequestInfo&#39;]
+            except Exception as e:
+              curr_pst_time = datetime.now(pytz.timezone(&#39;America/Los_Angeles&#39;))
+              self.__logger.log_info(AmazonReportLogEntry(
+                  curr_pst_time,
+                  None,
+                  None,
+                  day,
+                  marketplace,
+                  AmazonOrderRetrievalStatus.REQUEST_FAILED.name,
+                  AmazonOrderSavingStatus.NOT_SAVED.name,
+                  str(type(e))
+              ))
+              raise e
+
+            # create log for this request using the information collected in request info via GetReportRequestList
+            self.__logger.log_info(AmazonReportLogEntry(
+                request_info[&#39;SubmittedDate&#39;],
+                request_info[&#39;ReportRequestId&#39;],
+                request_info[&#39;GeneratedReportId&#39;] if request_info[&#39;ReportProcessingStatus&#39;] == &#39;_DONE_&#39; else None,
+                day,
+                marketplace,
+                request_info[&#39;ReportProcessingStatus&#39;],
+                AmazonOrderSavingStatus.NOT_SAVED.name,
+                None
+            ))
+            return AmazonOrderRetrievalStatus.CREATED_REQUEST
+
+        if log_entry.saving_status == AmazonOrderSavingStatus.SAVED.name:
+            return AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED
+
+        log_entry = log_entry.deepcopy()
+        log_entry.last_err_type = None
+
+        if log_entry.processing_status != &#39;_DONE_&#39;:
+            # get most recent request info using request id from log information (log information could be old)
+            try: 
+              request_info = xmltodict.parse(self.__reports_access.get_report_request_list(log_entry.request_id).original)
+              request_info = request_info[&#39;GetReportRequestListResponse&#39;][&#39;GetReportRequestListResult&#39;][&#39;ReportRequestInfo&#39;]            
+              log_entry.processing_status = request_info[&#39;ReportProcessingStatus&#39;]
+              if request_info[&#39;ReportProcessingStatus&#39;] != &#39;_DONE_&#39;:
+                  return AmazonOrderRetrievalStatus.REQUEST_PROCESSING
+              log_entry.report_id = request_info[&#39;GeneratedReportId&#39;]
+            except Exception as e:
+              log_entry.last_err_type = str(type(e))
+              raise e   
+            finally:
+              self.__logger.log_info(log_entry)
+
+        try:
+            # retrieve orders using GetReport with the generated ID (which will now exist because report was created)
+            orders = xmltodict.parse(self.__reports_access.get_report(log_entry.report_id).original)
+            df = None
+            if &#39;Message&#39; in orders[&#39;AmazonEnvelope&#39;]:
+              orders = orders[&#39;AmazonEnvelope&#39;][&#39;Message&#39;]
+              df = self.__build_df(day, marketplace, orders) # build dataframe of order stats 
+              if df is not None:
+                self.__save_orders(df)
+                log_entry.saving_status = AmazonOrderSavingStatus.SAVED.name
+            if df is None:
+              log_entry.saving_status = AmazonOrderSavingStatus.EMPTY_SAVE.name
+            return AmazonOrderRetrievalStatus.SAVED_ORDERS
+        except Exception as e:
+            log_entry.saving_status = AmazonOrderSavingStatus.SAVE_FAILED.name
+            log_entry.last_err_type = str(type(e))
+            raise e
+        finally:
+            self.__logger.log_info(log_entry)
+
+    def __update_price_component(self, dataset, order_date, sku, price_component):
+        currency = price_component[&#39;Amount&#39;][&#39;@currency&#39;] # get currency   
+
+        # if price already in USD, no change, else get the conversion to USD from rates dictionary for the date
+        rate = 1.0
+        if currency != &#39;USA&#39;:
+          rate = self.__rates[(order_date, currency)]
+
+        # revenue type will be amazon provided type name followed by &#39;_revenue&#39; in database
+        revenue_type = price_component[&#39;Type&#39;].lower() + &#39;_revenue&#39;       
+        dataset[sku][revenue_type] += float(price_component[&#39;Amount&#39;][&#39;#text&#39;]) * rate
+
+    def __update_dataset(self, dataset, order_date, order_item):
+        # When &#39;ItemStatus&#39; isn&#39;t present, seems to be a quantity of 0, non-shipped items have no item price
+        if &#39;ItemStatus&#39; not in order_item or order_item[&#39;ItemStatus&#39;] != &#39;Shipped&#39;: 
+            return
+
+        sku = order_item[&#39;SKU&#39;] 
+        dataset[sku][&#39;asins&#39;].add(order_item[&#39;ASIN&#39;]) # add ASIN for current item
+        dataset[sku][&#39;product_names&#39;].add(order_item[&#39;ProductName&#39;]) # add product name for current item
+        dataset[sku][&#39;order_count&#39;] += int(order_item[&#39;Quantity&#39;]) # add quantity of item ordered
+
+        price_components = order_item[&#39;ItemPrice&#39;][&#39;Component&#39;]
+        if isinstance(price_components, list):
+          for pc in price_components:
+            self.__update_price_component(dataset, order_date, sku, pc)
+        else:
+          self.__update_price_component(dataset, order_date, sku, price_components)
+
+    def __update_from_items(self, dataset, date, items):
+        if isinstance(items, list): # multiple items, it&#39;s a list of dicts
+            for item in items:
+                self.__update_dataset(dataset, date, item)
+        else: # otherwise, it&#39;s a dict
+            self.__update_dataset(dataset, date, items)
+
+
+    def __build_df(self, date, marketplace, orders):
+        # collect information in a dictionary for each SKU
+        dataset = defaultdict(lambda: 
+            defaultdict(lambda: 0, {
+                &#39;asins&#39;:set(),
+                &#39;product_names&#39;:set(),
+                &#39;order_count&#39;:0
+            })
+        ) 
+
+        if isinstance(orders,list):
+          for o in tqdm(orders, desc=&#39;Processing Orders...&#39;, total=len(orders)):
+              self.__update_from_items(dataset, date, o[&#39;Order&#39;][&#39;OrderItem&#39;])
+        else:
+          self.__update_from_items(dataset, date, orders[&#39;Order&#39;][&#39;OrderItem&#39;])
+                    
+        if len(dataset)==0:
+          return None
+
+        # load dataset dictionary into dataframe, keys of dictionary will be rows (index)
+        # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.from_dict.html
+        df = pd.DataFrame.from_dict(dataset, orient=&#39;index&#39;)
+        # want SKU to be a column, reset_index() to create numerical index 
+        # reseting index puts sku into &#39;index&#39;, rename it
+        df = df.reset_index().rename(columns={&#39;index&#39;:&#39;sku&#39;}) 
+        # some skus don&#39;t have all revenue types and will have nulls there, replace them with 0s
+        df = df.fillna(0) 
+        # add date, marketplace columns
+        df[&#39;marketplace&#39;] = marketplace 
+        df[&#39;date&#39;] = date
+        # reorder columns putting marketplace, date first
+        cols = list(df.columns) 
+        df = df[cols[-2:]+cols[:-2]]       
+        return df</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="amazon_lib.AmazonOrderRetrieval"><code class="flex name class">
+<span>class <span class="ident">AmazonOrderRetrieval</span></span>
+<span>(</span><span>access_key, secret_key, account_id, rates, logger, marketplaces, save_orders)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class is the primary class in this library and is used for retrieving the orders for a day. </p>
+<p>Its primary method is retrieve_orders() which will retrieve the ASINs, product names, orders, and revenue totals for each SKU on a particular day and marketplace. retrieve_orders() requests and reads a report of your orders into a customized saving system. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>access_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>MWS access key.</dd>
+<dt><strong><code>secret_key</code></strong> :&ensp;<code>str</code></dt>
+<dd>MWS secret key.</dd>
+<dt><strong><code>account_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>MWS account (or seller) ID.</dd>
+<dt><strong><code>rates</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary that should map a (day,currency) tuple to a rate. day should be a yyyy-MM-dd date and the currency should be an Amazon recognized currency (included in see also).</dd>
+<dt><strong><code>logger</code></strong> :&ensp;<code><a title="amazon_lib.AmazonReportLogger" href="#amazon_lib.AmazonReportLogger">AmazonReportLogger</a></code></dt>
+<dd>An instance of a subclass of AmazonReportLogger that implements your logging system. For more information on how this should be implemented, please read the docs on AmazonReportLogger.</dd>
+<dt><strong><code>marketplaces</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary that should map how you plan to refer to a marketplace to its marketplace ID. The keys and values in this dictionary should both be strings.</dd>
+<dt><strong><code>save_orders</code></strong> :&ensp;<code>function</code></dt>
+<dd>Function that takes a pandas DataFrame, does some preprocessing (adding, renaming columns, rounding revenue etc.), and saves it in some non-volatile saving system. The DataFrame will have the following columns: marketplace (same as <code>marketplace</code>), date (same as <code>day</code>), sku (the string of a particular SKU), asins (a set with all of the ASINs associated with this SKU on this <code>day</code> in <code>marketplace</code>), product_names (a set with all of the product names associated with this SKU on this <code>day</code> and <code>marketplace</code>), order_count (number of orders for this <code>SKU</code> on <code>day</code> and <code>marketplace</code>), these columns will be followed by revenue columns for all revenue types detected for this <code>day</code> and <code>marketplace</code>. These will be named according to Amazon's conventions. If some SKUs do not have all of the revenue types, it will have 0 <em>not</em> NULL for those revenue types.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>This class is built on top of the MWS Python implementation. In future, it may get updated to the newer sp-api. The current used report type is <code>_GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_</code>.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_lib.AmazonReportLogger" href="#amazon_lib.AmazonReportLogger">AmazonReportLogger</a></code>
+<code>retrieve_orders</code></p>
+<h2 id="references">References</h2>
+<p><a href="https://www.amazon.com/gp/help/customer/display.html/ref=s9_acss_bw_cg_ACCBLand_3a1_w?nodeId=201894850&amp;pf_rd_m=ATVPDKIKX0DER&amp;pf_rd_s=merchandised-search-2&amp;pf_rd_r=FYEXRCKKHT3KFPERXRD0&amp;pf_rd_t=101&amp;pf_rd_p=82bf0150-d0c9-411f-982f-b0c577129b1c&amp;pf_rd_i=388305011">Supported Amazon Currencies</a></p>
+<p><a href="http://docs.developer.amazonservices.com/en_US/reports/Reports_ReportType.html#ReportTypeCategories__OrderReports">Amazon Order Report Types</a></p>
+<p><a href="https://pypi.org/project/mws/">MWS on PyPi</a></p>
+<p><a href="https://github.com/python-amazon-mws">MWS on GitHub</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AmazonOrderRetrieval:
+    &#34;&#34;&#34;
+    This class is the primary class in this library and is used for retrieving the orders for a day. 
+
+    Its primary method is retrieve_orders() which will retrieve the ASINs, product names, orders, and revenue totals for each SKU on a particular day and marketplace. retrieve_orders() requests and reads a report of your orders into a customized saving system. 
+
+    Parameters
+    ----------
+    access_key : str
+        MWS access key.
+    secret_key : str
+        MWS secret key.
+    account_id : str
+        MWS account (or seller) ID.
+    rates : dict
+        Dictionary that should map a (day,currency) tuple to a rate. day should be a yyyy-MM-dd date and the currency should be an Amazon recognized currency (included in see also).
+    logger : AmazonReportLogger
+        An instance of a subclass of AmazonReportLogger that implements your logging system. For more information on how this should be implemented, please read the docs on AmazonReportLogger.
+    marketplaces : dict
+        Dictionary that should map how you plan to refer to a marketplace to its marketplace ID. The keys and values in this dictionary should both be strings. 
+    save_orders : function
+        Function that takes a pandas DataFrame, does some preprocessing (adding, renaming columns, rounding revenue etc.), and saves it in some non-volatile saving system. The DataFrame will have the following columns: marketplace (same as `marketplace`), date (same as `day`), sku (the string of a particular SKU), asins (a set with all of the ASINs associated with this SKU on this `day` in `marketplace`), product_names (a set with all of the product names associated with this SKU on this `day` and `marketplace`), order_count (number of orders for this `SKU` on `day` and `marketplace`), these columns will be followed by revenue columns for all revenue types detected for this `day` and `marketplace`. These will be named according to Amazon&#39;s conventions. If some SKUs do not have all of the revenue types, it will have 0 *not* NULL for those revenue types.
+    
+    Notes
+    -----
+    This class is built on top of the MWS Python implementation. In future, it may get updated to the newer sp-api. The current used report type is `_GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_`.
+
+    See Also
+    --------
+    AmazonReportLogger
+    retrieve_orders
+
+    References
+    ----------
+    [Supported Amazon Currencies](https://www.amazon.com/gp/help/customer/display.html/ref=s9_acss_bw_cg_ACCBLand_3a1_w?nodeId=201894850&amp;pf_rd_m=ATVPDKIKX0DER&amp;pf_rd_s=merchandised-search-2&amp;pf_rd_r=FYEXRCKKHT3KFPERXRD0&amp;pf_rd_t=101&amp;pf_rd_p=82bf0150-d0c9-411f-982f-b0c577129b1c&amp;pf_rd_i=388305011)
+
+    [Amazon Order Report Types](http://docs.developer.amazonservices.com/en_US/reports/Reports_ReportType.html#ReportTypeCategories__OrderReports)
+
+    [MWS on PyPi](https://pypi.org/project/mws/)
+
+    [MWS on GitHub](https://github.com/python-amazon-mws)
+    &#34;&#34;&#34;
+
+    # Report type used to retrieve orders
+    __REPORT_TYPE = &#34;_GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_&#34; 
+    
+    def __init__(self, access_key, secret_key, account_id, rates, logger, marketplaces, save_orders):
+        self.__reports_access = mws.Reports(
+            access_key=access_key, 
+            secret_key=secret_key, 
+            account_id=account_id
+        )
+
+        self.__rates = rates
+        self.__logger = logger
+        self.__marketplaces = marketplaces
+        self.__save_orders = save_orders
+
+    def retrieve_orders(self,day,marketplace):
+        &#34;&#34;&#34;
+        This method will retrieve the orders for a particular day and marketplace. 
+
+        This method can provide a variety of responses. 
+
+        Parameters
+        ----------
+        day : str
+            The yyyy-MM-dd date of interest.
+        marketplace : str
+            The name for the marketplace. Its ID should be retrievable from `marketplaces`.
+
+        Returns
+        -------
+        AmazonOrderRetrievalStatus
+            This status is returned in the event that the report request can be successfully accessed. `AmazonOrderRetrievalStatus.CREATED_REQUEST` is returned if a request could be created successfully and its information could be logged using `logger`. `AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED` is returned to signal the method does not thing because orders have already been saved via `save_orders`. `AmazonOrderRetrievalStatus.REQUEST_PROCESSING` is returned to signal that the method checked the status of the report for the `day` and `marketplace` and it is not finished yet. Its most recent processing status is updated and sent via `logger`. `AmazonOrderRetrievalStatus.SAVED_ORDERS` is returned if a report could be read and its order information could be saved successfully using `save_orders` and logged.
+
+        Raises
+        ------
+        MWSError
+            These errors are raised in the event of failures of report requests via the MWS package. This can occur due to requests being throttled or if you have made too many creation requests recently (17 / 5 minutes). If such an error occurs while making a report reuest, then the processing status is set as the name of `AmazonOrderRetrievalStatus.REQUEST_FAILED`, and submission time of the current PST time, and logged via `logger`. If such an error occurs during saving, then the saving status is set as the name of `AmazonOrderSavingStatus.SAVE_FAILED`.
+        Exception
+            Any other exceptions that may occur can also be raised. However, if they occur in request creation, progress update, or order saving their type (which may be MWSError) will be logged in the `logger`. If the exception occurred during request creation or saving, the processing and saving statuses will be updated as above.
+
+        Notes
+        -----
+        Whenever information needs to be updated in your system in this method, AmazonReportLogEntry&#39;s are copied from your system, edited, and passed back via AmazonReportLogger. Any information that needs to be retrieved is requested from AmazonReportLogger as AmazonReportLogEntry. The error type logged in your system is an indication of the type of error that happened and the method should be re-run to actually see a full traceback of the error.
+
+        See Also
+        --------
+        AmazonReportLogger
+        AmazonReportLogEntry
+        AmazonOrderRetrievalStatus
+        AmazonOrderSavingStatus
+
+        References
+        --------
+        [RequestReport Operation](https://docs.developer.amazonservices.com/en_US/reports/Reports_RequestReport.html)
+
+        [GetReportRequestList Operation](https://docs.developer.amazonservices.com/en_US/reports/Reports_GetReportRequestList.html)
+
+        [GetReport Operation](https://docs.developer.amazonservices.com/en_US/reports/Reports_GetReport.html)
+        &#34;&#34;&#34;
+
+        next_day = (datetime.strptime(day,&#34;%Y-%m-%d&#34;) + timedelta(days=1)).strftime(&#34;%Y-%m-%d&#34;)
+        marketplace_id = self.__marketplaces[marketplace]
+        log_entry = self.__logger.get_info(day,marketplace)
+
+        if log_entry is None or log_entry.processing_status == AmazonOrderRetrievalStatus.REQUEST_FAILED.name:
+
+            # make order request for this date range and market place and collect request response
+            try:
+              request_response = xmltodict.parse(self.__reports_access.request_report(AmazonOrderRetrieval.__REPORT_TYPE, day, next_day, marketplace_id).original)
+              request_response = request_response[&#39;RequestReportResponse&#39;][&#39;RequestReportResult&#39;][&#39;ReportRequestInfo&#39;]
+              request_info = xmltodict.parse(self.__reports_access.get_report_request_list(request_response[&#39;ReportRequestId&#39;]).original)
+              request_info = request_info[&#39;GetReportRequestListResponse&#39;][&#39;GetReportRequestListResult&#39;][&#39;ReportRequestInfo&#39;]
+            except Exception as e:
+              curr_pst_time = datetime.now(pytz.timezone(&#39;America/Los_Angeles&#39;))
+              self.__logger.log_info(AmazonReportLogEntry(
+                  curr_pst_time,
+                  None,
+                  None,
+                  day,
+                  marketplace,
+                  AmazonOrderRetrievalStatus.REQUEST_FAILED.name,
+                  AmazonOrderSavingStatus.NOT_SAVED.name,
+                  str(type(e))
+              ))
+              raise e
+
+            # create log for this request using the information collected in request info via GetReportRequestList
+            self.__logger.log_info(AmazonReportLogEntry(
+                request_info[&#39;SubmittedDate&#39;],
+                request_info[&#39;ReportRequestId&#39;],
+                request_info[&#39;GeneratedReportId&#39;] if request_info[&#39;ReportProcessingStatus&#39;] == &#39;_DONE_&#39; else None,
+                day,
+                marketplace,
+                request_info[&#39;ReportProcessingStatus&#39;],
+                AmazonOrderSavingStatus.NOT_SAVED.name,
+                None
+            ))
+            return AmazonOrderRetrievalStatus.CREATED_REQUEST
+
+        if log_entry.saving_status == AmazonOrderSavingStatus.SAVED.name:
+            return AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED
+
+        log_entry = log_entry.deepcopy()
+        log_entry.last_err_type = None
+
+        if log_entry.processing_status != &#39;_DONE_&#39;:
+            # get most recent request info using request id from log information (log information could be old)
+            try: 
+              request_info = xmltodict.parse(self.__reports_access.get_report_request_list(log_entry.request_id).original)
+              request_info = request_info[&#39;GetReportRequestListResponse&#39;][&#39;GetReportRequestListResult&#39;][&#39;ReportRequestInfo&#39;]            
+              log_entry.processing_status = request_info[&#39;ReportProcessingStatus&#39;]
+              if request_info[&#39;ReportProcessingStatus&#39;] != &#39;_DONE_&#39;:
+                  return AmazonOrderRetrievalStatus.REQUEST_PROCESSING
+              log_entry.report_id = request_info[&#39;GeneratedReportId&#39;]
+            except Exception as e:
+              log_entry.last_err_type = str(type(e))
+              raise e   
+            finally:
+              self.__logger.log_info(log_entry)
+
+        try:
+            # retrieve orders using GetReport with the generated ID (which will now exist because report was created)
+            orders = xmltodict.parse(self.__reports_access.get_report(log_entry.report_id).original)
+            df = None
+            if &#39;Message&#39; in orders[&#39;AmazonEnvelope&#39;]:
+              orders = orders[&#39;AmazonEnvelope&#39;][&#39;Message&#39;]
+              df = self.__build_df(day, marketplace, orders) # build dataframe of order stats 
+              if df is not None:
+                self.__save_orders(df)
+                log_entry.saving_status = AmazonOrderSavingStatus.SAVED.name
+            if df is None:
+              log_entry.saving_status = AmazonOrderSavingStatus.EMPTY_SAVE.name
+            return AmazonOrderRetrievalStatus.SAVED_ORDERS
+        except Exception as e:
+            log_entry.saving_status = AmazonOrderSavingStatus.SAVE_FAILED.name
+            log_entry.last_err_type = str(type(e))
+            raise e
+        finally:
+            self.__logger.log_info(log_entry)
+
+    def __update_price_component(self, dataset, order_date, sku, price_component):
+        currency = price_component[&#39;Amount&#39;][&#39;@currency&#39;] # get currency   
+
+        # if price already in USD, no change, else get the conversion to USD from rates dictionary for the date
+        rate = 1.0
+        if currency != &#39;USA&#39;:
+          rate = self.__rates[(order_date, currency)]
+
+        # revenue type will be amazon provided type name followed by &#39;_revenue&#39; in database
+        revenue_type = price_component[&#39;Type&#39;].lower() + &#39;_revenue&#39;       
+        dataset[sku][revenue_type] += float(price_component[&#39;Amount&#39;][&#39;#text&#39;]) * rate
+
+    def __update_dataset(self, dataset, order_date, order_item):
+        # When &#39;ItemStatus&#39; isn&#39;t present, seems to be a quantity of 0, non-shipped items have no item price
+        if &#39;ItemStatus&#39; not in order_item or order_item[&#39;ItemStatus&#39;] != &#39;Shipped&#39;: 
+            return
+
+        sku = order_item[&#39;SKU&#39;] 
+        dataset[sku][&#39;asins&#39;].add(order_item[&#39;ASIN&#39;]) # add ASIN for current item
+        dataset[sku][&#39;product_names&#39;].add(order_item[&#39;ProductName&#39;]) # add product name for current item
+        dataset[sku][&#39;order_count&#39;] += int(order_item[&#39;Quantity&#39;]) # add quantity of item ordered
+
+        price_components = order_item[&#39;ItemPrice&#39;][&#39;Component&#39;]
+        if isinstance(price_components, list):
+          for pc in price_components:
+            self.__update_price_component(dataset, order_date, sku, pc)
+        else:
+          self.__update_price_component(dataset, order_date, sku, price_components)
+
+    def __update_from_items(self, dataset, date, items):
+        if isinstance(items, list): # multiple items, it&#39;s a list of dicts
+            for item in items:
+                self.__update_dataset(dataset, date, item)
+        else: # otherwise, it&#39;s a dict
+            self.__update_dataset(dataset, date, items)
+
+
+    def __build_df(self, date, marketplace, orders):
+        # collect information in a dictionary for each SKU
+        dataset = defaultdict(lambda: 
+            defaultdict(lambda: 0, {
+                &#39;asins&#39;:set(),
+                &#39;product_names&#39;:set(),
+                &#39;order_count&#39;:0
+            })
+        ) 
+
+        if isinstance(orders,list):
+          for o in tqdm(orders, desc=&#39;Processing Orders...&#39;, total=len(orders)):
+              self.__update_from_items(dataset, date, o[&#39;Order&#39;][&#39;OrderItem&#39;])
+        else:
+          self.__update_from_items(dataset, date, orders[&#39;Order&#39;][&#39;OrderItem&#39;])
+                    
+        if len(dataset)==0:
+          return None
+
+        # load dataset dictionary into dataframe, keys of dictionary will be rows (index)
+        # https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.from_dict.html
+        df = pd.DataFrame.from_dict(dataset, orient=&#39;index&#39;)
+        # want SKU to be a column, reset_index() to create numerical index 
+        # reseting index puts sku into &#39;index&#39;, rename it
+        df = df.reset_index().rename(columns={&#39;index&#39;:&#39;sku&#39;}) 
+        # some skus don&#39;t have all revenue types and will have nulls there, replace them with 0s
+        df = df.fillna(0) 
+        # add date, marketplace columns
+        df[&#39;marketplace&#39;] = marketplace 
+        df[&#39;date&#39;] = date
+        # reorder columns putting marketplace, date first
+        cols = list(df.columns) 
+        df = df[cols[-2:]+cols[:-2]]       
+        return df</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="amazon_lib.AmazonOrderRetrieval.retrieve_orders"><code class="name flex">
+<span>def <span class="ident">retrieve_orders</span></span>(<span>self, day, marketplace)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method will retrieve the orders for a particular day and marketplace. </p>
+<p>This method can provide a variety of responses. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>day</code></strong> :&ensp;<code>str</code></dt>
+<dd>The yyyy-MM-dd date of interest.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name for the marketplace. Its ID should be retrievable from <code>marketplaces</code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="amazon_lib.AmazonOrderRetrievalStatus" href="#amazon_lib.AmazonOrderRetrievalStatus">AmazonOrderRetrievalStatus</a></code></dt>
+<dd>This status is returned in the event that the report request can be successfully accessed. <code><a title="amazon_lib.AmazonOrderRetrievalStatus.CREATED_REQUEST" href="#amazon_lib.AmazonOrderRetrievalStatus.CREATED_REQUEST">AmazonOrderRetrievalStatus.CREATED_REQUEST</a></code> is returned if a request could be created successfully and its information could be logged using <code>logger</code>. <code><a title="amazon_lib.AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED" href="#amazon_lib.AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED">AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED</a></code> is returned to signal the method does not thing because orders have already been saved via <code>save_orders</code>. <code><a title="amazon_lib.AmazonOrderRetrievalStatus.REQUEST_PROCESSING" href="#amazon_lib.AmazonOrderRetrievalStatus.REQUEST_PROCESSING">AmazonOrderRetrievalStatus.REQUEST_PROCESSING</a></code> is returned to signal that the method checked the status of the report for the <code>day</code> and <code>marketplace</code> and it is not finished yet. Its most recent processing status is updated and sent via <code>logger</code>. <code><a title="amazon_lib.AmazonOrderRetrievalStatus.SAVED_ORDERS" href="#amazon_lib.AmazonOrderRetrievalStatus.SAVED_ORDERS">AmazonOrderRetrievalStatus.SAVED_ORDERS</a></code> is returned if a report could be read and its order information could be saved successfully using <code>save_orders</code> and logged.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>MWSError</code></dt>
+<dd>These errors are raised in the event of failures of report requests via the MWS package. This can occur due to requests being throttled or if you have made too many creation requests recently (17 / 5 minutes). If such an error occurs while making a report reuest, then the processing status is set as the name of <code><a title="amazon_lib.AmazonOrderRetrievalStatus.REQUEST_FAILED" href="#amazon_lib.AmazonOrderRetrievalStatus.REQUEST_FAILED">AmazonOrderRetrievalStatus.REQUEST_FAILED</a></code>, and submission time of the current PST time, and logged via <code>logger</code>. If such an error occurs during saving, then the saving status is set as the name of <code><a title="amazon_lib.AmazonOrderSavingStatus.SAVE_FAILED" href="#amazon_lib.AmazonOrderSavingStatus.SAVE_FAILED">AmazonOrderSavingStatus.SAVE_FAILED</a></code>.</dd>
+<dt><code>Exception</code></dt>
+<dd>Any other exceptions that may occur can also be raised. However, if they occur in request creation, progress update, or order saving their type (which may be MWSError) will be logged in the <code>logger</code>. If the exception occurred during request creation or saving, the processing and saving statuses will be updated as above.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>Whenever information needs to be updated in your system in this method, AmazonReportLogEntry's are copied from your system, edited, and passed back via AmazonReportLogger. Any information that needs to be retrieved is requested from AmazonReportLogger as AmazonReportLogEntry. The error type logged in your system is an indication of the type of error that happened and the method should be re-run to actually see a full traceback of the error.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_lib.AmazonReportLogger" href="#amazon_lib.AmazonReportLogger">AmazonReportLogger</a></code>
+<code><a title="amazon_lib.AmazonReportLogEntry" href="#amazon_lib.AmazonReportLogEntry">AmazonReportLogEntry</a></code>
+<code><a title="amazon_lib.AmazonOrderRetrievalStatus" href="#amazon_lib.AmazonOrderRetrievalStatus">AmazonOrderRetrievalStatus</a></code>
+<code><a title="amazon_lib.AmazonOrderSavingStatus" href="#amazon_lib.AmazonOrderSavingStatus">AmazonOrderSavingStatus</a></code></p>
+<h2 id="references">References</h2>
+<p><a href="https://docs.developer.amazonservices.com/en_US/reports/Reports_RequestReport.html">RequestReport Operation</a></p>
+<p><a href="https://docs.developer.amazonservices.com/en_US/reports/Reports_GetReportRequestList.html">GetReportRequestList Operation</a></p>
+<p><a href="https://docs.developer.amazonservices.com/en_US/reports/Reports_GetReport.html">GetReport Operation</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def retrieve_orders(self,day,marketplace):
+    &#34;&#34;&#34;
+    This method will retrieve the orders for a particular day and marketplace. 
+
+    This method can provide a variety of responses. 
+
+    Parameters
+    ----------
+    day : str
+        The yyyy-MM-dd date of interest.
+    marketplace : str
+        The name for the marketplace. Its ID should be retrievable from `marketplaces`.
+
+    Returns
+    -------
+    AmazonOrderRetrievalStatus
+        This status is returned in the event that the report request can be successfully accessed. `AmazonOrderRetrievalStatus.CREATED_REQUEST` is returned if a request could be created successfully and its information could be logged using `logger`. `AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED` is returned to signal the method does not thing because orders have already been saved via `save_orders`. `AmazonOrderRetrievalStatus.REQUEST_PROCESSING` is returned to signal that the method checked the status of the report for the `day` and `marketplace` and it is not finished yet. Its most recent processing status is updated and sent via `logger`. `AmazonOrderRetrievalStatus.SAVED_ORDERS` is returned if a report could be read and its order information could be saved successfully using `save_orders` and logged.
+
+    Raises
+    ------
+    MWSError
+        These errors are raised in the event of failures of report requests via the MWS package. This can occur due to requests being throttled or if you have made too many creation requests recently (17 / 5 minutes). If such an error occurs while making a report reuest, then the processing status is set as the name of `AmazonOrderRetrievalStatus.REQUEST_FAILED`, and submission time of the current PST time, and logged via `logger`. If such an error occurs during saving, then the saving status is set as the name of `AmazonOrderSavingStatus.SAVE_FAILED`.
+    Exception
+        Any other exceptions that may occur can also be raised. However, if they occur in request creation, progress update, or order saving their type (which may be MWSError) will be logged in the `logger`. If the exception occurred during request creation or saving, the processing and saving statuses will be updated as above.
+
+    Notes
+    -----
+    Whenever information needs to be updated in your system in this method, AmazonReportLogEntry&#39;s are copied from your system, edited, and passed back via AmazonReportLogger. Any information that needs to be retrieved is requested from AmazonReportLogger as AmazonReportLogEntry. The error type logged in your system is an indication of the type of error that happened and the method should be re-run to actually see a full traceback of the error.
+
+    See Also
+    --------
+    AmazonReportLogger
+    AmazonReportLogEntry
+    AmazonOrderRetrievalStatus
+    AmazonOrderSavingStatus
+
+    References
+    --------
+    [RequestReport Operation](https://docs.developer.amazonservices.com/en_US/reports/Reports_RequestReport.html)
+
+    [GetReportRequestList Operation](https://docs.developer.amazonservices.com/en_US/reports/Reports_GetReportRequestList.html)
+
+    [GetReport Operation](https://docs.developer.amazonservices.com/en_US/reports/Reports_GetReport.html)
+    &#34;&#34;&#34;
+
+    next_day = (datetime.strptime(day,&#34;%Y-%m-%d&#34;) + timedelta(days=1)).strftime(&#34;%Y-%m-%d&#34;)
+    marketplace_id = self.__marketplaces[marketplace]
+    log_entry = self.__logger.get_info(day,marketplace)
+
+    if log_entry is None or log_entry.processing_status == AmazonOrderRetrievalStatus.REQUEST_FAILED.name:
+
+        # make order request for this date range and market place and collect request response
+        try:
+          request_response = xmltodict.parse(self.__reports_access.request_report(AmazonOrderRetrieval.__REPORT_TYPE, day, next_day, marketplace_id).original)
+          request_response = request_response[&#39;RequestReportResponse&#39;][&#39;RequestReportResult&#39;][&#39;ReportRequestInfo&#39;]
+          request_info = xmltodict.parse(self.__reports_access.get_report_request_list(request_response[&#39;ReportRequestId&#39;]).original)
+          request_info = request_info[&#39;GetReportRequestListResponse&#39;][&#39;GetReportRequestListResult&#39;][&#39;ReportRequestInfo&#39;]
+        except Exception as e:
+          curr_pst_time = datetime.now(pytz.timezone(&#39;America/Los_Angeles&#39;))
+          self.__logger.log_info(AmazonReportLogEntry(
+              curr_pst_time,
+              None,
+              None,
+              day,
+              marketplace,
+              AmazonOrderRetrievalStatus.REQUEST_FAILED.name,
+              AmazonOrderSavingStatus.NOT_SAVED.name,
+              str(type(e))
+          ))
+          raise e
+
+        # create log for this request using the information collected in request info via GetReportRequestList
+        self.__logger.log_info(AmazonReportLogEntry(
+            request_info[&#39;SubmittedDate&#39;],
+            request_info[&#39;ReportRequestId&#39;],
+            request_info[&#39;GeneratedReportId&#39;] if request_info[&#39;ReportProcessingStatus&#39;] == &#39;_DONE_&#39; else None,
+            day,
+            marketplace,
+            request_info[&#39;ReportProcessingStatus&#39;],
+            AmazonOrderSavingStatus.NOT_SAVED.name,
+            None
+        ))
+        return AmazonOrderRetrievalStatus.CREATED_REQUEST
+
+    if log_entry.saving_status == AmazonOrderSavingStatus.SAVED.name:
+        return AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED
+
+    log_entry = log_entry.deepcopy()
+    log_entry.last_err_type = None
+
+    if log_entry.processing_status != &#39;_DONE_&#39;:
+        # get most recent request info using request id from log information (log information could be old)
+        try: 
+          request_info = xmltodict.parse(self.__reports_access.get_report_request_list(log_entry.request_id).original)
+          request_info = request_info[&#39;GetReportRequestListResponse&#39;][&#39;GetReportRequestListResult&#39;][&#39;ReportRequestInfo&#39;]            
+          log_entry.processing_status = request_info[&#39;ReportProcessingStatus&#39;]
+          if request_info[&#39;ReportProcessingStatus&#39;] != &#39;_DONE_&#39;:
+              return AmazonOrderRetrievalStatus.REQUEST_PROCESSING
+          log_entry.report_id = request_info[&#39;GeneratedReportId&#39;]
+        except Exception as e:
+          log_entry.last_err_type = str(type(e))
+          raise e   
+        finally:
+          self.__logger.log_info(log_entry)
+
+    try:
+        # retrieve orders using GetReport with the generated ID (which will now exist because report was created)
+        orders = xmltodict.parse(self.__reports_access.get_report(log_entry.report_id).original)
+        df = None
+        if &#39;Message&#39; in orders[&#39;AmazonEnvelope&#39;]:
+          orders = orders[&#39;AmazonEnvelope&#39;][&#39;Message&#39;]
+          df = self.__build_df(day, marketplace, orders) # build dataframe of order stats 
+          if df is not None:
+            self.__save_orders(df)
+            log_entry.saving_status = AmazonOrderSavingStatus.SAVED.name
+        if df is None:
+          log_entry.saving_status = AmazonOrderSavingStatus.EMPTY_SAVE.name
+        return AmazonOrderRetrievalStatus.SAVED_ORDERS
+    except Exception as e:
+        log_entry.saving_status = AmazonOrderSavingStatus.SAVE_FAILED.name
+        log_entry.last_err_type = str(type(e))
+        raise e
+    finally:
+        self.__logger.log_info(log_entry)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="amazon_lib.AmazonOrderRetrievalStatus"><code class="flex name class">
+<span>class <span class="ident">AmazonOrderRetrievalStatus</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This enum holds the possible statuses of an order retrieval request sent via AmazonOrderRetrieval.</p>
+<p>With the exception of <code>REQUEST_FAILED</code>, the instances of this enum will be used to return the status of a call to retrieve_orders() in AmazonOrderRetrieval. The name of <code>REQUEST_FAILED</code> is used to set the <code>processing_status</code> field of the AmazonReportLogEntry class when no other processing status can be retrieved from Amazon.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_lib.AmazonOrderRetrieval" href="#amazon_lib.AmazonOrderRetrieval">AmazonOrderRetrieval</a></code>
+<code><a title="amazon_lib.AmazonReportLogEntry" href="#amazon_lib.AmazonReportLogEntry">AmazonReportLogEntry</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AmazonOrderRetrievalStatus(Enum):
+    &#34;&#34;&#34;
+    This enum holds the possible statuses of an order retrieval request sent via AmazonOrderRetrieval.
+
+    With the exception of `REQUEST_FAILED`, the instances of this enum will be used to return the status of a call to retrieve_orders() in AmazonOrderRetrieval. The name of `REQUEST_FAILED` is used to set the `processing_status` field of the AmazonReportLogEntry class when no other processing status can be retrieved from Amazon.
+    
+    See Also
+    --------
+    AmazonOrderRetrieval
+    AmazonReportLogEntry
+    &#34;&#34;&#34;
+
+    REQUEST_FAILED = 1
+    &#34;&#34;&#34;
+    This status means that a request to generate a report has failed.
+    &#34;&#34;&#34;
+
+    CREATED_REQUEST = 2
+    &#34;&#34;&#34;
+    This status means that a request to generate a report was created successfully. 
+    &#34;&#34;&#34;
+
+    REQUEST_PROCESSING = 3
+    &#34;&#34;&#34;
+    This status means that the request for a report has not completed.
+    &#34;&#34;&#34;
+
+    SAVED_ORDERS = 4
+    &#34;&#34;&#34;
+    This status means that the orders were retrieved and saved by AmazonOrderRetrieval.
+    &#34;&#34;&#34;
+
+    ORDERS_ALREADY_SAVED = 5
+    &#34;&#34;&#34;
+    This status means that the orders associated with the request have already been saved via AmazonOrderRetrieval.
+    &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="amazon_lib.AmazonOrderRetrievalStatus.CREATED_REQUEST"><code class="name">var <span class="ident">CREATED_REQUEST</span></code></dt>
+<dd>
+<div class="desc"><p>This status means that a request to generate a report was created successfully.</p></div>
+</dd>
+<dt id="amazon_lib.AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED"><code class="name">var <span class="ident">ORDERS_ALREADY_SAVED</span></code></dt>
+<dd>
+<div class="desc"><p>This status means that the orders associated with the request have already been saved via AmazonOrderRetrieval.</p></div>
+</dd>
+<dt id="amazon_lib.AmazonOrderRetrievalStatus.REQUEST_FAILED"><code class="name">var <span class="ident">REQUEST_FAILED</span></code></dt>
+<dd>
+<div class="desc"><p>This status means that a request to generate a report has failed.</p></div>
+</dd>
+<dt id="amazon_lib.AmazonOrderRetrievalStatus.REQUEST_PROCESSING"><code class="name">var <span class="ident">REQUEST_PROCESSING</span></code></dt>
+<dd>
+<div class="desc"><p>This status means that the request for a report has not completed.</p></div>
+</dd>
+<dt id="amazon_lib.AmazonOrderRetrievalStatus.SAVED_ORDERS"><code class="name">var <span class="ident">SAVED_ORDERS</span></code></dt>
+<dd>
+<div class="desc"><p>This status means that the orders were retrieved and saved by AmazonOrderRetrieval.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="amazon_lib.AmazonOrderSavingStatus"><code class="flex name class">
+<span>class <span class="ident">AmazonOrderSavingStatus</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This enum is used to hold the possible statuses of saving orders from a report via AmazonOrderRetrieval. </p>
+<p>The names of these instances are used to set the <code>saving_status</code> of AmazonReportLogEntry objects sent to and from the client code of AmazonOrderRetrieval.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_lib.AmazonOrderRetrieval" href="#amazon_lib.AmazonOrderRetrieval">AmazonOrderRetrieval</a></code>
+<code><a title="amazon_lib.AmazonReportLogEntry" href="#amazon_lib.AmazonReportLogEntry">AmazonReportLogEntry</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AmazonOrderSavingStatus(Enum):
+    &#34;&#34;&#34;
+    This enum is used to hold the possible statuses of saving orders from a report via AmazonOrderRetrieval. 
+
+    The names of these instances are used to set the `saving_status` of AmazonReportLogEntry objects sent to and from the client code of AmazonOrderRetrieval.
+
+    See Also
+    --------
+    AmazonOrderRetrieval
+    AmazonReportLogEntry
+    &#34;&#34;&#34;
+
+    NOT_SAVED = 1
+    &#34;&#34;&#34;
+    This means that no attempt has been made to save a set of orders.
+    &#34;&#34;&#34;
+
+    SAVE_FAILED = 2
+    &#34;&#34;&#34;
+    This means that the last attempt to save a set of orders failed. The reason it has failed will be included in the `last_err_type` field of AmazonReportLogEntry.
+    &#34;&#34;&#34;
+
+    EMPTY_SAVE = 3
+    &#34;&#34;&#34;
+    This means that the last attempt to save a set of orders resulted in an empty save. The client code is able to make additional calls to retrieve_orders() in this case.
+    &#34;&#34;&#34;
+
+    SAVED = 4
+    &#34;&#34;&#34;
+    This means that the last attempt to save orders was successful and resulted in a non-empty save. 
+    &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="amazon_lib.AmazonOrderSavingStatus.EMPTY_SAVE"><code class="name">var <span class="ident">EMPTY_SAVE</span></code></dt>
+<dd>
+<div class="desc"><p>This means that the last attempt to save a set of orders resulted in an empty save. The client code is able to make additional calls to retrieve_orders() in this case.</p></div>
+</dd>
+<dt id="amazon_lib.AmazonOrderSavingStatus.NOT_SAVED"><code class="name">var <span class="ident">NOT_SAVED</span></code></dt>
+<dd>
+<div class="desc"><p>This means that no attempt has been made to save a set of orders.</p></div>
+</dd>
+<dt id="amazon_lib.AmazonOrderSavingStatus.SAVED"><code class="name">var <span class="ident">SAVED</span></code></dt>
+<dd>
+<div class="desc"><p>This means that the last attempt to save orders was successful and resulted in a non-empty save.</p></div>
+</dd>
+<dt id="amazon_lib.AmazonOrderSavingStatus.SAVE_FAILED"><code class="name">var <span class="ident">SAVE_FAILED</span></code></dt>
+<dd>
+<div class="desc"><p>This means that the last attempt to save a set of orders failed. The reason it has failed will be included in the <code>last_err_type</code> field of AmazonReportLogEntry.</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="amazon_lib.AmazonReportLogEntry"><code class="flex name class">
+<span>class <span class="ident">AmazonReportLogEntry</span></span>
+<span>(</span><span>submitted_date, request_id, report_id, day, marketplace, processing_status, saving_status, last_err_type)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class serves to consolidate logging information to be transferred between AmazonOrderRetrieval and the client code.</p>
+<p>The transfer will be implemented as a subclass of AmazonReportLogger. </p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>submitted_date</code></strong> :&ensp;<code>str</code> or <code>datetime</code></dt>
+<dd>This is the time at which a report was requested.</dd>
+<dt><strong><code>request_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the ID of the request.</dd>
+<dt><strong><code>report_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the ID of the report.</dd>
+<dt><strong><code>day</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the yyyy-MM-dd representation of the date the report was requested for.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the marketplace of the date the report was requested for.</dd>
+<dt><strong><code>processing_status</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the current processing status either reported from Amazon or <code>REQUEST_FAILED</code> as discussed above.</dd>
+<dt><strong><code>saving_status</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the current saving status of the order data from this report.</dd>
+<dt><strong><code>last_err_type</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the type of the last error generated in processing/saving this report.</dd>
+</dl>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>submitted_date</code></strong> :&ensp;<code>str</code> or <code>datetime</code></dt>
+<dd>This is the time at which a report was requested.</dd>
+<dt><strong><code>request_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the ID of the request.</dd>
+<dt><strong><code>report_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the ID of the report.</dd>
+<dt><strong><code>day</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the yyyy-MM-dd representation of the date the report was requested for.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the marketplace of the date the report was requested for.</dd>
+<dt><strong><code>processing_status</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the current processing status either reported from Amazon or <code>REQUEST_FAILED</code> as discussed above.</dd>
+<dt><strong><code>saving_status</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the current saving status of the order data from this report.</dd>
+<dt><strong><code>last_err_type</code></strong> :&ensp;<code>str</code></dt>
+<dd>This is the type of the last error generated in processing/saving this report.</dd>
+</dl>
+<h2 id="warning">Warning</h2>
+<p>When transfering data from your logging system via AmazonReportLogger into these objects, make sure that all of the information you pass in are strings even though you may be storing fields (like IDs) as other types. </p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_lib.AmazonOrderRetrieval" href="#amazon_lib.AmazonOrderRetrieval">AmazonOrderRetrieval</a></code>
+<code><a title="amazon_lib.AmazonReportLogger" href="#amazon_lib.AmazonReportLogger">AmazonReportLogger</a></code>
+<code><a title="amazon_lib.AmazonOrderRetrievalStatus" href="#amazon_lib.AmazonOrderRetrievalStatus">AmazonOrderRetrievalStatus</a></code>
+<code><a title="amazon_lib.AmazonOrderSavingStatus" href="#amazon_lib.AmazonOrderSavingStatus">AmazonOrderSavingStatus</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AmazonReportLogEntry:
+    &#34;&#34;&#34;
+    This class serves to consolidate logging information to be transferred between AmazonOrderRetrieval and the client code.
+
+    The transfer will be implemented as a subclass of AmazonReportLogger. 
+
+    Attributes
+    ----------
+    submitted_date : str or datetime
+        This is the time at which a report was requested.
+    request_id : str
+        This is the ID of the request.
+    report_id : str
+        This is the ID of the report.
+    day : str
+        This is the yyyy-MM-dd representation of the date the report was requested for. 
+    marketplace : str
+        This is the marketplace of the date the report was requested for. 
+    processing_status : str
+        This is the current processing status either reported from Amazon or `REQUEST_FAILED` as discussed above.
+    saving_status : str
+        This is the current saving status of the order data from this report.
+    last_err_type : str
+        This is the type of the last error generated in processing/saving this report.
+
+    Parameters
+    ----------
+    submitted_date : str or datetime
+        This is the time at which a report was requested.
+    request_id : str
+        This is the ID of the request.
+    report_id : str
+        This is the ID of the report.
+    day : str
+        This is the yyyy-MM-dd representation of the date the report was requested for. 
+    marketplace : str
+        This is the marketplace of the date the report was requested for. 
+    processing_status : str
+        This is the current processing status either reported from Amazon or `REQUEST_FAILED` as discussed above.
+    saving_status : str
+        This is the current saving status of the order data from this report.
+    last_err_type : str
+        This is the type of the last error generated in processing/saving this report.
+
+    Warning
+    -------
+    When transfering data from your logging system via AmazonReportLogger into these objects, make sure that all of the information you pass in are strings even though you may be storing fields (like IDs) as other types. 
+
+    See Also
+    --------
+    AmazonOrderRetrieval
+    AmazonReportLogger
+    AmazonOrderRetrievalStatus
+    AmazonOrderSavingStatus
+    &#34;&#34;&#34;
+
+    def __init__(self,submitted_date,request_id,report_id,day,marketplace,processing_status,saving_status,last_err_type):
+        self.submitted_date = submitted_date
+        self.request_id = request_id
+        self.report_id = report_id
+        self.day = day
+        self.marketplace = marketplace
+        self.processing_status = processing_status
+        self.saving_status = saving_status
+        self.last_err_type = last_err_type
+
+    def deepcopy(self):
+        &#34;&#34;&#34;
+        This function provides a deep copy of an AmazonReportLogEntry object. 
+
+        Returns
+        -------
+        AmazonReportLogEntry
+            A deep copy of this object.
+        &#34;&#34;&#34;
+
+        return AmazonReportLogEntry(
+            self.submitted_date,
+            self.request_id,
+            self.report_id,
+            self.day,
+            self.marketplace,
+            self.processing_status,
+            self.saving_status,
+            self.last_err_type
+        )</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="amazon_lib.AmazonReportLogEntry.deepcopy"><code class="name flex">
+<span>def <span class="ident">deepcopy</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function provides a deep copy of an AmazonReportLogEntry object. </p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="amazon_lib.AmazonReportLogEntry" href="#amazon_lib.AmazonReportLogEntry">AmazonReportLogEntry</a></code></dt>
+<dd>A deep copy of this object.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def deepcopy(self):
+    &#34;&#34;&#34;
+    This function provides a deep copy of an AmazonReportLogEntry object. 
+
+    Returns
+    -------
+    AmazonReportLogEntry
+        A deep copy of this object.
+    &#34;&#34;&#34;
+
+    return AmazonReportLogEntry(
+        self.submitted_date,
+        self.request_id,
+        self.report_id,
+        self.day,
+        self.marketplace,
+        self.processing_status,
+        self.saving_status,
+        self.last_err_type
+    )</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="amazon_lib.AmazonReportLogger"><code class="flex name class">
+<span>class <span class="ident">AmazonReportLogger</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class provides a template for subclasses which should implement some non-volatile logging system.</p>
+<p>This class will be used by AmazonOrderRetrieval to send and receive information from your logging system. This could be writing to a database or a file. A constructor is omitted from the template, but you should add one if you need to perform any set-up operations for your logging system.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class AmazonReportLogger:
+    &#34;&#34;&#34;
+    This class provides a template for subclasses which should implement some non-volatile logging system.
+
+    This class will be used by AmazonOrderRetrieval to send and receive information from your logging system. This could be writing to a database or a file. A constructor is omitted from the template, but you should add one if you need to perform any set-up operations for your logging system.
+    &#34;&#34;&#34;
+
+    def log_info(self,log_entry):
+        &#34;&#34;&#34;
+        This function should log the information from an AmazonReportLogEntry object to your system.
+
+        The information passed through this function should not be edited in anyway. When a request is made via get_info() to get this information back, it should be exactly the same. However, in this method, you can add any other information to your logging system.
+
+        Parameters
+        ----------
+        log_entry : AmazonReportLogEntry
+            A log entry to be put into your system. 
+
+        Notes
+        -----
+        This function will be called to update information in your system throughout AmazonOrderRetrieval&#39;s retrieve_orders() method to keep you updated with the progress of your report processing.
+
+        See Also
+        --------
+        AmazonOrderRetrieval
+        AmazonReportLogEntry
+        get_info
+        &#34;&#34;&#34;
+        pass
+
+    def get_info(self,day,marketplace):
+        &#34;&#34;&#34;
+        This function should retrieve a log entry object with the necessary information associated with a day and marketplace. 
+
+        The necessary information should be all the fields in an AmazonReportLogEntry object that would have been passed in via a call to log_info().
+
+        Parameters
+        ----------
+        day : str
+            The day of interest.
+        marketplace : str
+            The marketplace of interest.
+
+        Returns
+        -------
+        AmazonReportLogEntry
+            An object containing the necessary information for this (day,marketplace).
+
+        Notes
+        -----
+        This function will be called to retrieve information about a report request associated with day and marketplace logged in your system throughout AmazonOrderRetrieval&#39;s retrieve_orders() method so that it can act accordingly.
+
+        See Also
+        --------
+        AmazonOrderRetrieval
+        AmazonReportLogEntry
+        log_info
+        &#34;&#34;&#34;
+        pass</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="amazon_lib.AmazonReportLogger.get_info"><code class="name flex">
+<span>def <span class="ident">get_info</span></span>(<span>self, day, marketplace)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function should retrieve a log entry object with the necessary information associated with a day and marketplace. </p>
+<p>The necessary information should be all the fields in an AmazonReportLogEntry object that would have been passed in via a call to log_info().</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>day</code></strong> :&ensp;<code>str</code></dt>
+<dd>The day of interest.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>The marketplace of interest.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="amazon_lib.AmazonReportLogEntry" href="#amazon_lib.AmazonReportLogEntry">AmazonReportLogEntry</a></code></dt>
+<dd>An object containing the necessary information for this (day,marketplace).</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>This function will be called to retrieve information about a report request associated with day and marketplace logged in your system throughout AmazonOrderRetrieval's retrieve_orders() method so that it can act accordingly.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_lib.AmazonOrderRetrieval" href="#amazon_lib.AmazonOrderRetrieval">AmazonOrderRetrieval</a></code>
+<code><a title="amazon_lib.AmazonReportLogEntry" href="#amazon_lib.AmazonReportLogEntry">AmazonReportLogEntry</a></code>
+<code>log_info</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_info(self,day,marketplace):
+    &#34;&#34;&#34;
+    This function should retrieve a log entry object with the necessary information associated with a day and marketplace. 
+
+    The necessary information should be all the fields in an AmazonReportLogEntry object that would have been passed in via a call to log_info().
+
+    Parameters
+    ----------
+    day : str
+        The day of interest.
+    marketplace : str
+        The marketplace of interest.
+
+    Returns
+    -------
+    AmazonReportLogEntry
+        An object containing the necessary information for this (day,marketplace).
+
+    Notes
+    -----
+    This function will be called to retrieve information about a report request associated with day and marketplace logged in your system throughout AmazonOrderRetrieval&#39;s retrieve_orders() method so that it can act accordingly.
+
+    See Also
+    --------
+    AmazonOrderRetrieval
+    AmazonReportLogEntry
+    log_info
+    &#34;&#34;&#34;
+    pass</code></pre>
+</details>
+</dd>
+<dt id="amazon_lib.AmazonReportLogger.log_info"><code class="name flex">
+<span>def <span class="ident">log_info</span></span>(<span>self, log_entry)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This function should log the information from an AmazonReportLogEntry object to your system.</p>
+<p>The information passed through this function should not be edited in anyway. When a request is made via get_info() to get this information back, it should be exactly the same. However, in this method, you can add any other information to your logging system.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>log_entry</code></strong> :&ensp;<code><a title="amazon_lib.AmazonReportLogEntry" href="#amazon_lib.AmazonReportLogEntry">AmazonReportLogEntry</a></code></dt>
+<dd>A log entry to be put into your system.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>This function will be called to update information in your system throughout AmazonOrderRetrieval's retrieve_orders() method to keep you updated with the progress of your report processing.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_lib.AmazonOrderRetrieval" href="#amazon_lib.AmazonOrderRetrieval">AmazonOrderRetrieval</a></code>
+<code><a title="amazon_lib.AmazonReportLogEntry" href="#amazon_lib.AmazonReportLogEntry">AmazonReportLogEntry</a></code>
+<code>get_info</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def log_info(self,log_entry):
+    &#34;&#34;&#34;
+    This function should log the information from an AmazonReportLogEntry object to your system.
+
+    The information passed through this function should not be edited in anyway. When a request is made via get_info() to get this information back, it should be exactly the same. However, in this method, you can add any other information to your logging system.
+
+    Parameters
+    ----------
+    log_entry : AmazonReportLogEntry
+        A log entry to be put into your system. 
+
+    Notes
+    -----
+    This function will be called to update information in your system throughout AmazonOrderRetrieval&#39;s retrieve_orders() method to keep you updated with the progress of your report processing.
+
+    See Also
+    --------
+    AmazonOrderRetrieval
+    AmazonReportLogEntry
+    get_info
+    &#34;&#34;&#34;
+    pass</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="amazon_lib.AmazonOrderRetrieval" href="#amazon_lib.AmazonOrderRetrieval">AmazonOrderRetrieval</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_lib.AmazonOrderRetrieval.retrieve_orders" href="#amazon_lib.AmazonOrderRetrieval.retrieve_orders">retrieve_orders</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="amazon_lib.AmazonOrderRetrievalStatus" href="#amazon_lib.AmazonOrderRetrievalStatus">AmazonOrderRetrievalStatus</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_lib.AmazonOrderRetrievalStatus.CREATED_REQUEST" href="#amazon_lib.AmazonOrderRetrievalStatus.CREATED_REQUEST">CREATED_REQUEST</a></code></li>
+<li><code><a title="amazon_lib.AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED" href="#amazon_lib.AmazonOrderRetrievalStatus.ORDERS_ALREADY_SAVED">ORDERS_ALREADY_SAVED</a></code></li>
+<li><code><a title="amazon_lib.AmazonOrderRetrievalStatus.REQUEST_FAILED" href="#amazon_lib.AmazonOrderRetrievalStatus.REQUEST_FAILED">REQUEST_FAILED</a></code></li>
+<li><code><a title="amazon_lib.AmazonOrderRetrievalStatus.REQUEST_PROCESSING" href="#amazon_lib.AmazonOrderRetrievalStatus.REQUEST_PROCESSING">REQUEST_PROCESSING</a></code></li>
+<li><code><a title="amazon_lib.AmazonOrderRetrievalStatus.SAVED_ORDERS" href="#amazon_lib.AmazonOrderRetrievalStatus.SAVED_ORDERS">SAVED_ORDERS</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="amazon_lib.AmazonOrderSavingStatus" href="#amazon_lib.AmazonOrderSavingStatus">AmazonOrderSavingStatus</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_lib.AmazonOrderSavingStatus.EMPTY_SAVE" href="#amazon_lib.AmazonOrderSavingStatus.EMPTY_SAVE">EMPTY_SAVE</a></code></li>
+<li><code><a title="amazon_lib.AmazonOrderSavingStatus.NOT_SAVED" href="#amazon_lib.AmazonOrderSavingStatus.NOT_SAVED">NOT_SAVED</a></code></li>
+<li><code><a title="amazon_lib.AmazonOrderSavingStatus.SAVED" href="#amazon_lib.AmazonOrderSavingStatus.SAVED">SAVED</a></code></li>
+<li><code><a title="amazon_lib.AmazonOrderSavingStatus.SAVE_FAILED" href="#amazon_lib.AmazonOrderSavingStatus.SAVE_FAILED">SAVE_FAILED</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="amazon_lib.AmazonReportLogEntry" href="#amazon_lib.AmazonReportLogEntry">AmazonReportLogEntry</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_lib.AmazonReportLogEntry.deepcopy" href="#amazon_lib.AmazonReportLogEntry.deepcopy">deepcopy</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="amazon_lib.AmazonReportLogger" href="#amazon_lib.AmazonReportLogger">AmazonReportLogger</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_lib.AmazonReportLogger.get_info" href="#amazon_lib.AmazonReportLogger.get_info">get_info</a></code></li>
+<li><code><a title="amazon_lib.AmazonReportLogger.log_info" href="#amazon_lib.AmazonReportLogger.log_info">log_info</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

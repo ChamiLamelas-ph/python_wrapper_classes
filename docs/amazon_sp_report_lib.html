@@ -1,0 +1,3118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>amazon_sp_report_lib API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>amazon_sp_report_lib</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># https://python-amazon-sp-api.readthedocs.io/en/v0.3.1/endpoints/reports/
+# https://github.com/amzn/selling-partner-api-docs/blob/main/references/reports-api/reportType_string_array_values.md
+
+from amazon_sp_constants import NA_MARKETPLACE_COUNTRY_CODESET, EUR_MARKETPLACE_COUNTRY_CODESET
+from sp_api.base import Marketplaces, SellingApiException
+from sp_api.api import Reports
+from datetime import datetime
+from enum import Enum
+from io import StringIO
+import pandas as pd
+import chardet
+import pickle as pkl
+import re
+import time
+
+TAB_REPORT_TYPES = {
+    &#39;Inventory Report&#39;: &#39;GET_FLAT_FILE_OPEN_LISTINGS_DATA&#39;,
+    &#39;All Listings Report&#39;: &#39;GET_MERCHANT_LISTINGS_ALL_DATA&#39;,
+    &#39;Active Listings Report&#39;: &#39;GET_MERCHANT_LISTINGS_DATA&#39;,
+    &#39;Inactive Listings Report&#39;: &#39;GET_MERCHANT_LISTINGS_INACTIVE_DATA&#39;,
+    &#39;Open Listings Report&#39;: &#39;GET_MERCHANT_LISTINGS_DATA_BACK_COMPAT&#39;,
+    &#39;Open Listings Report Lite&#39;: &#39;GET_MERCHANT_LISTINGS_DATA_LITE&#39;,
+    &#39;Open Listings Report Liter&#39;: &#39;GET_MERCHANT_LISTINGS_DATA_LITER&#39;,
+    &#39;Canceled Listings Report&#39;: &#39;GET_MERCHANT_CANCELLED_LISTINGS_DATA&#39;,
+    &#39;Listing Quality and Suppressed Listing Report&#39;: &#39;GET_MERCHANT_LISTINGS_DEFECT_DATA&#39;,
+    &#39;Pan-European Eligibility: FBA ASINs&#39;: &#39;GET_PAN_EU_OFFER_STATUS&#39;,
+    &#39;Pan-European Eligibility: Self-fulfilled ASINs&#39;: &#39;GET_MFN_PAN_EU_OFFER_STATUS&#39;,
+    &#39;Global Expansion Opportunities Report&#39;: &#39;GET_FLAT_FILE_GEO_OPPORTUNITIES&#39;,
+    &#39;Referral Fee Preview Report&#39;: &#39;GET_REFERRAL_FEE_PREVIEW_REPORT&#39;,
+    &#39;Unshipped Orders Report&#39;: &#39;GET_FLAT_FILE_ACTIONABLE_ORDER_DATA_SHIPPING&#39;,
+    &#39;Requested or Scheduled Flat File Order Report (Invoicing)&#39;: &#39;GET_FLAT_FILE_ORDER_REPORT_DATA_INVOICING&#39;,
+    &#39;Requested or Scheduled Flat File Order Report (Shipping)&#39;: &#39;GET_FLAT_FILE_ORDER_REPORT_DATA_SHIPPING&#39;,
+    &#39;Requested or Scheduled Flat File Order Report (Tax)&#39;: &#39;GET_FLAT_FILE_ORDER_REPORT_DATA_TAX&#39;,
+    &#39;Flat File Orders By Last Update Report&#39;: &#39;GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL&#39;,
+    &#39;Flat File Orders By Order Date Report&#39;: &#39;GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL&#39;,
+    &#39;Flat File Archived Orders Report&#39;: &#39;GET_FLAT_FILE_ARCHIVED_ORDERS_DATA_BY_ORDER_DATE&#39;,
+    &#39;Flat File Pending Orders Report&#39;: &#39;GET_FLAT_FILE_PENDING_ORDERS_DATA&#39;,
+    &#39;Flat File Returns Report by Return Date&#39;: &#39;GET_FLAT_FILE_RETURNS_DATA_BY_RETURN_DATE&#39;,
+    &#39;Flat File Return Attributes Report by Return Date&#39;: &#39;GET_FLAT_FILE_MFN_SKU_RETURN_ATTRIBUTES_REPORT&#39;,
+    &#39;Flat File Feedback Report&#39;: &#39;GET_SELLER_FEEDBACK_DATA&#39;,
+    &#39;Flat File Settlement Report&#39;: &#39;GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE&#39;,
+    &#39;Flat File V2 Settlement Report&#39;: &#39;GET_V2_SETTLEMENT_REPORT_DATA_FLAT_FILE_V2&#39;,
+    &#39;FBA Amazon Fulfilled Shipments Report&#39;: &#39;GET_AMAZON_FULFILLED_SHIPMENTS_DATA_GENERAL&#39;,
+    &#39;FBA Amazon Fulfilled Shipments Report (Invoicing)&#39;: &#39;GET_AMAZON_FULFILLED_SHIPMENTS_DATA_INVOICING&#39;,
+    &#39;FBA Amazon Fulfilled Shipments Report (Tax)&#39;: &#39;GET_AMAZON_FULFILLED_SHIPMENTS_DATA_TAX&#39;,
+    &#39;Flat File All Orders Report by Last Update&#39;: &#39;GET_FLAT_FILE_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL&#39;,
+    &#39;Flat File All Orders Report by Order Date&#39;: &#39;GET_FLAT_FILE_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL&#39;,
+    &#39;FBA Customer Shipment Sales Report&#39;: &#39;GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_SALES_DATA&#39;,
+    &#39;FBA Promotions Report&#39;: &#39;GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_PROMOTION_DATA&#39;,
+    &#39;FBA Customer Taxes&#39;: &#39;GET_FBA_FULFILLMENT_CUSTOMER_TAXES_DATA&#39;,
+    &#39;Remote Fulfillment Eligibility&#39;: &#39;GET_REMOTE_FULFILLMENT_ELIGIBILITY&#39;,
+    &#39;FBA Amazon Fulfilled Inventory Report&#39;: &#39;GET_AFN_INVENTORY_DATA&#39;,
+    &#39;FBA Multi-Country Inventory Report&#39;: &#39;GET_AFN_INVENTORY_DATA_BY_COUNTRY&#39;,
+    &#39;Inventory Ledger Report - Summary View&#39;: &#39;GET_LEDGER_SUMMARY_VIEW_DATA&#39;,
+    &#39;Inventory Ledger Report - Detailed View&#39;: &#39;GET_LEDGER_DETAIL_VIEW_DATA&#39;,
+    &#39;FBA Daily Inventory History Report&#39;: &#39;GET_FBA_FULFILLMENT_CURRENT_INVENTORY_DATA&#39;,
+    &#39;FBA Monthly Inventory History Report&#39;: &#39;GET_FBA_FULFILLMENT_MONTHLY_INVENTORY_DATA&#39;,
+    &#39;FBA Received Inventory Report&#39;: &#39;GET_FBA_FULFILLMENT_INVENTORY_RECEIPTS_DATA&#39;,
+    &#39;FBA Reserved Inventory Report&#39;: &#39;GET_RESERVED_INVENTORY_DATA&#39;,
+    &#39;FBA Inventory Event Detail Report&#39;: &#39;GET_FBA_FULFILLMENT_INVENTORY_SUMMARY_DATA&#39;,
+    &#39;FBA Inventory Adjustments Report&#39;: &#39;GET_FBA_FULFILLMENT_INVENTORY_ADJUSTMENTS_DATA&#39;,
+    &#39;FBA Inventory Health Report&#39;: &#39;GET_FBA_FULFILLMENT_INVENTORY_HEALTH_DATA&#39;,
+    &#39;FBA Manage Inventory&#39;: &#39;GET_FBA_MYI_UNSUPPRESSED_INVENTORY_DATA&#39;,
+    &#39;FBA Manage Inventory - Archived&#39;: &#39;GET_FBA_MYI_ALL_INVENTORY_DATA&#39;,
+    &#39;Restock Inventory Report&#39;: &#39;GET_RESTOCK_INVENTORY_RECOMMENDATIONS_REPORT&#39;,
+    &#39;FBA Inbound Performance Report&#39;: &#39;GET_FBA_FULFILLMENT_INBOUND_NONCOMPLIANCE_DATA&#39;,
+    &#39;FBA Stranded Inventory Report&#39;: &#39;GET_STRANDED_INVENTORY_UI_DATA&#39;,
+    &#39;FBA Bulk Fix Stranded Inventory Report&#39;: &#39;GET_STRANDED_INVENTORY_LOADER_DATA&#39;,
+    &#39;FBA Inventory Age Report&#39;: &#39;GET_FBA_INVENTORY_AGED_DATA&#39;,
+    &#39;FBA Manage Excess Inventory Report&#39;: &#39;GET_EXCESS_INVENTORY_DATA&#39;,
+    &#39;FBA Storage Fees Report&#39;: &#39;GET_FBA_STORAGE_FEE_CHARGES_DATA&#39;,
+    &#39;Get Report Exchange Data&#39;: &#39;GET_PRODUCT_EXCHANGE_DATA&#39;,
+    &#39;FBA Fee Preview Report&#39;: &#39;GET_FBA_ESTIMATED_FBA_FEES_TXT_DATA&#39;,
+    &#39;FBA Reimbursements Report&#39;: &#39;GET_FBA_REIMBURSEMENTS_DATA&#39;,
+    &#39;FBA Long Term Storage Fee Charges Report&#39;: &#39;GET_FBA_FULFILLMENT_LONGTERM_STORAGE_FEE_CHARGES_DATA&#39;,
+    &#39;FBA Returns Report&#39;: &#39;GET_FBA_FULFILLMENT_CUSTOMER_RETURNS_DATA&#39;,
+    &#39;FBA Replacements Report&#39;: &#39;GET_FBA_FULFILLMENT_CUSTOMER_SHIPMENT_REPLACEMENT_DATA&#39;,
+    &#39;FBA Recommended Removal Report&#39;: &#39;GET_FBA_RECOMMENDED_REMOVAL_DATA&#39;,
+    &#39;FBA Removal Order Detail Report&#39;: &#39;GET_FBA_FULFILLMENT_REMOVAL_ORDER_DETAIL_DATA&#39;,
+    &#39;FBA Removal Shipment Detail Report&#39;: &#39;GET_FBA_FULFILLMENT_REMOVAL_SHIPMENT_DETAIL_DATA&#39;,
+    &#39;Small &amp; Light Inventory Report&#39;: &#39;GET_FBA_UNO_INVENTORY_DATA&#39;,
+    &#39;Sales Tax Report&#39;: &#39;GET_FLAT_FILE_SALES_TAX_DATA&#39;,
+    &#39;Amazon VAT Transactions Report&#39;: &#39;GET_VAT_TRANSACTION_DATA&#39;,
+    &#39;On Demand GST Merchant Tax Report B2B&#39;: &#39;GET_GST_MTR_B2B_CUSTOM&#39;,
+    &#39;On Demand GST Merchant Tax Report B2C&#39;: &#39;GET_GST_MTR_B2C_CUSTOM&#39;,
+    &#39;EasyShip Picked Up Report&#39;: &#39;GET_EASYSHIP_PICKEDUP&#39;,
+    &#39;EasyShip Waiting for Pick Up Report&#39;: &#39;GET_EASYSHIP_WAITING_FOR_PICKUP&#39;
+}
+&#34;&#34;&#34;
+Report type names &amp; values for tab report types.
+&#34;&#34;&#34;
+
+XML_REPORT_TYPES = {
+    &#39;Scheduled XML Order Report (Invoicing)&#39;: &#39;GET_ORDER_REPORT_DATA_INVOICING&#39;,
+    &#39;Scheduled XML Order Report (Tax)&#39;: &#39;GET_ORDER_REPORT_DATA_TAX&#39;,
+    &#39;Scheduled XML Order Report (Shipping)&#39;: &#39;GET_ORDER_REPORT_DATA_SHIPPING&#39;,
+    &#39;XML Orders By Last Update Report&#39;: &#39;GET_XML_ALL_ORDERS_DATA_BY_LAST_UPDATE_GENERAL&#39;,
+    &#39;XML Orders By Order Date Report&#39;: &#39;GET_XML_ALL_ORDERS_DATA_BY_ORDER_DATE_GENERAL&#39;,
+    &#39;XML Pending Orders Report&#39;: &#39;GET_PENDING_ORDERS_DATA&#39;,
+    &#39;XML Returns Report by Return Date&#39;: &#39;GET_XML_RETURNS_DATA_BY_RETURN_DATE&#39;,
+    &#39;XML Prime Returns Report by Return Date&#39;: &#39;GET_XML_MFN_PRIME_RETURNS_REPORT&#39;,
+    &#39;XML Return Attributes Report by Return Date&#39;: &#39;GET_XML_MFN_SKU_RETURN_ATTRIBUTES_REPORT&#39;,
+    &#39;XML Customer Metrics Report&#39;: &#39;GET_V1_SELLER_PERFORMANCE_REPORT&#39;,
+    &#39;XML Settlement Report&#39;: &#39;GET_V2_SETTLEMENT_REPORT_DATA_XML&#39;,
+    &#39;Browse Tree Report&#39;: &#39;GET_XML_BROWSE_TREE_DATA&#39;
+}
+&#34;&#34;&#34;
+Report type names &amp; values for XML report types.
+&#34;&#34;&#34;
+
+CSV_REPORT_TYPES = {
+    &#39;CSV Prime Returns Report by Return Date&#39;: &#39;GET_CSV_MFN_PRIME_RETURNS_REPORT&#39;,
+    &#39;Amazon VAT Calculation Report&#39;: &#39;SC_VAT_TAX_REPORT&#39;,
+    &#39;AmazonPay Sandbox Settlement Report&#39;: &#39;GET_FLAT_FILE_OFFAMAZONPAYMENTS_SANDBOX_SETTLEMENT_DATA&#39;,
+    &#39;B2B Product Opportunities - Recommended for You Report&#39;: &#39;GET_B2B_PRODUCT_OPPORTUNITIES_RECOMMENDED_FOR_YOU&#39;,
+    &#39;B2B Product Opportunities - Not yet on Amazon&#39;: &#39;GET_B2B_PRODUCT_OPPORTUNITIES_NOT_YET_ON_AMAZON&#39;
+}
+&#34;&#34;&#34;
+Report type names &amp; values for CSV report types.
+&#34;&#34;&#34;
+
+PDF_REPORT_TYPES = {
+    &#39;EasyShip Report&#39;: &#39;GET_EASYSHIP_DOCUMENTS&#39;
+}
+&#34;&#34;&#34;
+Report type names &amp; values for PDF report types.
+&#34;&#34;&#34;
+
+XLSX_REPORT_TYPES = {
+    &#39;Manage Quotes Report&#39;: &#39;RFQD_BULK_DOWNLOAD&#39;,
+    &#39;Referral Fee Discounts Report&#39;: &#39;FEE_DISCOUNTS_REPORT&#39;
+}
+&#34;&#34;&#34;
+Report type names &amp; values for Excel report types.
+&#34;&#34;&#34;
+
+UNKNOWN_REPORT_TYPES = {
+    &#39;Converged Flat File Pending Orders Report&#39;: &#39;GET_CONVERGED_FLAT_FILE_PENDING_ORDERS_DATA&#39;,
+    &#39;Seller Performance Report&#39;: &#39;GET_V2_SELLER_PERFORMANCE_REPORT&#39;
+}
+&#34;&#34;&#34;
+Report type names &amp; values for unknown report types.
+&#34;&#34;&#34;
+
+
+class SpReportTrackingStatus(Enum):
+    &#34;&#34;&#34;
+    Enum that represents the status of updates made to the tracker by ``SpTabReportRetrieval.retrieve_report()``.
+    &#34;&#34;&#34;
+
+    REPORT_CREATED = 1
+    &#34;&#34;&#34;
+    Signifies that the tracker was updated with a report being created with no exceptions being raised. Another error could have been returned by the API.
+    &#34;&#34;&#34;
+
+    DOCUMENTED_RETURNED = 2
+    &#34;&#34;&#34;
+    Signifies that the tracker was updated with a document being returned (and that the status was updated to DONE).
+    &#34;&#34;&#34;
+
+    UPDATED_STATUS = 3
+    &#34;&#34;&#34;
+    Signifies that the tracker has been updated with a new status (other than DONE).
+    &#34;&#34;&#34;
+
+    DONE_NOTHING = 4
+    &#34;&#34;&#34;
+    Signifies that no change was made to the tracker.
+    &#34;&#34;&#34;
+
+    EXCEPTION_OCCURRED = 5
+    &#34;&#34;&#34;
+    Signifies that an error occurred in CREATE REPORT or GET REPORT requests and the tracker is updated with the associated exception information.
+    &#34;&#34;&#34;
+
+
+class SpReportTracker:
+    &#34;&#34;&#34;
+    This class serves as an interface for you to implement a tracker for the status of reports created for a particular type, marketplace, and date range. This will be used by `SpTabReportRetrieval`. Some examples are listed in the See Also section below.
+
+    See Also
+    --------
+    DictTracker
+
+    `SpTabReportRetrieval.retrieve_report()`
+    &#34;&#34;&#34;
+
+    def init_report_tracking(self, report_type_name, marketplace, start_ds, end_ds, report_id, errors):
+        &#34;&#34;&#34;
+        This method should update your tracking system when a new report has been created.  
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+        report_id : str
+            Report ID of report that is created in `SpTabReportRetrieval.retrieve_report()`.
+        errors : str
+            Errors from report creation that is created in `SpTabReportRetrieval.retrieve_report()`.
+
+        Notes
+        -----
+        Its return value will be ignored. You can choose the criteria for report creation.
+        &#34;&#34;&#34;
+
+        pass
+
+    def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        This method should return whether or not a report has been created. This method will be closely related to `SpReportTracker.init_report_tracking()`.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+        Returns
+        -------
+        report_created : bool
+            Whether or not the report has been created. 
+
+        Notes
+        -----
+        The criteria that determines whether a report has been created is up to you.
+        &#34;&#34;&#34;
+
+        pass
+
+    def get_report_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        Get the report ID associated with the report created for a provided type, marketplace, and date range. This should be the report ID passed into `SpReportTracker.init_report_tracking()`.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+        Returns
+        -------
+        report_id : str
+            The report ID associated with the provided report_type_name, marketplace, and date range.
+
+        Notes
+        -----
+        If your implementation raises an exception, it will fall through.
+        &#34;&#34;&#34;
+
+        pass
+
+    def get_report_status(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        Get the status associated with the report created for a provided type, marketplace, and date range. This should be the status passed into `SpReportTracker.init_report_tracking()` or calls to `SpTabReportRetrieval.retrieve_report()`.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+        Returns
+        -------
+        status : str
+            The status associated with the provided report_type_name, marketplace, and date range.
+
+        Notes
+        -----
+        If your implementation raises an exception, it will fall through.
+        &#34;&#34;&#34;
+
+        pass
+
+    def update_report_status(self, report_type_name, marketplace, start_ds, end_ds, status, errors):
+        &#34;&#34;&#34;
+        This method should report the status and errors for the report retrieval process for a provided report type, marketpalce, and date range.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        status : str
+            New status for the report associated with the provided type name, marketplace, and date range.
+        errors : str
+            New error information for the report associated with the provided type name, marketplace, and date range.
+
+        Notes
+        -----
+        Its return value will be ignored.
+        &#34;&#34;&#34;
+
+        pass
+
+    def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
+        &#34;&#34;&#34;
+        This method should report the status and errors for the report retrieval process for a provided report type, marketpalce, and date range.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        status : str
+            The new document ID associated with the above parameters.
+
+        Notes
+        -----
+        Its return value will be ignored.
+        &#34;&#34;&#34;
+
+        pass
+
+    def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        Get the document ID associated with the report created for a provided type, marketplace, and date range. This should be the document ID set in `SpTabReportRetrieval.retrieve_report()` via `SpReportTracker.update_report_document_id()`.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+        Returns
+        -------
+        doc_id : str
+            The document ID associated with the provided report_type_name, marketplace, and date range. If there is no document ID for the provided parameters, return None.
+
+        Notes
+        -----
+        If your implementation raises an exception, it will fall through.
+        &#34;&#34;&#34;
+
+        pass
+
+
+class SpTabReportRetrieval:
+    &#34;&#34;&#34;
+    This class is used for the retrieval of tab reports.
+
+    Parameters
+    ----------
+    tracker : SpReportTracker
+        Tracker for logging the creation of a report (and its ID), status and errors.
+    credentials : dict
+        Dictionary with necessary credentials for making report requests.
+    report_type_name : str
+        The name of the tab report type that will be retrieved using this object. Can leave this out if you wish to specify a particular types for each retrieval in `SpTabReportRetrieval.retrieve_report()`.
+
+    Raises
+    ------
+    ValueError
+        If `report_type_name` is not a valid tab report type. If `marketplace` is not a valid marketplace.
+    TypeError 
+        If `tracker` is not a `SpReportTracker`.
+
+    References
+    ----------
+    [Reports class from saleweaver&#39;s Python sp-api wrapper](https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/api/reports/reports.py)
+    &#34;&#34;&#34;
+
+    # Statuses that signify waiting for a report
+    __WAITING_STATUS = {None, &#39;IN_QUEUE&#39;, &#39;IN_PROGRESS&#39;}
+
+    # Represents 3 types of possible requests sent by retrieve_report()
+    class __RequestType(Enum):
+        CREATE_REPORT = 1
+        GET_REPORT = 2
+        GET_REPORT_DOC = 3
+
+    def __init__(self, tracker, credentials=None, report_type_name=None):
+
+        if report_type_name not in TAB_REPORT_TYPES:
+            raise ValueError(&#39;Invalid Tab report type name %s&#39; %
+                             (report_type_name))
+        if not isinstance(tracker, SpReportTracker):
+            raise TypeError(
+                &#39;Tracker must be an instance of SpReportTracker. Got %s.&#39; % (type(tracker)))
+        self.__creds = credentials
+
+        # will initialize the report later, seems like you can&#39;t have multiple instances of a Reports
+        # objects with the same credentials, so we only set this using self.__creds/credentials in 
+        # retrieve_report()
+        self.__rep = None
+
+        self.__tracker = tracker
+        self.__type_name = report_type_name
+        self.custom_mode()
+
+    def get_report_type_name(self):
+        &#34;&#34;&#34;
+        Gets the report type name specified at object construction. 
+
+        Returns
+        -------
+        The value you passed into `report_type_name` at object construction (or None if you didn&#39;t provide one).
+        &#34;&#34;&#34;
+
+        return self.__type_name
+
+    def bulk_mode(self):
+        &#34;&#34;&#34;
+        Puts the retrieval object in bulk retrieval mode. Rate limit checks will be performed in calls to `SpTabReportRetrieval.retrieve_report()`. This is useful for performing bulk operations with repeated requests of varying types. CREATE REPORT requests can be done once per minute in bursts of 15. GET REPORT requests can be done twice per second in bursts of 15. GET REPORT DOCUMENT requests can be done once per minute in bursts of 15.
+
+        Warnings
+        --------
+        If you want to take the object out of bulk mode, you must run `SpTabReportRetrival.custom_mode()`. Otherwise, it will stay in bulk mode.
+
+        References
+        ----------
+        [saleweaver Python sp-api](https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/api/reports/reports.py)
+
+        See Also
+        --------
+        SpTabReportRetrieval.custom_mode()
+        &#34;&#34;&#34;
+
+        self.__bulk = True
+        self.__report_create_left = 15
+        self.__get_report_left = 15
+        self.__get_report_doc_left = 15
+        self.__t_last_report_create = -1
+        self.__t_last_get_report = -1
+        self.__t_last_get_report_doc = -1
+
+    def custom_mode(self):
+        &#34;&#34;&#34;
+        Puts the retrieval object in custom retrieval mode. There will be no rate limit checks in calls to `SpTabReportRetrieval.retrieve_report()`. Useful for testing reports, performing a few specific calls. 
+        &#34;&#34;&#34;
+
+        self.__bulk = False
+
+    def retrieve_report(self, marketplace, start_ds, end_ds, credentials = None, report_type_name=None, **output_kwargs):
+        &#34;&#34;&#34;
+        Retrieve report for marketplace between start and end dates. This method behaves in the following manner:
+        1. If no information has been tracked for the provided report_type_name, marketplace, and date range then a report is created.
+        2. If the object&#39;s tracker has an entry for the provided marketplace, date range, and report_type_name has a status of None, IN_QUEUE, or IN_PROGRESS, then the report is queried in the API with its ID. If its status is now DONE, then the document will also be retrieved and returned through `SpTabReportRetrieval.output_report_doc()`. Otherwise, the status will just be updated.
+        3. If the object&#39;s tracker has a document_id for the provided report_type_name, marketplace, and date range then the document will be retrieved and returned through `SpTabReportRetrieval.output_report_doc()`.
+        4. If the object&#39;s tracker has a report that has a status of something other than None, IN_QUEUE, or IN_PROGRESS, then nothing happens.
+
+        Parameters
+        ----------
+        marketplace : str
+            Amazon marketplace country code
+        start_ds : str
+            yyyy-MM-dd string representing start date
+        end_ds : str
+            yyyy-MM-dd string representing end date
+        credentials: dict
+            TODO
+        report_type_name : str
+            Name of the report type for retrieval (default: None). If not provided, defaults to `report_type_name` specified in object creation. If `report_type_name` specified in object creation, this will be used instead.
+        output_kwargs : keyword arguments
+            Any additional parameters that `output_report_doc()` needs. These will be passed directly to it. 
+
+        Returns
+        -------
+        status : SpReportTrackingStatus
+            What change was made to the associated tracker by this retrieval.
+        out : object
+            None if a report was created or nothing was done in the retrieval. The new status if the retrieval resulted in status being updated (to something other than DONE). The output of `SpTabReportRetrieval.output_report_doc()` if a document was generated and returned (in the event status became DONE).
+
+        Raises
+        ------
+        RuntimeError
+            If no `report_type_name` has been provided either in object construction or in arguments. 
+            If a retrieval tries to be made to get more information on a report that has been marked as created in the tracker, but has no report ID.
+        ValueError
+            If `report_type_name` is not a valid tab report type. 
+            If `marketplace` is not a valid marketplace.
+
+        Notes
+        -----
+        The general code for performing bulk retrievals for a specific report type can be done as follows:
+        1. Iterate over each specification s
+        2. If a report hasn&#39;t been created for s or s has no document ID, make retrieval to see if report processing can make progress. If a report has been created and has a document ID, we could be done (need to check rest of specifications).
+        3. If retrieval status was `SpReportTrackingStatus.DONE_NOTHING`, then report processing has been moved to FATAL/CANCELLED. If this is the case, we could be done. Other statuses indicate we can keep going.
+        There are other ways to implement this same strategy, including detecting an exception occuring / document generation in step 3 to avoid more future iterations.
+
+        See Also
+        --------
+        TAB_REPORT_TYPES
+
+        NA_MARKETPLACE_COUNTRY_CODESET
+
+        EUR_MARKETPLACE_COUNTRY_CODESET
+
+        SpReportTrackingStatus
+
+        SpTabReportRetrieval.output_report_doc()
+
+        SpReportTracker
+        &#34;&#34;&#34;
+
+        # if report type name not specified here, use one from object initialization, if none was provided at initialization, raise error
+        if report_type_name is None:
+            if self.__type_name is None:
+                raise RuntimeError(
+                    &#39;Must specify report type name in either object construction or via report_type_name. Both cannot be None.&#39;)
+            report_type_name = self.__type_name
+
+        if credentials is None:
+            if self.__creds is None:
+                raise RuntimeError(
+                    &#39;Must specify credentials in either object construction or via credentials. Both cannot be None.&#39;)
+            self.__rep = Reports(credentials=self.__creds)
+        else:
+            self.__rep = Reports(credentials=credentials)
+
+        status = SpReportTrackingStatus.DONE_NOTHING
+        out = None
+
+        # if not report created of this type, marketplace, and date range - create one
+        if not self.__tracker.is_report_created(report_type_name, marketplace, start_ds, end_ds):
+            status = self.__create_report(
+                report_type_name, marketplace, start_ds, end_ds)
+        # if report is waiting to be processed - process it with __update_report_status
+        elif self.__tracker.get_report_status(report_type_name, marketplace, start_ds, end_ds) in SpTabReportRetrieval.__WAITING_STATUS:
+            status, out = self.__update_report_status(
+                report_type_name, marketplace, start_ds, end_ds, **output_kwargs)
+        # if report was already done, just get its document ID from the tracker and use it to get the document
+        elif self.__tracker.get_report_document_id(report_type_name, marketplace, start_ds, end_ds) is not None:
+            status = SpReportTrackingStatus.DOCUMENTED_RETURNED
+            doc_id = self.__tracker.get_report_document_id(
+                report_type_name, marketplace, start_ds, end_ds)
+            out = self.__get_document_df(
+                report_type_name, marketplace, start_ds, end_ds, doc_id, **output_kwargs)
+        # else : report has reached FATAL/CANCELLED status - do nothing
+
+        return status, out
+
+    def output_report_doc(self, marketplace, start_ds, end_ds, report_type_name, df, **kwargs):
+        &#34;&#34;&#34;
+        This method takes the output of the report generated for a marketplace, date range, and marketplace and returns it. However, you should write subclasses that inherit `SpTabReportRetrieval` and override this method.
+
+        Parameters
+        ----------
+        marketplace : str
+            Amazon marketplace country code
+        start_ds : str
+            yyyy-MM-dd string representing start date
+        end_ds : str
+            yyyy-MM-dd string representing end date
+        report_type_name : str
+            Name of the report type for retrieval (default: None). If not provided, defaults to `report_type_name` specified in object creation. If `report_type_name` specified in object creation, this will be used instead.
+        df : pd.DataFrame
+            DataFrame holding the output of the generated document corresponding to the previous four parameters. In overridden versions of this method, you can write this to a file or database.
+        kwargs : keyword arguments
+            This will hold the keyword arguments passed as `**output_kwargs` to `SpTabReportRetrieval.retrieve_report()`. Use this as a way to retrieve user sent information needed in sending the output to its desired destination.
+
+        Returns
+        -------
+        df : pd.DataFrame
+            Outputs input DataFrame. However, in overridden implementations, you should return whatever works best. The output will be passed through `SpTabReportRetrieval.retrieve_report()` as `out.`
+
+        See Also
+        --------
+        `SpTabReportRetrieval.retrieve_report()`
+        &#34;&#34;&#34;
+
+        return df
+
+    ######################################### PRIVATE METHODS #############################################
+
+    # Usage: create a report for type, marketplace, and date range
+    def __create_report(self, report_type_name, marketplace, start_ds, end_ds):
+        if report_type_name not in TAB_REPORT_TYPES:
+            raise ValueError(&#39;Invalid Tab report type name %s&#39; %
+                             (report_type_name))
+        if marketplace not in NA_MARKETPLACE_COUNTRY_CODESET and marketplace not in EUR_MARKETPLACE_COUNTRY_CODESET:
+            raise ValueError(&#39;Invalid marketplace %s&#39; % (marketplace))
+
+        # get start, end dates in ISO 8601
+        start_iso = datetime.strptime(start_ds, &#39;%Y-%m-%d&#39;).isoformat()
+        end_iso = datetime.strptime(end_ds, &#39;%Y-%m-%d&#39;).isoformat()
+
+        # get marketplace ID from code
+        mplaceid = eval(&#39;Marketplaces.%s.marketplace_id&#39; % (marketplace))
+
+        try:
+            # wait so it&#39;s safe to sent CREATE REPORT request if in bulk mode, then make the request and get the response
+            self.__wait(SpTabReportRetrieval.__RequestType.CREATE_REPORT)
+            create_res = self.__rep.create_report(
+                reportType=TAB_REPORT_TYPES[report_type_name], dataStartTime=start_iso, dataEndTime=end_iso, marketplaceIds=[mplaceid])
+
+            # initialize tracking for the report of specified type, marketplace and date range with the id and errors
+            report_id = create_res.payload[&#39;reportId&#39;]
+            self.__tracker.init_report_tracking(
+                report_type_name, marketplace, start_ds, end_ds, report_id, create_res.errors)
+            return SpReportTrackingStatus.REPORT_CREATED
+
+        except SellingApiException as e:
+            # pass exception information onto tracker so user can investigate
+            self.__tracker.init_report_tracking(
+                report_type_name, marketplace, start_ds, end_ds, None, &#34;[%s] %s&#34; % (type(e), str(e)))
+            return SpReportTrackingStatus.EXCEPTION_OCCURRED
+
+    # Usage: get document output from output_report_doc()
+    def __get_document_df(self, report_type_name, marketplace, start_ds, end_ds, doc_id, **output_kwargs):
+
+        # wait for GET-REPORT-DOCUMENT request if in bulk mode
+        self.__wait(SpTabReportRetrieval.__RequestType.GET_REPORT_DOC)
+
+        # get document from API and load it into DataFrame
+        doc = self.__rep.get_report_document(doc_id, decrypt=True)
+        doc = doc.payload[&#39;document&#39;]
+        df = pd.read_csv(StringIO(doc), sep=&#39;\t&#39;)
+
+        # pass in dataframe; marketplace, date range, and type of report; and lastly the output keyword arguments passed from retrieve_report()
+        return self.output_report_doc(marketplace, start_ds, end_ds, report_type_name, df, **output_kwargs)
+
+    # Usage: update report status for type, marketplace, and date range for a created report
+    def __update_report_status(self, report_type_name, marketplace, start_ds, end_ds, **output_kwargs):
+        try:
+            # wait for GET-REPORT request if in bulk mode
+            self.__wait(SpTabReportRetrieval.__RequestType.GET_REPORT)
+
+            # get report id from tracker and make sure its not None
+            report_id = self.__tracker.get_report_id(
+                report_type_name, marketplace, start_ds, end_ds)
+            if not report_id:
+                raise RuntimeError(&#39;Cannot retrieve status/document without a report ID. Check errors for (%s,%s,%s,%s) in your tracker.&#39; %
+                                   (report_type_name, marketplace, start_ds, end_ds))
+
+            # make request and collect status of report
+            res = self.__rep.get_report(report_id)
+            status = res.payload[&#39;processingStatus&#39;]
+
+            # update tracker with status and any errors
+            self.__tracker.update_report_status(
+                report_type_name, marketplace, start_ds, end_ds, status, res.errors)
+
+            # if report is now done, get the report document using helper method __get_document_df() which uses subclass output_report_doc() (polymorphism)
+            if status == &#39;DONE&#39;:
+                doc_id = res.payload[&#39;reportDocumentId&#39;]
+                self.__tracker.update_report_document_id(
+                    report_type_name, marketplace, start_ds, end_ds, doc_id)
+                out = self.__get_document_df(
+                    report_type_name, marketplace, start_ds, end_ds, doc_id, **output_kwargs)
+                return SpReportTrackingStatus.DOCUMENTED_RETURNED, out
+            else:  # just a status update, return the new status to caller
+                return SpReportTrackingStatus.UPDATED_STATUS, status
+        except SellingApiException as e:
+            # error occurred in retrieval process, return last status saved in tracker - if error occurred in status update, then this will be the old one.
+            # if error occurred in document retrieval, this will be status last returned from api
+            status = self.__tracker.get_report_status(
+                report_type_name, marketplace, start_ds, end_ds)
+            self.__tracker.update_report_status(
+                report_type_name, marketplace, start_ds, end_ds, status, type(e).__name__ + str(e))
+            return SpReportTrackingStatus.EXCEPTION_OCCURRED, status
+
+    # Usage: has retrieval object wait for a specified request type if in bulk mode
+    def __wait(self, req_type):
+        if not self.__bulk:
+            return
+        curr = time.time()
+        if req_type == SpTabReportRetrieval.__RequestType.CREATE_REPORT:
+            # if CREATE-REPORT request has been done before, make sure that enough time has passed since then
+            if self.__t_last_report_create &gt; 0:
+                diff = curr - self.__t_last_report_create
+                # must wait 1 min between CREATE-REPORT requests
+                if diff &lt; 60:
+                    time.sleep(60 - diff)
+            # update last CREATE-REPORT time, decrement number of CREATE-REPORT requests left in burst
+            self.__t_last_report_create = curr
+            self.__report_create_left -= 1
+
+            # resetting count after waiting a minute
+            if self.__report_create_left == 0:
+                time.sleep(60)
+                self.__report_create_left = 15
+        elif req_type == SpTabReportRetrieval.__RequestType.GET_REPORT:
+            # if GET-REPORT request has been done before, make sure that enough time has passed since then
+            if self.__t_last_get_report &gt; 0:
+                diff = curr - self.__t_last_get_report
+                # must wait 0.5s between GET-REPORT requests
+                if diff &lt; 0.5:
+                    time.sleep(0.5 - diff)
+            # update last GET-REPORT time, decrement number of GET-REPORT requests left in burst
+            self.__t_last_get_report = curr
+            self.__get_report_left -= 1
+
+            # resetting count after waiting a minute
+            if self.__get_report_left == 0:
+                time.sleep(60)
+                self.__get_report_left = 15
+        else:
+            # if GET-REPORT-DOCUMENT request has been done before, make sure that enough time has passed since then
+            if self.__t_last_get_report_doc &gt; 0:
+                diff = curr - self.__t_last_get_report_doc
+                # must wait 1 min between GET-REPORT-DOCUMENT requests
+                if diff &lt; 60:
+                    time.sleep(60 - diff)
+            # update last GET-REPORT-DOCUMENT time, decrement number of GET-REPORT-DOCUMENT requests left in burst
+            self.__t_last_get_report_doc = curr
+            self.__get_report_doc_left -= 1
+
+            # resetting count after waiting a minute
+            if self.__get_report_doc_left == 0:
+                time.sleep(60)
+                self.__get_report_doc_left = 15
+
+
+# sample trackers
+
+class DictTracker(SpReportTracker):
+    &#34;&#34;&#34;
+    Class that tracks report retrieval in a dictionary. It also provides the user with the ability to load/save dictionary information from/to a file for more permanent storage.
+
+    Parameters
+    ----------
+    fp : str
+        File path to load tracker from. Default: None -&gt; tracker starts empty.
+    &#34;&#34;&#34;
+
+    def __init__(self, fp=None):
+        self.d = dict()
+        if fp:
+            f = open(fp, &#39;rb&#39;)
+            self.d = pkl.load(f)
+
+    def init_report_tracking(self, report_type_name, marketplace, start_ds, end_ds, report_id, errors):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.init_report_tracking()`.
+        &#34;&#34;&#34;
+
+        self.d[(report_type_name, marketplace, start_ds, end_ds)] = {
+            &#39;ReportId&#39;: report_id, &#39;Errors&#39;: errors, &#39;Status&#39;: None, &#39;DocumentId&#39;: None}
+
+    def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.is_report_created()`.
+        &#34;&#34;&#34;
+
+        return (report_type_name, marketplace, start_ds, end_ds) in self.d
+
+    def get_report_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_id()`.
+        &#34;&#34;&#34;
+
+        return self.d[(report_type_name, marketplace, start_ds, end_ds)][&#39;ReportId&#39;]
+
+    def get_report_status(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_status()`.
+        &#34;&#34;&#34;
+
+        return self.d[(report_type_name, marketplace, start_ds, end_ds)][&#39;Status&#39;]
+
+    def update_report_status(self, report_type_name, marketplace, start_ds, end_ds, status, errors):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.update_report_status()`.
+        &#34;&#34;&#34;
+
+        self.d[(report_type_name, marketplace,
+                start_ds, end_ds)][&#39;Status&#39;] = status
+        self.d[(report_type_name, marketplace,
+                start_ds, end_ds)][&#39;Errors&#39;] = errors
+
+    def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.update_report_document_id()`.
+        &#34;&#34;&#34;
+
+        self.d[(report_type_name, marketplace, start_ds, end_ds)
+               ][&#39;DocumentId&#39;] = doc_id
+
+    def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_document_id()`.
+        &#34;&#34;&#34;
+
+        return self.d[(report_type_name, marketplace, start_ds, end_ds)][&#39;DocumentId&#39;]
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Returns a string representation of the tracked information for user convenience. This is an example of additional methods you could add to your own tracker.
+
+        Returns
+        -------
+        out : str
+            String with tracked information for each (report_type_name, marketplace, start_ds, date range) entry on separate lines.
+        &#34;&#34;&#34;
+
+        out = &#34;\n&#34;.join([&#34;%s:%s&#34; % (str(k), str(self.d[k])) for k in self.d])
+        return out
+
+    def save(self, fp):
+        &#34;&#34;&#34;
+        Saves the state in the tracker to a pickle file. This is another possible method one could provide in a subclass.
+
+        Parameters
+        ----------
+        fp : str
+            File path to write to.
+        &#34;&#34;&#34;
+
+        f = open(fp, &#39;wb&#39;)
+        pkl.dump(self.d, f)
+
+
+class DBTracker(SpReportTracker):
+    &#34;&#34;&#34;
+    Class that tracks report retrieval in a MySQL database. 
+
+    Parameters
+    ----------
+    conn : MySQL_DB_Connection
+        Connection to write to
+    schema_name : str
+        Name of schema where tracking will occur
+
+    Raises
+    ------
+    ValueError
+        If the columns of the schema instance on `conn` with name `schema_name` are not a subset of `DBTracker.REQUIRED_COLUMNS`.
+    &#34;&#34;&#34;
+
+    REQUIRED_COLUMNS = {&#39;report_type_name&#39;, &#39;marketplace&#39;, &#39;start_ds&#39;,
+                        &#39;end_ds&#39;, &#39;report_id&#39;, &#39;status&#39;, &#39;errors&#39;, &#39;document_id&#39;}
+    &#34;&#34;&#34;
+    Columns required in schema on `conn` with name `schema_name` for tracking.
+    &#34;&#34;&#34;
+
+    def __init__(self, conn, schema_name):
+        self.__conn = conn
+        self.__schema = self.__conn.get_schema(schema_name)
+        if not DBTracker.REQUIRED_COLUMNS.issubset(set(self.__schema.get_column_names())):
+            raise ValueError(&#39;%s must have all of %s&#39; % (
+                schema_name, &#39;, &#39;.join(DBTracker.REQUIRED_COLUMNS)))
+
+    def init_report_tracking(self, report_type_name, marketplace, start_ds, end_ds, report_id, errors):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.init_report_tracking()`.
+        &#34;&#34;&#34;
+
+        self.__conn.insert(self.__schema, [
+                           report_type_name, marketplace, start_ds, end_ds, report_id, None, errors, None])
+
+    def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.is_report_created()`.
+        &#34;&#34;&#34;
+
+        return not self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).empty
+
+    def get_report_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_id()`.
+        &#34;&#34;&#34;
+
+        return self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, &#39;report_id&#39;]
+
+    def get_report_status(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_status()`.
+        &#34;&#34;&#34;
+
+        return self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, &#39;status&#39;]
+
+    def update_report_status(self, report_type_name, marketplace, start_ds, end_ds, status, errors):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.update_report_status()`.
+        &#34;&#34;&#34;
+
+        existing = self.__conn.key_get(
+            self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, :]
+        self.__conn.insert(self.__schema, [report_type_name, marketplace, start_ds,
+                                           end_ds, existing[&#39;report_id&#39;], status, errors, existing[&#39;document_id&#39;]], overwrite=True)
+
+    def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.update_report_document_id()`.
+        &#34;&#34;&#34;
+
+        existing = self.__conn.key_get(
+            self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, :]
+        self.__conn.insert(self.__schema, [report_type_name, marketplace, start_ds,
+                                           end_ds, existing[&#39;report_id&#39;], existing[&#39;status&#39;], existing[&#39;errors&#39;], doc_id], overwrite=True)
+
+    def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_document_id()`.
+        &#34;&#34;&#34;
+
+        return self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, &#39;document_id&#39;]
+
+# sample subclasses
+
+
+class TypeSampleRetrieval(SpTabReportRetrieval):
+
+    def __init__(self, credentials, tracker):
+        super().__init__(credentials, tracker)
+
+    def output_report_doc(self, marketplace, start_ds, end_ds, report_type_name, df, **kwargs):
+        df.to_excel(&#39;%s.xlsx&#39; % (report_type_name), index=False)
+        return df
+
+
+class InventoryToSchemaRetrieval(SpTabReportRetrieval):
+
+    def __init__(self, credentials, tracker, db_conn, schema_name):
+        super().__init__(credentials, tracker, &#39;FBA Amazon Fulfilled Inventory Report&#39;)
+        self.__schema = db_conn.get_schema(schema_name)
+        self.__conn = db_conn
+
+    def output_report_doc(self, marketplace, start_ds, end_ds, report_type_name, df, **kwargs):
+        last_row = len(df.index) - 1
+        if isinstance(df.iat[last_row, 5], str):
+            df.iat[last_row, 5] = re.sub(&#39;[^0-9]&#39;, &#39;&#39;, df.iat[last_row, 5])
+            df[&#39;Quantity Available&#39;] = df[&#39;Quantity Available&#39;].astype(&#39;int64&#39;)
+        df[&#39;date&#39;] = start_ds
+        out = df.groupby([&#39;date&#39;, &#39;asin&#39;])[&#39;Quantity Available&#39;].sum()
+        out = out.to_frame(name=&#39;quantity&#39;).reset_index()
+        out = out[self.__schema.get_column_names()]
+        self.__conn.insert(self.__schema, out, status_check=False)
+        return len(out.index)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-variables">Global variables</h2>
+<dl>
+<dt id="amazon_sp_report_lib.CSV_REPORT_TYPES"><code class="name">var <span class="ident">CSV_REPORT_TYPES</span></code></dt>
+<dd>
+<div class="desc"><p>Report type names &amp; values for CSV report types.</p></div>
+</dd>
+<dt id="amazon_sp_report_lib.PDF_REPORT_TYPES"><code class="name">var <span class="ident">PDF_REPORT_TYPES</span></code></dt>
+<dd>
+<div class="desc"><p>Report type names &amp; values for PDF report types.</p></div>
+</dd>
+<dt id="amazon_sp_report_lib.TAB_REPORT_TYPES"><code class="name">var <span class="ident">TAB_REPORT_TYPES</span></code></dt>
+<dd>
+<div class="desc"><p>Report type names &amp; values for tab report types.</p></div>
+</dd>
+<dt id="amazon_sp_report_lib.UNKNOWN_REPORT_TYPES"><code class="name">var <span class="ident">UNKNOWN_REPORT_TYPES</span></code></dt>
+<dd>
+<div class="desc"><p>Report type names &amp; values for unknown report types.</p></div>
+</dd>
+<dt id="amazon_sp_report_lib.XLSX_REPORT_TYPES"><code class="name">var <span class="ident">XLSX_REPORT_TYPES</span></code></dt>
+<dd>
+<div class="desc"><p>Report type names &amp; values for Excel report types.</p></div>
+</dd>
+<dt id="amazon_sp_report_lib.XML_REPORT_TYPES"><code class="name">var <span class="ident">XML_REPORT_TYPES</span></code></dt>
+<dd>
+<div class="desc"><p>Report type names &amp; values for XML report types.</p></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="amazon_sp_report_lib.DBTracker"><code class="flex name class">
+<span>class <span class="ident">DBTracker</span></span>
+<span>(</span><span>conn, schema_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class that tracks report retrieval in a MySQL database. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>conn</code></strong> :&ensp;<code>MySQL_DB_Connection</code></dt>
+<dd>Connection to write to</dd>
+<dt><strong><code>schema_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of schema where tracking will occur</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the columns of the schema instance on <code>conn</code> with name <code>schema_name</code> are not a subset of <code><a title="amazon_sp_report_lib.DBTracker.REQUIRED_COLUMNS" href="#amazon_sp_report_lib.DBTracker.REQUIRED_COLUMNS">DBTracker.REQUIRED_COLUMNS</a></code>.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DBTracker(SpReportTracker):
+    &#34;&#34;&#34;
+    Class that tracks report retrieval in a MySQL database. 
+
+    Parameters
+    ----------
+    conn : MySQL_DB_Connection
+        Connection to write to
+    schema_name : str
+        Name of schema where tracking will occur
+
+    Raises
+    ------
+    ValueError
+        If the columns of the schema instance on `conn` with name `schema_name` are not a subset of `DBTracker.REQUIRED_COLUMNS`.
+    &#34;&#34;&#34;
+
+    REQUIRED_COLUMNS = {&#39;report_type_name&#39;, &#39;marketplace&#39;, &#39;start_ds&#39;,
+                        &#39;end_ds&#39;, &#39;report_id&#39;, &#39;status&#39;, &#39;errors&#39;, &#39;document_id&#39;}
+    &#34;&#34;&#34;
+    Columns required in schema on `conn` with name `schema_name` for tracking.
+    &#34;&#34;&#34;
+
+    def __init__(self, conn, schema_name):
+        self.__conn = conn
+        self.__schema = self.__conn.get_schema(schema_name)
+        if not DBTracker.REQUIRED_COLUMNS.issubset(set(self.__schema.get_column_names())):
+            raise ValueError(&#39;%s must have all of %s&#39; % (
+                schema_name, &#39;, &#39;.join(DBTracker.REQUIRED_COLUMNS)))
+
+    def init_report_tracking(self, report_type_name, marketplace, start_ds, end_ds, report_id, errors):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.init_report_tracking()`.
+        &#34;&#34;&#34;
+
+        self.__conn.insert(self.__schema, [
+                           report_type_name, marketplace, start_ds, end_ds, report_id, None, errors, None])
+
+    def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.is_report_created()`.
+        &#34;&#34;&#34;
+
+        return not self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).empty
+
+    def get_report_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_id()`.
+        &#34;&#34;&#34;
+
+        return self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, &#39;report_id&#39;]
+
+    def get_report_status(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_status()`.
+        &#34;&#34;&#34;
+
+        return self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, &#39;status&#39;]
+
+    def update_report_status(self, report_type_name, marketplace, start_ds, end_ds, status, errors):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.update_report_status()`.
+        &#34;&#34;&#34;
+
+        existing = self.__conn.key_get(
+            self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, :]
+        self.__conn.insert(self.__schema, [report_type_name, marketplace, start_ds,
+                                           end_ds, existing[&#39;report_id&#39;], status, errors, existing[&#39;document_id&#39;]], overwrite=True)
+
+    def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.update_report_document_id()`.
+        &#34;&#34;&#34;
+
+        existing = self.__conn.key_get(
+            self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, :]
+        self.__conn.insert(self.__schema, [report_type_name, marketplace, start_ds,
+                                           end_ds, existing[&#39;report_id&#39;], existing[&#39;status&#39;], existing[&#39;errors&#39;], doc_id], overwrite=True)
+
+    def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_document_id()`.
+        &#34;&#34;&#34;
+
+        return self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, &#39;document_id&#39;]</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="amazon_sp_report_lib.DBTracker.REQUIRED_COLUMNS"><code class="name">var <span class="ident">REQUIRED_COLUMNS</span></code></dt>
+<dd>
+<div class="desc"><p>Columns required in schema on <code>conn</code> with name <code>schema_name</code> for tracking.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="amazon_sp_report_lib.DBTracker.get_report_document_id"><code class="name flex">
+<span>def <span class="ident">get_report_document_id</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.get_report_document_id" href="#amazon_sp_report_lib.SpReportTracker.get_report_document_id">SpReportTracker.get_report_document_id()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.get_report_document_id()`.
+    &#34;&#34;&#34;
+
+    return self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, &#39;document_id&#39;]</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DBTracker.get_report_id"><code class="name flex">
+<span>def <span class="ident">get_report_id</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.get_report_id" href="#amazon_sp_report_lib.SpReportTracker.get_report_id">SpReportTracker.get_report_id()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_id(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.get_report_id()`.
+    &#34;&#34;&#34;
+
+    return self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, &#39;report_id&#39;]</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DBTracker.get_report_status"><code class="name flex">
+<span>def <span class="ident">get_report_status</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.get_report_status" href="#amazon_sp_report_lib.SpReportTracker.get_report_status">SpReportTracker.get_report_status()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_status(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.get_report_status()`.
+    &#34;&#34;&#34;
+
+    return self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, &#39;status&#39;]</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DBTracker.init_report_tracking"><code class="name flex">
+<span>def <span class="ident">init_report_tracking</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds, report_id, errors)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.init_report_tracking" href="#amazon_sp_report_lib.SpReportTracker.init_report_tracking">SpReportTracker.init_report_tracking()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_report_tracking(self, report_type_name, marketplace, start_ds, end_ds, report_id, errors):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.init_report_tracking()`.
+    &#34;&#34;&#34;
+
+    self.__conn.insert(self.__schema, [
+                       report_type_name, marketplace, start_ds, end_ds, report_id, None, errors, None])</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DBTracker.is_report_created"><code class="name flex">
+<span>def <span class="ident">is_report_created</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.is_report_created" href="#amazon_sp_report_lib.SpReportTracker.is_report_created">SpReportTracker.is_report_created()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.is_report_created()`.
+    &#34;&#34;&#34;
+
+    return not self.__conn.key_get(self.__schema, (report_type_name, marketplace, start_ds, end_ds)).empty</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DBTracker.update_report_document_id"><code class="name flex">
+<span>def <span class="ident">update_report_document_id</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds, doc_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.update_report_document_id" href="#amazon_sp_report_lib.SpReportTracker.update_report_document_id">SpReportTracker.update_report_document_id()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.update_report_document_id()`.
+    &#34;&#34;&#34;
+
+    existing = self.__conn.key_get(
+        self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, :]
+    self.__conn.insert(self.__schema, [report_type_name, marketplace, start_ds,
+                                       end_ds, existing[&#39;report_id&#39;], existing[&#39;status&#39;], existing[&#39;errors&#39;], doc_id], overwrite=True)</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DBTracker.update_report_status"><code class="name flex">
+<span>def <span class="ident">update_report_status</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds, status, errors)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.update_report_status" href="#amazon_sp_report_lib.SpReportTracker.update_report_status">SpReportTracker.update_report_status()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_report_status(self, report_type_name, marketplace, start_ds, end_ds, status, errors):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.update_report_status()`.
+    &#34;&#34;&#34;
+
+    existing = self.__conn.key_get(
+        self.__schema, (report_type_name, marketplace, start_ds, end_ds)).loc[0, :]
+    self.__conn.insert(self.__schema, [report_type_name, marketplace, start_ds,
+                                       end_ds, existing[&#39;report_id&#39;], status, errors, existing[&#39;document_id&#39;]], overwrite=True)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="amazon_sp_report_lib.DictTracker"><code class="flex name class">
+<span>class <span class="ident">DictTracker</span></span>
+<span>(</span><span>fp=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class that tracks report retrieval in a dictionary. It also provides the user with the ability to load/save dictionary information from/to a file for more permanent storage.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>fp</code></strong> :&ensp;<code>str</code></dt>
+<dd>File path to load tracker from. Default: None -&gt; tracker starts empty.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class DictTracker(SpReportTracker):
+    &#34;&#34;&#34;
+    Class that tracks report retrieval in a dictionary. It also provides the user with the ability to load/save dictionary information from/to a file for more permanent storage.
+
+    Parameters
+    ----------
+    fp : str
+        File path to load tracker from. Default: None -&gt; tracker starts empty.
+    &#34;&#34;&#34;
+
+    def __init__(self, fp=None):
+        self.d = dict()
+        if fp:
+            f = open(fp, &#39;rb&#39;)
+            self.d = pkl.load(f)
+
+    def init_report_tracking(self, report_type_name, marketplace, start_ds, end_ds, report_id, errors):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.init_report_tracking()`.
+        &#34;&#34;&#34;
+
+        self.d[(report_type_name, marketplace, start_ds, end_ds)] = {
+            &#39;ReportId&#39;: report_id, &#39;Errors&#39;: errors, &#39;Status&#39;: None, &#39;DocumentId&#39;: None}
+
+    def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.is_report_created()`.
+        &#34;&#34;&#34;
+
+        return (report_type_name, marketplace, start_ds, end_ds) in self.d
+
+    def get_report_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_id()`.
+        &#34;&#34;&#34;
+
+        return self.d[(report_type_name, marketplace, start_ds, end_ds)][&#39;ReportId&#39;]
+
+    def get_report_status(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_status()`.
+        &#34;&#34;&#34;
+
+        return self.d[(report_type_name, marketplace, start_ds, end_ds)][&#39;Status&#39;]
+
+    def update_report_status(self, report_type_name, marketplace, start_ds, end_ds, status, errors):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.update_report_status()`.
+        &#34;&#34;&#34;
+
+        self.d[(report_type_name, marketplace,
+                start_ds, end_ds)][&#39;Status&#39;] = status
+        self.d[(report_type_name, marketplace,
+                start_ds, end_ds)][&#39;Errors&#39;] = errors
+
+    def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.update_report_document_id()`.
+        &#34;&#34;&#34;
+
+        self.d[(report_type_name, marketplace, start_ds, end_ds)
+               ][&#39;DocumentId&#39;] = doc_id
+
+    def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        See documentation for `SpReportTracker.get_report_document_id()`.
+        &#34;&#34;&#34;
+
+        return self.d[(report_type_name, marketplace, start_ds, end_ds)][&#39;DocumentId&#39;]
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Returns a string representation of the tracked information for user convenience. This is an example of additional methods you could add to your own tracker.
+
+        Returns
+        -------
+        out : str
+            String with tracked information for each (report_type_name, marketplace, start_ds, date range) entry on separate lines.
+        &#34;&#34;&#34;
+
+        out = &#34;\n&#34;.join([&#34;%s:%s&#34; % (str(k), str(self.d[k])) for k in self.d])
+        return out
+
+    def save(self, fp):
+        &#34;&#34;&#34;
+        Saves the state in the tracker to a pickle file. This is another possible method one could provide in a subclass.
+
+        Parameters
+        ----------
+        fp : str
+            File path to write to.
+        &#34;&#34;&#34;
+
+        f = open(fp, &#39;wb&#39;)
+        pkl.dump(self.d, f)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="amazon_sp_report_lib.DictTracker.get_report_document_id"><code class="name flex">
+<span>def <span class="ident">get_report_document_id</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.get_report_document_id" href="#amazon_sp_report_lib.SpReportTracker.get_report_document_id">SpReportTracker.get_report_document_id()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.get_report_document_id()`.
+    &#34;&#34;&#34;
+
+    return self.d[(report_type_name, marketplace, start_ds, end_ds)][&#39;DocumentId&#39;]</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DictTracker.get_report_id"><code class="name flex">
+<span>def <span class="ident">get_report_id</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.get_report_id" href="#amazon_sp_report_lib.SpReportTracker.get_report_id">SpReportTracker.get_report_id()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_id(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.get_report_id()`.
+    &#34;&#34;&#34;
+
+    return self.d[(report_type_name, marketplace, start_ds, end_ds)][&#39;ReportId&#39;]</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DictTracker.get_report_status"><code class="name flex">
+<span>def <span class="ident">get_report_status</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.get_report_status" href="#amazon_sp_report_lib.SpReportTracker.get_report_status">SpReportTracker.get_report_status()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_status(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.get_report_status()`.
+    &#34;&#34;&#34;
+
+    return self.d[(report_type_name, marketplace, start_ds, end_ds)][&#39;Status&#39;]</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DictTracker.init_report_tracking"><code class="name flex">
+<span>def <span class="ident">init_report_tracking</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds, report_id, errors)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.init_report_tracking" href="#amazon_sp_report_lib.SpReportTracker.init_report_tracking">SpReportTracker.init_report_tracking()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_report_tracking(self, report_type_name, marketplace, start_ds, end_ds, report_id, errors):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.init_report_tracking()`.
+    &#34;&#34;&#34;
+
+    self.d[(report_type_name, marketplace, start_ds, end_ds)] = {
+        &#39;ReportId&#39;: report_id, &#39;Errors&#39;: errors, &#39;Status&#39;: None, &#39;DocumentId&#39;: None}</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DictTracker.is_report_created"><code class="name flex">
+<span>def <span class="ident">is_report_created</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.is_report_created" href="#amazon_sp_report_lib.SpReportTracker.is_report_created">SpReportTracker.is_report_created()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.is_report_created()`.
+    &#34;&#34;&#34;
+
+    return (report_type_name, marketplace, start_ds, end_ds) in self.d</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DictTracker.save"><code class="name flex">
+<span>def <span class="ident">save</span></span>(<span>self, fp)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Saves the state in the tracker to a pickle file. This is another possible method one could provide in a subclass.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>fp</code></strong> :&ensp;<code>str</code></dt>
+<dd>File path to write to.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def save(self, fp):
+    &#34;&#34;&#34;
+    Saves the state in the tracker to a pickle file. This is another possible method one could provide in a subclass.
+
+    Parameters
+    ----------
+    fp : str
+        File path to write to.
+    &#34;&#34;&#34;
+
+    f = open(fp, &#39;wb&#39;)
+    pkl.dump(self.d, f)</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DictTracker.update_report_document_id"><code class="name flex">
+<span>def <span class="ident">update_report_document_id</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds, doc_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.update_report_document_id" href="#amazon_sp_report_lib.SpReportTracker.update_report_document_id">SpReportTracker.update_report_document_id()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.update_report_document_id()`.
+    &#34;&#34;&#34;
+
+    self.d[(report_type_name, marketplace, start_ds, end_ds)
+           ][&#39;DocumentId&#39;] = doc_id</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.DictTracker.update_report_status"><code class="name flex">
+<span>def <span class="ident">update_report_status</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds, status, errors)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>See documentation for <code><a title="amazon_sp_report_lib.SpReportTracker.update_report_status" href="#amazon_sp_report_lib.SpReportTracker.update_report_status">SpReportTracker.update_report_status()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_report_status(self, report_type_name, marketplace, start_ds, end_ds, status, errors):
+    &#34;&#34;&#34;
+    See documentation for `SpReportTracker.update_report_status()`.
+    &#34;&#34;&#34;
+
+    self.d[(report_type_name, marketplace,
+            start_ds, end_ds)][&#39;Status&#39;] = status
+    self.d[(report_type_name, marketplace,
+            start_ds, end_ds)][&#39;Errors&#39;] = errors</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="amazon_sp_report_lib.InventoryToSchemaRetrieval"><code class="flex name class">
+<span>class <span class="ident">InventoryToSchemaRetrieval</span></span>
+<span>(</span><span>credentials, tracker, db_conn, schema_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class is used for the retrieval of tab reports.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>tracker</code></strong> :&ensp;<code><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></code></dt>
+<dd>Tracker for logging the creation of a report (and its ID), status and errors.</dd>
+<dt><strong><code>credentials</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary with necessary credentials for making report requests.</dd>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the tab report type that will be retrieved using this object. Can leave this out if you wish to specify a particular types for each retrieval in <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>report_type_name</code> is not a valid tab report type. If <code>marketplace</code> is not a valid marketplace.</dd>
+<dt><code>TypeError </code></dt>
+<dd>If <code>tracker</code> is not a <code><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></code>.</dd>
+</dl>
+<h2 id="references">References</h2>
+<p><a href="https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/api/reports/reports.py">Reports class from saleweaver's Python sp-api wrapper</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class InventoryToSchemaRetrieval(SpTabReportRetrieval):
+
+    def __init__(self, credentials, tracker, db_conn, schema_name):
+        super().__init__(credentials, tracker, &#39;FBA Amazon Fulfilled Inventory Report&#39;)
+        self.__schema = db_conn.get_schema(schema_name)
+        self.__conn = db_conn
+
+    def output_report_doc(self, marketplace, start_ds, end_ds, report_type_name, df, **kwargs):
+        last_row = len(df.index) - 1
+        if isinstance(df.iat[last_row, 5], str):
+            df.iat[last_row, 5] = re.sub(&#39;[^0-9]&#39;, &#39;&#39;, df.iat[last_row, 5])
+            df[&#39;Quantity Available&#39;] = df[&#39;Quantity Available&#39;].astype(&#39;int64&#39;)
+        df[&#39;date&#39;] = start_ds
+        out = df.groupby([&#39;date&#39;, &#39;asin&#39;])[&#39;Quantity Available&#39;].sum()
+        out = out.to_frame(name=&#39;quantity&#39;).reset_index()
+        out = out[self.__schema.get_column_names()]
+        self.__conn.insert(self.__schema, out, status_check=False)
+        return len(out.index)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="amazon_sp_report_lib.SpTabReportRetrieval" href="#amazon_sp_report_lib.SpTabReportRetrieval">SpTabReportRetrieval</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="amazon_sp_report_lib.SpTabReportRetrieval" href="#amazon_sp_report_lib.SpTabReportRetrieval">SpTabReportRetrieval</a></b></code>:
+<ul class="hlist">
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.bulk_mode" href="#amazon_sp_report_lib.SpTabReportRetrieval.bulk_mode">bulk_mode</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.custom_mode" href="#amazon_sp_report_lib.SpTabReportRetrieval.custom_mode">custom_mode</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.get_report_type_name" href="#amazon_sp_report_lib.SpTabReportRetrieval.get_report_type_name">get_report_type_name</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc" href="#amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc">output_report_doc</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">retrieve_report</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTracker"><code class="flex name class">
+<span>class <span class="ident">SpReportTracker</span></span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class serves as an interface for you to implement a tracker for the status of reports created for a particular type, marketplace, and date range. This will be used by <code><a title="amazon_sp_report_lib.SpTabReportRetrieval" href="#amazon_sp_report_lib.SpTabReportRetrieval">SpTabReportRetrieval</a></code>. Some examples are listed in the See Also section below.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_sp_report_lib.DictTracker" href="#amazon_sp_report_lib.DictTracker">DictTracker</a></code></p>
+<p><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SpReportTracker:
+    &#34;&#34;&#34;
+    This class serves as an interface for you to implement a tracker for the status of reports created for a particular type, marketplace, and date range. This will be used by `SpTabReportRetrieval`. Some examples are listed in the See Also section below.
+
+    See Also
+    --------
+    DictTracker
+
+    `SpTabReportRetrieval.retrieve_report()`
+    &#34;&#34;&#34;
+
+    def init_report_tracking(self, report_type_name, marketplace, start_ds, end_ds, report_id, errors):
+        &#34;&#34;&#34;
+        This method should update your tracking system when a new report has been created.  
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+        report_id : str
+            Report ID of report that is created in `SpTabReportRetrieval.retrieve_report()`.
+        errors : str
+            Errors from report creation that is created in `SpTabReportRetrieval.retrieve_report()`.
+
+        Notes
+        -----
+        Its return value will be ignored. You can choose the criteria for report creation.
+        &#34;&#34;&#34;
+
+        pass
+
+    def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        This method should return whether or not a report has been created. This method will be closely related to `SpReportTracker.init_report_tracking()`.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+        Returns
+        -------
+        report_created : bool
+            Whether or not the report has been created. 
+
+        Notes
+        -----
+        The criteria that determines whether a report has been created is up to you.
+        &#34;&#34;&#34;
+
+        pass
+
+    def get_report_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        Get the report ID associated with the report created for a provided type, marketplace, and date range. This should be the report ID passed into `SpReportTracker.init_report_tracking()`.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+        Returns
+        -------
+        report_id : str
+            The report ID associated with the provided report_type_name, marketplace, and date range.
+
+        Notes
+        -----
+        If your implementation raises an exception, it will fall through.
+        &#34;&#34;&#34;
+
+        pass
+
+    def get_report_status(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        Get the status associated with the report created for a provided type, marketplace, and date range. This should be the status passed into `SpReportTracker.init_report_tracking()` or calls to `SpTabReportRetrieval.retrieve_report()`.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+        Returns
+        -------
+        status : str
+            The status associated with the provided report_type_name, marketplace, and date range.
+
+        Notes
+        -----
+        If your implementation raises an exception, it will fall through.
+        &#34;&#34;&#34;
+
+        pass
+
+    def update_report_status(self, report_type_name, marketplace, start_ds, end_ds, status, errors):
+        &#34;&#34;&#34;
+        This method should report the status and errors for the report retrieval process for a provided report type, marketpalce, and date range.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        status : str
+            New status for the report associated with the provided type name, marketplace, and date range.
+        errors : str
+            New error information for the report associated with the provided type name, marketplace, and date range.
+
+        Notes
+        -----
+        Its return value will be ignored.
+        &#34;&#34;&#34;
+
+        pass
+
+    def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
+        &#34;&#34;&#34;
+        This method should report the status and errors for the report retrieval process for a provided report type, marketpalce, and date range.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        status : str
+            The new document ID associated with the above parameters.
+
+        Notes
+        -----
+        Its return value will be ignored.
+        &#34;&#34;&#34;
+
+        pass
+
+    def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
+        &#34;&#34;&#34;
+        Get the document ID associated with the report created for a provided type, marketplace, and date range. This should be the document ID set in `SpTabReportRetrieval.retrieve_report()` via `SpReportTracker.update_report_document_id()`.
+
+        Parameters
+        ----------
+        report_type_name : str
+            Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        marketplace : str
+            Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        start_ds : str
+            yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+        end_ds : str
+            yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+        Returns
+        -------
+        doc_id : str
+            The document ID associated with the provided report_type_name, marketplace, and date range. If there is no document ID for the provided parameters, return None.
+
+        Notes
+        -----
+        If your implementation raises an exception, it will fall through.
+        &#34;&#34;&#34;
+
+        pass</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="amazon_sp_report_lib.DBTracker" href="#amazon_sp_report_lib.DBTracker">DBTracker</a></li>
+<li><a title="amazon_sp_report_lib.DictTracker" href="#amazon_sp_report_lib.DictTracker">DictTracker</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="amazon_sp_report_lib.SpReportTracker.get_report_document_id"><code class="name flex">
+<span>def <span class="ident">get_report_document_id</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the document ID associated with the report created for a provided type, marketplace, and date range. This should be the document ID set in <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code> via <code><a title="amazon_sp_report_lib.SpReportTracker.update_report_document_id" href="#amazon_sp_report_lib.SpReportTracker.update_report_document_id">SpReportTracker.update_report_document_id()</a></code>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>Country code for the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>start_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of start of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>end_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of end of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>doc_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The document ID associated with the provided report_type_name, marketplace, and date range. If there is no document ID for the provided parameters, return None.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>If your implementation raises an exception, it will fall through.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_document_id(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    Get the document ID associated with the report created for a provided type, marketplace, and date range. This should be the document ID set in `SpTabReportRetrieval.retrieve_report()` via `SpReportTracker.update_report_document_id()`.
+
+    Parameters
+    ----------
+    report_type_name : str
+        Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    marketplace : str
+        Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    start_ds : str
+        yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    end_ds : str
+        yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+    Returns
+    -------
+    doc_id : str
+        The document ID associated with the provided report_type_name, marketplace, and date range. If there is no document ID for the provided parameters, return None.
+
+    Notes
+    -----
+    If your implementation raises an exception, it will fall through.
+    &#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTracker.get_report_id"><code class="name flex">
+<span>def <span class="ident">get_report_id</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the report ID associated with the report created for a provided type, marketplace, and date range. This should be the report ID passed into <code><a title="amazon_sp_report_lib.SpReportTracker.init_report_tracking" href="#amazon_sp_report_lib.SpReportTracker.init_report_tracking">SpReportTracker.init_report_tracking()</a></code>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>Country code for the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>start_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of start of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>end_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of end of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>report_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>The report ID associated with the provided report_type_name, marketplace, and date range.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>If your implementation raises an exception, it will fall through.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_id(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    Get the report ID associated with the report created for a provided type, marketplace, and date range. This should be the report ID passed into `SpReportTracker.init_report_tracking()`.
+
+    Parameters
+    ----------
+    report_type_name : str
+        Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    marketplace : str
+        Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    start_ds : str
+        yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    end_ds : str
+        yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+    Returns
+    -------
+    report_id : str
+        The report ID associated with the provided report_type_name, marketplace, and date range.
+
+    Notes
+    -----
+    If your implementation raises an exception, it will fall through.
+    &#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTracker.get_report_status"><code class="name flex">
+<span>def <span class="ident">get_report_status</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Get the status associated with the report created for a provided type, marketplace, and date range. This should be the status passed into <code><a title="amazon_sp_report_lib.SpReportTracker.init_report_tracking" href="#amazon_sp_report_lib.SpReportTracker.init_report_tracking">SpReportTracker.init_report_tracking()</a></code> or calls to <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>Country code for the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>start_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of start of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>end_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of end of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>status</code></strong> :&ensp;<code>str</code></dt>
+<dd>The status associated with the provided report_type_name, marketplace, and date range.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>If your implementation raises an exception, it will fall through.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_status(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    Get the status associated with the report created for a provided type, marketplace, and date range. This should be the status passed into `SpReportTracker.init_report_tracking()` or calls to `SpTabReportRetrieval.retrieve_report()`.
+
+    Parameters
+    ----------
+    report_type_name : str
+        Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    marketplace : str
+        Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    start_ds : str
+        yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    end_ds : str
+        yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+    Returns
+    -------
+    status : str
+        The status associated with the provided report_type_name, marketplace, and date range.
+
+    Notes
+    -----
+    If your implementation raises an exception, it will fall through.
+    &#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTracker.init_report_tracking"><code class="name flex">
+<span>def <span class="ident">init_report_tracking</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds, report_id, errors)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method should update your tracking system when a new report has been created.
+</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>Country code for the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>start_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of start of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>end_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of end of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>report_id</code></strong> :&ensp;<code>str</code></dt>
+<dd>Report ID of report that is created in <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>errors</code></strong> :&ensp;<code>str</code></dt>
+<dd>Errors from report creation that is created in <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>Its return value will be ignored. You can choose the criteria for report creation.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_report_tracking(self, report_type_name, marketplace, start_ds, end_ds, report_id, errors):
+    &#34;&#34;&#34;
+    This method should update your tracking system when a new report has been created.  
+
+    Parameters
+    ----------
+    report_type_name : str
+        Name of the report being created. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+    marketplace : str
+        Country code for the report being created. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+    start_ds : str
+        yyyy-MM-dd string of start of date range. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+    end_ds : str
+        yyyy-MM-dd string of end of date range. This will be identical to what you would pass into ``SpTabReportRetrieval.retrieve_report()``.
+    report_id : str
+        Report ID of report that is created in `SpTabReportRetrieval.retrieve_report()`.
+    errors : str
+        Errors from report creation that is created in `SpTabReportRetrieval.retrieve_report()`.
+
+    Notes
+    -----
+    Its return value will be ignored. You can choose the criteria for report creation.
+    &#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTracker.is_report_created"><code class="name flex">
+<span>def <span class="ident">is_report_created</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method should return whether or not a report has been created. This method will be closely related to <code><a title="amazon_sp_report_lib.SpReportTracker.init_report_tracking" href="#amazon_sp_report_lib.SpReportTracker.init_report_tracking">SpReportTracker.init_report_tracking()</a></code>.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>Country code for the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>start_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of start of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>end_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of end of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>report_created</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether or not the report has been created.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>The criteria that determines whether a report has been created is up to you.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_report_created(self, report_type_name, marketplace, start_ds, end_ds):
+    &#34;&#34;&#34;
+    This method should return whether or not a report has been created. This method will be closely related to `SpReportTracker.init_report_tracking()`.
+
+    Parameters
+    ----------
+    report_type_name : str
+        Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    marketplace : str
+        Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    start_ds : str
+        yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    end_ds : str
+        yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+
+    Returns
+    -------
+    report_created : bool
+        Whether or not the report has been created. 
+
+    Notes
+    -----
+    The criteria that determines whether a report has been created is up to you.
+    &#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTracker.update_report_document_id"><code class="name flex">
+<span>def <span class="ident">update_report_document_id</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds, doc_id)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method should report the status and errors for the report retrieval process for a provided report type, marketpalce, and date range.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>Country code for the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>start_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of start of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>end_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of end of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>status</code></strong> :&ensp;<code>str</code></dt>
+<dd>The new document ID associated with the above parameters.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>Its return value will be ignored.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_report_document_id(self, report_type_name, marketplace, start_ds, end_ds, doc_id):
+    &#34;&#34;&#34;
+    This method should report the status and errors for the report retrieval process for a provided report type, marketpalce, and date range.
+
+    Parameters
+    ----------
+    report_type_name : str
+        Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    marketplace : str
+        Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    start_ds : str
+        yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    end_ds : str
+        yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    status : str
+        The new document ID associated with the above parameters.
+
+    Notes
+    -----
+    Its return value will be ignored.
+    &#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTracker.update_report_status"><code class="name flex">
+<span>def <span class="ident">update_report_status</span></span>(<span>self, report_type_name, marketplace, start_ds, end_ds, status, errors)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method should report the status and errors for the report retrieval process for a provided report type, marketpalce, and date range.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>Country code for the report being created. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>start_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of start of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>end_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string of end of date range. This will be identical to what you would pass into <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+<dt><strong><code>status</code></strong> :&ensp;<code>str</code></dt>
+<dd>New status for the report associated with the provided type name, marketplace, and date range.</dd>
+<dt><strong><code>errors</code></strong> :&ensp;<code>str</code></dt>
+<dd>New error information for the report associated with the provided type name, marketplace, and date range.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>Its return value will be ignored.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def update_report_status(self, report_type_name, marketplace, start_ds, end_ds, status, errors):
+    &#34;&#34;&#34;
+    This method should report the status and errors for the report retrieval process for a provided report type, marketpalce, and date range.
+
+    Parameters
+    ----------
+    report_type_name : str
+        Name of the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    marketplace : str
+        Country code for the report being created. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    start_ds : str
+        yyyy-MM-dd string of start of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    end_ds : str
+        yyyy-MM-dd string of end of date range. This will be identical to what you would pass into `SpTabReportRetrieval.retrieve_report()`.
+    status : str
+        New status for the report associated with the provided type name, marketplace, and date range.
+    errors : str
+        New error information for the report associated with the provided type name, marketplace, and date range.
+
+    Notes
+    -----
+    Its return value will be ignored.
+    &#34;&#34;&#34;
+
+    pass</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTrackingStatus"><code class="flex name class">
+<span>class <span class="ident">SpReportTrackingStatus</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enum that represents the status of updates made to the tracker by <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SpReportTrackingStatus(Enum):
+    &#34;&#34;&#34;
+    Enum that represents the status of updates made to the tracker by ``SpTabReportRetrieval.retrieve_report()``.
+    &#34;&#34;&#34;
+
+    REPORT_CREATED = 1
+    &#34;&#34;&#34;
+    Signifies that the tracker was updated with a report being created with no exceptions being raised. Another error could have been returned by the API.
+    &#34;&#34;&#34;
+
+    DOCUMENTED_RETURNED = 2
+    &#34;&#34;&#34;
+    Signifies that the tracker was updated with a document being returned (and that the status was updated to DONE).
+    &#34;&#34;&#34;
+
+    UPDATED_STATUS = 3
+    &#34;&#34;&#34;
+    Signifies that the tracker has been updated with a new status (other than DONE).
+    &#34;&#34;&#34;
+
+    DONE_NOTHING = 4
+    &#34;&#34;&#34;
+    Signifies that no change was made to the tracker.
+    &#34;&#34;&#34;
+
+    EXCEPTION_OCCURRED = 5
+    &#34;&#34;&#34;
+    Signifies that an error occurred in CREATE REPORT or GET REPORT requests and the tracker is updated with the associated exception information.
+    &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="amazon_sp_report_lib.SpReportTrackingStatus.DOCUMENTED_RETURNED"><code class="name">var <span class="ident">DOCUMENTED_RETURNED</span></code></dt>
+<dd>
+<div class="desc"><p>Signifies that the tracker was updated with a document being returned (and that the status was updated to DONE).</p></div>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTrackingStatus.DONE_NOTHING"><code class="name">var <span class="ident">DONE_NOTHING</span></code></dt>
+<dd>
+<div class="desc"><p>Signifies that no change was made to the tracker.</p></div>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTrackingStatus.EXCEPTION_OCCURRED"><code class="name">var <span class="ident">EXCEPTION_OCCURRED</span></code></dt>
+<dd>
+<div class="desc"><p>Signifies that an error occurred in CREATE REPORT or GET REPORT requests and the tracker is updated with the associated exception information.</p></div>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTrackingStatus.REPORT_CREATED"><code class="name">var <span class="ident">REPORT_CREATED</span></code></dt>
+<dd>
+<div class="desc"><p>Signifies that the tracker was updated with a report being created with no exceptions being raised. Another error could have been returned by the API.</p></div>
+</dd>
+<dt id="amazon_sp_report_lib.SpReportTrackingStatus.UPDATED_STATUS"><code class="name">var <span class="ident">UPDATED_STATUS</span></code></dt>
+<dd>
+<div class="desc"><p>Signifies that the tracker has been updated with a new status (other than DONE).</p></div>
+</dd>
+</dl>
+</dd>
+<dt id="amazon_sp_report_lib.SpTabReportRetrieval"><code class="flex name class">
+<span>class <span class="ident">SpTabReportRetrieval</span></span>
+<span>(</span><span>tracker, credentials=None, report_type_name=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class is used for the retrieval of tab reports.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>tracker</code></strong> :&ensp;<code><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></code></dt>
+<dd>Tracker for logging the creation of a report (and its ID), status and errors.</dd>
+<dt><strong><code>credentials</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary with necessary credentials for making report requests.</dd>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the tab report type that will be retrieved using this object. Can leave this out if you wish to specify a particular types for each retrieval in <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>report_type_name</code> is not a valid tab report type. If <code>marketplace</code> is not a valid marketplace.</dd>
+<dt><code>TypeError </code></dt>
+<dd>If <code>tracker</code> is not a <code><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></code>.</dd>
+</dl>
+<h2 id="references">References</h2>
+<p><a href="https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/api/reports/reports.py">Reports class from saleweaver's Python sp-api wrapper</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SpTabReportRetrieval:
+    &#34;&#34;&#34;
+    This class is used for the retrieval of tab reports.
+
+    Parameters
+    ----------
+    tracker : SpReportTracker
+        Tracker for logging the creation of a report (and its ID), status and errors.
+    credentials : dict
+        Dictionary with necessary credentials for making report requests.
+    report_type_name : str
+        The name of the tab report type that will be retrieved using this object. Can leave this out if you wish to specify a particular types for each retrieval in `SpTabReportRetrieval.retrieve_report()`.
+
+    Raises
+    ------
+    ValueError
+        If `report_type_name` is not a valid tab report type. If `marketplace` is not a valid marketplace.
+    TypeError 
+        If `tracker` is not a `SpReportTracker`.
+
+    References
+    ----------
+    [Reports class from saleweaver&#39;s Python sp-api wrapper](https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/api/reports/reports.py)
+    &#34;&#34;&#34;
+
+    # Statuses that signify waiting for a report
+    __WAITING_STATUS = {None, &#39;IN_QUEUE&#39;, &#39;IN_PROGRESS&#39;}
+
+    # Represents 3 types of possible requests sent by retrieve_report()
+    class __RequestType(Enum):
+        CREATE_REPORT = 1
+        GET_REPORT = 2
+        GET_REPORT_DOC = 3
+
+    def __init__(self, tracker, credentials=None, report_type_name=None):
+
+        if report_type_name not in TAB_REPORT_TYPES:
+            raise ValueError(&#39;Invalid Tab report type name %s&#39; %
+                             (report_type_name))
+        if not isinstance(tracker, SpReportTracker):
+            raise TypeError(
+                &#39;Tracker must be an instance of SpReportTracker. Got %s.&#39; % (type(tracker)))
+        self.__creds = credentials
+
+        # will initialize the report later, seems like you can&#39;t have multiple instances of a Reports
+        # objects with the same credentials, so we only set this using self.__creds/credentials in 
+        # retrieve_report()
+        self.__rep = None
+
+        self.__tracker = tracker
+        self.__type_name = report_type_name
+        self.custom_mode()
+
+    def get_report_type_name(self):
+        &#34;&#34;&#34;
+        Gets the report type name specified at object construction. 
+
+        Returns
+        -------
+        The value you passed into `report_type_name` at object construction (or None if you didn&#39;t provide one).
+        &#34;&#34;&#34;
+
+        return self.__type_name
+
+    def bulk_mode(self):
+        &#34;&#34;&#34;
+        Puts the retrieval object in bulk retrieval mode. Rate limit checks will be performed in calls to `SpTabReportRetrieval.retrieve_report()`. This is useful for performing bulk operations with repeated requests of varying types. CREATE REPORT requests can be done once per minute in bursts of 15. GET REPORT requests can be done twice per second in bursts of 15. GET REPORT DOCUMENT requests can be done once per minute in bursts of 15.
+
+        Warnings
+        --------
+        If you want to take the object out of bulk mode, you must run `SpTabReportRetrival.custom_mode()`. Otherwise, it will stay in bulk mode.
+
+        References
+        ----------
+        [saleweaver Python sp-api](https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/api/reports/reports.py)
+
+        See Also
+        --------
+        SpTabReportRetrieval.custom_mode()
+        &#34;&#34;&#34;
+
+        self.__bulk = True
+        self.__report_create_left = 15
+        self.__get_report_left = 15
+        self.__get_report_doc_left = 15
+        self.__t_last_report_create = -1
+        self.__t_last_get_report = -1
+        self.__t_last_get_report_doc = -1
+
+    def custom_mode(self):
+        &#34;&#34;&#34;
+        Puts the retrieval object in custom retrieval mode. There will be no rate limit checks in calls to `SpTabReportRetrieval.retrieve_report()`. Useful for testing reports, performing a few specific calls. 
+        &#34;&#34;&#34;
+
+        self.__bulk = False
+
+    def retrieve_report(self, marketplace, start_ds, end_ds, credentials = None, report_type_name=None, **output_kwargs):
+        &#34;&#34;&#34;
+        Retrieve report for marketplace between start and end dates. This method behaves in the following manner:
+        1. If no information has been tracked for the provided report_type_name, marketplace, and date range then a report is created.
+        2. If the object&#39;s tracker has an entry for the provided marketplace, date range, and report_type_name has a status of None, IN_QUEUE, or IN_PROGRESS, then the report is queried in the API with its ID. If its status is now DONE, then the document will also be retrieved and returned through `SpTabReportRetrieval.output_report_doc()`. Otherwise, the status will just be updated.
+        3. If the object&#39;s tracker has a document_id for the provided report_type_name, marketplace, and date range then the document will be retrieved and returned through `SpTabReportRetrieval.output_report_doc()`.
+        4. If the object&#39;s tracker has a report that has a status of something other than None, IN_QUEUE, or IN_PROGRESS, then nothing happens.
+
+        Parameters
+        ----------
+        marketplace : str
+            Amazon marketplace country code
+        start_ds : str
+            yyyy-MM-dd string representing start date
+        end_ds : str
+            yyyy-MM-dd string representing end date
+        credentials: dict
+            TODO
+        report_type_name : str
+            Name of the report type for retrieval (default: None). If not provided, defaults to `report_type_name` specified in object creation. If `report_type_name` specified in object creation, this will be used instead.
+        output_kwargs : keyword arguments
+            Any additional parameters that `output_report_doc()` needs. These will be passed directly to it. 
+
+        Returns
+        -------
+        status : SpReportTrackingStatus
+            What change was made to the associated tracker by this retrieval.
+        out : object
+            None if a report was created or nothing was done in the retrieval. The new status if the retrieval resulted in status being updated (to something other than DONE). The output of `SpTabReportRetrieval.output_report_doc()` if a document was generated and returned (in the event status became DONE).
+
+        Raises
+        ------
+        RuntimeError
+            If no `report_type_name` has been provided either in object construction or in arguments. 
+            If a retrieval tries to be made to get more information on a report that has been marked as created in the tracker, but has no report ID.
+        ValueError
+            If `report_type_name` is not a valid tab report type. 
+            If `marketplace` is not a valid marketplace.
+
+        Notes
+        -----
+        The general code for performing bulk retrievals for a specific report type can be done as follows:
+        1. Iterate over each specification s
+        2. If a report hasn&#39;t been created for s or s has no document ID, make retrieval to see if report processing can make progress. If a report has been created and has a document ID, we could be done (need to check rest of specifications).
+        3. If retrieval status was `SpReportTrackingStatus.DONE_NOTHING`, then report processing has been moved to FATAL/CANCELLED. If this is the case, we could be done. Other statuses indicate we can keep going.
+        There are other ways to implement this same strategy, including detecting an exception occuring / document generation in step 3 to avoid more future iterations.
+
+        See Also
+        --------
+        TAB_REPORT_TYPES
+
+        NA_MARKETPLACE_COUNTRY_CODESET
+
+        EUR_MARKETPLACE_COUNTRY_CODESET
+
+        SpReportTrackingStatus
+
+        SpTabReportRetrieval.output_report_doc()
+
+        SpReportTracker
+        &#34;&#34;&#34;
+
+        # if report type name not specified here, use one from object initialization, if none was provided at initialization, raise error
+        if report_type_name is None:
+            if self.__type_name is None:
+                raise RuntimeError(
+                    &#39;Must specify report type name in either object construction or via report_type_name. Both cannot be None.&#39;)
+            report_type_name = self.__type_name
+
+        if credentials is None:
+            if self.__creds is None:
+                raise RuntimeError(
+                    &#39;Must specify credentials in either object construction or via credentials. Both cannot be None.&#39;)
+            self.__rep = Reports(credentials=self.__creds)
+        else:
+            self.__rep = Reports(credentials=credentials)
+
+        status = SpReportTrackingStatus.DONE_NOTHING
+        out = None
+
+        # if not report created of this type, marketplace, and date range - create one
+        if not self.__tracker.is_report_created(report_type_name, marketplace, start_ds, end_ds):
+            status = self.__create_report(
+                report_type_name, marketplace, start_ds, end_ds)
+        # if report is waiting to be processed - process it with __update_report_status
+        elif self.__tracker.get_report_status(report_type_name, marketplace, start_ds, end_ds) in SpTabReportRetrieval.__WAITING_STATUS:
+            status, out = self.__update_report_status(
+                report_type_name, marketplace, start_ds, end_ds, **output_kwargs)
+        # if report was already done, just get its document ID from the tracker and use it to get the document
+        elif self.__tracker.get_report_document_id(report_type_name, marketplace, start_ds, end_ds) is not None:
+            status = SpReportTrackingStatus.DOCUMENTED_RETURNED
+            doc_id = self.__tracker.get_report_document_id(
+                report_type_name, marketplace, start_ds, end_ds)
+            out = self.__get_document_df(
+                report_type_name, marketplace, start_ds, end_ds, doc_id, **output_kwargs)
+        # else : report has reached FATAL/CANCELLED status - do nothing
+
+        return status, out
+
+    def output_report_doc(self, marketplace, start_ds, end_ds, report_type_name, df, **kwargs):
+        &#34;&#34;&#34;
+        This method takes the output of the report generated for a marketplace, date range, and marketplace and returns it. However, you should write subclasses that inherit `SpTabReportRetrieval` and override this method.
+
+        Parameters
+        ----------
+        marketplace : str
+            Amazon marketplace country code
+        start_ds : str
+            yyyy-MM-dd string representing start date
+        end_ds : str
+            yyyy-MM-dd string representing end date
+        report_type_name : str
+            Name of the report type for retrieval (default: None). If not provided, defaults to `report_type_name` specified in object creation. If `report_type_name` specified in object creation, this will be used instead.
+        df : pd.DataFrame
+            DataFrame holding the output of the generated document corresponding to the previous four parameters. In overridden versions of this method, you can write this to a file or database.
+        kwargs : keyword arguments
+            This will hold the keyword arguments passed as `**output_kwargs` to `SpTabReportRetrieval.retrieve_report()`. Use this as a way to retrieve user sent information needed in sending the output to its desired destination.
+
+        Returns
+        -------
+        df : pd.DataFrame
+            Outputs input DataFrame. However, in overridden implementations, you should return whatever works best. The output will be passed through `SpTabReportRetrieval.retrieve_report()` as `out.`
+
+        See Also
+        --------
+        `SpTabReportRetrieval.retrieve_report()`
+        &#34;&#34;&#34;
+
+        return df
+
+    ######################################### PRIVATE METHODS #############################################
+
+    # Usage: create a report for type, marketplace, and date range
+    def __create_report(self, report_type_name, marketplace, start_ds, end_ds):
+        if report_type_name not in TAB_REPORT_TYPES:
+            raise ValueError(&#39;Invalid Tab report type name %s&#39; %
+                             (report_type_name))
+        if marketplace not in NA_MARKETPLACE_COUNTRY_CODESET and marketplace not in EUR_MARKETPLACE_COUNTRY_CODESET:
+            raise ValueError(&#39;Invalid marketplace %s&#39; % (marketplace))
+
+        # get start, end dates in ISO 8601
+        start_iso = datetime.strptime(start_ds, &#39;%Y-%m-%d&#39;).isoformat()
+        end_iso = datetime.strptime(end_ds, &#39;%Y-%m-%d&#39;).isoformat()
+
+        # get marketplace ID from code
+        mplaceid = eval(&#39;Marketplaces.%s.marketplace_id&#39; % (marketplace))
+
+        try:
+            # wait so it&#39;s safe to sent CREATE REPORT request if in bulk mode, then make the request and get the response
+            self.__wait(SpTabReportRetrieval.__RequestType.CREATE_REPORT)
+            create_res = self.__rep.create_report(
+                reportType=TAB_REPORT_TYPES[report_type_name], dataStartTime=start_iso, dataEndTime=end_iso, marketplaceIds=[mplaceid])
+
+            # initialize tracking for the report of specified type, marketplace and date range with the id and errors
+            report_id = create_res.payload[&#39;reportId&#39;]
+            self.__tracker.init_report_tracking(
+                report_type_name, marketplace, start_ds, end_ds, report_id, create_res.errors)
+            return SpReportTrackingStatus.REPORT_CREATED
+
+        except SellingApiException as e:
+            # pass exception information onto tracker so user can investigate
+            self.__tracker.init_report_tracking(
+                report_type_name, marketplace, start_ds, end_ds, None, &#34;[%s] %s&#34; % (type(e), str(e)))
+            return SpReportTrackingStatus.EXCEPTION_OCCURRED
+
+    # Usage: get document output from output_report_doc()
+    def __get_document_df(self, report_type_name, marketplace, start_ds, end_ds, doc_id, **output_kwargs):
+
+        # wait for GET-REPORT-DOCUMENT request if in bulk mode
+        self.__wait(SpTabReportRetrieval.__RequestType.GET_REPORT_DOC)
+
+        # get document from API and load it into DataFrame
+        doc = self.__rep.get_report_document(doc_id, decrypt=True)
+        doc = doc.payload[&#39;document&#39;]
+        df = pd.read_csv(StringIO(doc), sep=&#39;\t&#39;)
+
+        # pass in dataframe; marketplace, date range, and type of report; and lastly the output keyword arguments passed from retrieve_report()
+        return self.output_report_doc(marketplace, start_ds, end_ds, report_type_name, df, **output_kwargs)
+
+    # Usage: update report status for type, marketplace, and date range for a created report
+    def __update_report_status(self, report_type_name, marketplace, start_ds, end_ds, **output_kwargs):
+        try:
+            # wait for GET-REPORT request if in bulk mode
+            self.__wait(SpTabReportRetrieval.__RequestType.GET_REPORT)
+
+            # get report id from tracker and make sure its not None
+            report_id = self.__tracker.get_report_id(
+                report_type_name, marketplace, start_ds, end_ds)
+            if not report_id:
+                raise RuntimeError(&#39;Cannot retrieve status/document without a report ID. Check errors for (%s,%s,%s,%s) in your tracker.&#39; %
+                                   (report_type_name, marketplace, start_ds, end_ds))
+
+            # make request and collect status of report
+            res = self.__rep.get_report(report_id)
+            status = res.payload[&#39;processingStatus&#39;]
+
+            # update tracker with status and any errors
+            self.__tracker.update_report_status(
+                report_type_name, marketplace, start_ds, end_ds, status, res.errors)
+
+            # if report is now done, get the report document using helper method __get_document_df() which uses subclass output_report_doc() (polymorphism)
+            if status == &#39;DONE&#39;:
+                doc_id = res.payload[&#39;reportDocumentId&#39;]
+                self.__tracker.update_report_document_id(
+                    report_type_name, marketplace, start_ds, end_ds, doc_id)
+                out = self.__get_document_df(
+                    report_type_name, marketplace, start_ds, end_ds, doc_id, **output_kwargs)
+                return SpReportTrackingStatus.DOCUMENTED_RETURNED, out
+            else:  # just a status update, return the new status to caller
+                return SpReportTrackingStatus.UPDATED_STATUS, status
+        except SellingApiException as e:
+            # error occurred in retrieval process, return last status saved in tracker - if error occurred in status update, then this will be the old one.
+            # if error occurred in document retrieval, this will be status last returned from api
+            status = self.__tracker.get_report_status(
+                report_type_name, marketplace, start_ds, end_ds)
+            self.__tracker.update_report_status(
+                report_type_name, marketplace, start_ds, end_ds, status, type(e).__name__ + str(e))
+            return SpReportTrackingStatus.EXCEPTION_OCCURRED, status
+
+    # Usage: has retrieval object wait for a specified request type if in bulk mode
+    def __wait(self, req_type):
+        if not self.__bulk:
+            return
+        curr = time.time()
+        if req_type == SpTabReportRetrieval.__RequestType.CREATE_REPORT:
+            # if CREATE-REPORT request has been done before, make sure that enough time has passed since then
+            if self.__t_last_report_create &gt; 0:
+                diff = curr - self.__t_last_report_create
+                # must wait 1 min between CREATE-REPORT requests
+                if diff &lt; 60:
+                    time.sleep(60 - diff)
+            # update last CREATE-REPORT time, decrement number of CREATE-REPORT requests left in burst
+            self.__t_last_report_create = curr
+            self.__report_create_left -= 1
+
+            # resetting count after waiting a minute
+            if self.__report_create_left == 0:
+                time.sleep(60)
+                self.__report_create_left = 15
+        elif req_type == SpTabReportRetrieval.__RequestType.GET_REPORT:
+            # if GET-REPORT request has been done before, make sure that enough time has passed since then
+            if self.__t_last_get_report &gt; 0:
+                diff = curr - self.__t_last_get_report
+                # must wait 0.5s between GET-REPORT requests
+                if diff &lt; 0.5:
+                    time.sleep(0.5 - diff)
+            # update last GET-REPORT time, decrement number of GET-REPORT requests left in burst
+            self.__t_last_get_report = curr
+            self.__get_report_left -= 1
+
+            # resetting count after waiting a minute
+            if self.__get_report_left == 0:
+                time.sleep(60)
+                self.__get_report_left = 15
+        else:
+            # if GET-REPORT-DOCUMENT request has been done before, make sure that enough time has passed since then
+            if self.__t_last_get_report_doc &gt; 0:
+                diff = curr - self.__t_last_get_report_doc
+                # must wait 1 min between GET-REPORT-DOCUMENT requests
+                if diff &lt; 60:
+                    time.sleep(60 - diff)
+            # update last GET-REPORT-DOCUMENT time, decrement number of GET-REPORT-DOCUMENT requests left in burst
+            self.__t_last_get_report_doc = curr
+            self.__get_report_doc_left -= 1
+
+            # resetting count after waiting a minute
+            if self.__get_report_doc_left == 0:
+                time.sleep(60)
+                self.__get_report_doc_left = 15</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="amazon_sp_report_lib.InventoryToSchemaRetrieval" href="#amazon_sp_report_lib.InventoryToSchemaRetrieval">InventoryToSchemaRetrieval</a></li>
+<li><a title="amazon_sp_report_lib.TypeSampleRetrieval" href="#amazon_sp_report_lib.TypeSampleRetrieval">TypeSampleRetrieval</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="amazon_sp_report_lib.SpTabReportRetrieval.bulk_mode"><code class="name flex">
+<span>def <span class="ident">bulk_mode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Puts the retrieval object in bulk retrieval mode. Rate limit checks will be performed in calls to <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>. This is useful for performing bulk operations with repeated requests of varying types. CREATE REPORT requests can be done once per minute in bursts of 15. GET REPORT requests can be done twice per second in bursts of 15. GET REPORT DOCUMENT requests can be done once per minute in bursts of 15.</p>
+<h2 id="warnings">Warnings</h2>
+<p>If you want to take the object out of bulk mode, you must run <code>SpTabReportRetrival.custom_mode()</code>. Otherwise, it will stay in bulk mode.</p>
+<h2 id="references">References</h2>
+<p><a href="https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/api/reports/reports.py">saleweaver Python sp-api</a></p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.custom_mode" href="#amazon_sp_report_lib.SpTabReportRetrieval.custom_mode">SpTabReportRetrieval.custom_mode()</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def bulk_mode(self):
+    &#34;&#34;&#34;
+    Puts the retrieval object in bulk retrieval mode. Rate limit checks will be performed in calls to `SpTabReportRetrieval.retrieve_report()`. This is useful for performing bulk operations with repeated requests of varying types. CREATE REPORT requests can be done once per minute in bursts of 15. GET REPORT requests can be done twice per second in bursts of 15. GET REPORT DOCUMENT requests can be done once per minute in bursts of 15.
+
+    Warnings
+    --------
+    If you want to take the object out of bulk mode, you must run `SpTabReportRetrival.custom_mode()`. Otherwise, it will stay in bulk mode.
+
+    References
+    ----------
+    [saleweaver Python sp-api](https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/api/reports/reports.py)
+
+    See Also
+    --------
+    SpTabReportRetrieval.custom_mode()
+    &#34;&#34;&#34;
+
+    self.__bulk = True
+    self.__report_create_left = 15
+    self.__get_report_left = 15
+    self.__get_report_doc_left = 15
+    self.__t_last_report_create = -1
+    self.__t_last_get_report = -1
+    self.__t_last_get_report_doc = -1</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpTabReportRetrieval.custom_mode"><code class="name flex">
+<span>def <span class="ident">custom_mode</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Puts the retrieval object in custom retrieval mode. There will be no rate limit checks in calls to <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>. Useful for testing reports, performing a few specific calls.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def custom_mode(self):
+    &#34;&#34;&#34;
+    Puts the retrieval object in custom retrieval mode. There will be no rate limit checks in calls to `SpTabReportRetrieval.retrieve_report()`. Useful for testing reports, performing a few specific calls. 
+    &#34;&#34;&#34;
+
+    self.__bulk = False</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpTabReportRetrieval.get_report_type_name"><code class="name flex">
+<span>def <span class="ident">get_report_type_name</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets the report type name specified at object construction. </p>
+<h2 id="returns">Returns</h2>
+<p>The value you passed into <code>report_type_name</code> at object construction (or None if you didn't provide one).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_report_type_name(self):
+    &#34;&#34;&#34;
+    Gets the report type name specified at object construction. 
+
+    Returns
+    -------
+    The value you passed into `report_type_name` at object construction (or None if you didn&#39;t provide one).
+    &#34;&#34;&#34;
+
+    return self.__type_name</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc"><code class="name flex">
+<span>def <span class="ident">output_report_doc</span></span>(<span>self, marketplace, start_ds, end_ds, report_type_name, df, **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method takes the output of the report generated for a marketplace, date range, and marketplace and returns it. However, you should write subclasses that inherit <code><a title="amazon_sp_report_lib.SpTabReportRetrieval" href="#amazon_sp_report_lib.SpTabReportRetrieval">SpTabReportRetrieval</a></code> and override this method.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>Amazon marketplace country code</dd>
+<dt><strong><code>start_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string representing start date</dd>
+<dt><strong><code>end_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string representing end date</dd>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the report type for retrieval (default: None). If not provided, defaults to <code>report_type_name</code> specified in object creation. If <code>report_type_name</code> specified in object creation, this will be used instead.</dd>
+<dt><strong><code>df</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>DataFrame holding the output of the generated document corresponding to the previous four parameters. In overridden versions of this method, you can write this to a file or database.</dd>
+<dt><strong><code>kwargs</code></strong> :&ensp;<code>keyword arguments</code></dt>
+<dd>This will hold the keyword arguments passed as <code>**output_kwargs</code> to <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>. Use this as a way to retrieve user sent information needed in sending the output to its desired destination.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>pd.DataFrame</code></dt>
+<dd>Outputs input DataFrame. However, in overridden implementations, you should return whatever works best. The output will be passed through <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code> as <code>out.</code></dd>
+</dl>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def output_report_doc(self, marketplace, start_ds, end_ds, report_type_name, df, **kwargs):
+    &#34;&#34;&#34;
+    This method takes the output of the report generated for a marketplace, date range, and marketplace and returns it. However, you should write subclasses that inherit `SpTabReportRetrieval` and override this method.
+
+    Parameters
+    ----------
+    marketplace : str
+        Amazon marketplace country code
+    start_ds : str
+        yyyy-MM-dd string representing start date
+    end_ds : str
+        yyyy-MM-dd string representing end date
+    report_type_name : str
+        Name of the report type for retrieval (default: None). If not provided, defaults to `report_type_name` specified in object creation. If `report_type_name` specified in object creation, this will be used instead.
+    df : pd.DataFrame
+        DataFrame holding the output of the generated document corresponding to the previous four parameters. In overridden versions of this method, you can write this to a file or database.
+    kwargs : keyword arguments
+        This will hold the keyword arguments passed as `**output_kwargs` to `SpTabReportRetrieval.retrieve_report()`. Use this as a way to retrieve user sent information needed in sending the output to its desired destination.
+
+    Returns
+    -------
+    df : pd.DataFrame
+        Outputs input DataFrame. However, in overridden implementations, you should return whatever works best. The output will be passed through `SpTabReportRetrieval.retrieve_report()` as `out.`
+
+    See Also
+    --------
+    `SpTabReportRetrieval.retrieve_report()`
+    &#34;&#34;&#34;
+
+    return df</code></pre>
+</details>
+</dd>
+<dt id="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report"><code class="name flex">
+<span>def <span class="ident">retrieve_report</span></span>(<span>self, marketplace, start_ds, end_ds, credentials=None, report_type_name=None, **output_kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retrieve report for marketplace between start and end dates. This method behaves in the following manner:
+1. If no information has been tracked for the provided report_type_name, marketplace, and date range then a report is created.
+2. If the object's tracker has an entry for the provided marketplace, date range, and report_type_name has a status of None, IN_QUEUE, or IN_PROGRESS, then the report is queried in the API with its ID. If its status is now DONE, then the document will also be retrieved and returned through <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc" href="#amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc">SpTabReportRetrieval.output_report_doc()</a></code>. Otherwise, the status will just be updated.
+3. If the object's tracker has a document_id for the provided report_type_name, marketplace, and date range then the document will be retrieved and returned through <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc" href="#amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc">SpTabReportRetrieval.output_report_doc()</a></code>.
+4. If the object's tracker has a report that has a status of something other than None, IN_QUEUE, or IN_PROGRESS, then nothing happens.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>marketplace</code></strong> :&ensp;<code>str</code></dt>
+<dd>Amazon marketplace country code</dd>
+<dt><strong><code>start_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string representing start date</dd>
+<dt><strong><code>end_ds</code></strong> :&ensp;<code>str</code></dt>
+<dd>yyyy-MM-dd string representing end date</dd>
+<dt><strong><code>credentials</code></strong> :&ensp;<code>dict</code></dt>
+<dd>TODO</dd>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the report type for retrieval (default: None). If not provided, defaults to <code>report_type_name</code> specified in object creation. If <code>report_type_name</code> specified in object creation, this will be used instead.</dd>
+<dt><strong><code>output_kwargs</code></strong> :&ensp;<code>keyword arguments</code></dt>
+<dd>Any additional parameters that <code>output_report_doc()</code> needs. These will be passed directly to it.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>status</code></strong> :&ensp;<code><a title="amazon_sp_report_lib.SpReportTrackingStatus" href="#amazon_sp_report_lib.SpReportTrackingStatus">SpReportTrackingStatus</a></code></dt>
+<dd>What change was made to the associated tracker by this retrieval.</dd>
+<dt><strong><code>out</code></strong> :&ensp;<code>object</code></dt>
+<dd>None if a report was created or nothing was done in the retrieval. The new status if the retrieval resulted in status being updated (to something other than DONE). The output of <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc" href="#amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc">SpTabReportRetrieval.output_report_doc()</a></code> if a document was generated and returned (in the event status became DONE).</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If no <code>report_type_name</code> has been provided either in object construction or in arguments.
+If a retrieval tries to be made to get more information on a report that has been marked as created in the tracker, but has no report ID.</dd>
+<dt><code>ValueError</code></dt>
+<dd>If <code>report_type_name</code> is not a valid tab report type.
+If <code>marketplace</code> is not a valid marketplace.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>The general code for performing bulk retrievals for a specific report type can be done as follows:
+1. Iterate over each specification s
+2. If a report hasn't been created for s or s has no document ID, make retrieval to see if report processing can make progress. If a report has been created and has a document ID, we could be done (need to check rest of specifications).
+3. If retrieval status was <code><a title="amazon_sp_report_lib.SpReportTrackingStatus.DONE_NOTHING" href="#amazon_sp_report_lib.SpReportTrackingStatus.DONE_NOTHING">SpReportTrackingStatus.DONE_NOTHING</a></code>, then report processing has been moved to FATAL/CANCELLED. If this is the case, we could be done. Other statuses indicate we can keep going.
+There are other ways to implement this same strategy, including detecting an exception occuring / document generation in step 3 to avoid more future iterations.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="amazon_sp_report_lib.TAB_REPORT_TYPES" href="#amazon_sp_report_lib.TAB_REPORT_TYPES">TAB_REPORT_TYPES</a></code></p>
+<p><code>NA_MARKETPLACE_COUNTRY_CODESET</code></p>
+<p><code>EUR_MARKETPLACE_COUNTRY_CODESET</code></p>
+<p><code><a title="amazon_sp_report_lib.SpReportTrackingStatus" href="#amazon_sp_report_lib.SpReportTrackingStatus">SpReportTrackingStatus</a></code></p>
+<p><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc" href="#amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc">SpTabReportRetrieval.output_report_doc()</a></code></p>
+<p><code><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def retrieve_report(self, marketplace, start_ds, end_ds, credentials = None, report_type_name=None, **output_kwargs):
+    &#34;&#34;&#34;
+    Retrieve report for marketplace between start and end dates. This method behaves in the following manner:
+    1. If no information has been tracked for the provided report_type_name, marketplace, and date range then a report is created.
+    2. If the object&#39;s tracker has an entry for the provided marketplace, date range, and report_type_name has a status of None, IN_QUEUE, or IN_PROGRESS, then the report is queried in the API with its ID. If its status is now DONE, then the document will also be retrieved and returned through `SpTabReportRetrieval.output_report_doc()`. Otherwise, the status will just be updated.
+    3. If the object&#39;s tracker has a document_id for the provided report_type_name, marketplace, and date range then the document will be retrieved and returned through `SpTabReportRetrieval.output_report_doc()`.
+    4. If the object&#39;s tracker has a report that has a status of something other than None, IN_QUEUE, or IN_PROGRESS, then nothing happens.
+
+    Parameters
+    ----------
+    marketplace : str
+        Amazon marketplace country code
+    start_ds : str
+        yyyy-MM-dd string representing start date
+    end_ds : str
+        yyyy-MM-dd string representing end date
+    credentials: dict
+        TODO
+    report_type_name : str
+        Name of the report type for retrieval (default: None). If not provided, defaults to `report_type_name` specified in object creation. If `report_type_name` specified in object creation, this will be used instead.
+    output_kwargs : keyword arguments
+        Any additional parameters that `output_report_doc()` needs. These will be passed directly to it. 
+
+    Returns
+    -------
+    status : SpReportTrackingStatus
+        What change was made to the associated tracker by this retrieval.
+    out : object
+        None if a report was created or nothing was done in the retrieval. The new status if the retrieval resulted in status being updated (to something other than DONE). The output of `SpTabReportRetrieval.output_report_doc()` if a document was generated and returned (in the event status became DONE).
+
+    Raises
+    ------
+    RuntimeError
+        If no `report_type_name` has been provided either in object construction or in arguments. 
+        If a retrieval tries to be made to get more information on a report that has been marked as created in the tracker, but has no report ID.
+    ValueError
+        If `report_type_name` is not a valid tab report type. 
+        If `marketplace` is not a valid marketplace.
+
+    Notes
+    -----
+    The general code for performing bulk retrievals for a specific report type can be done as follows:
+    1. Iterate over each specification s
+    2. If a report hasn&#39;t been created for s or s has no document ID, make retrieval to see if report processing can make progress. If a report has been created and has a document ID, we could be done (need to check rest of specifications).
+    3. If retrieval status was `SpReportTrackingStatus.DONE_NOTHING`, then report processing has been moved to FATAL/CANCELLED. If this is the case, we could be done. Other statuses indicate we can keep going.
+    There are other ways to implement this same strategy, including detecting an exception occuring / document generation in step 3 to avoid more future iterations.
+
+    See Also
+    --------
+    TAB_REPORT_TYPES
+
+    NA_MARKETPLACE_COUNTRY_CODESET
+
+    EUR_MARKETPLACE_COUNTRY_CODESET
+
+    SpReportTrackingStatus
+
+    SpTabReportRetrieval.output_report_doc()
+
+    SpReportTracker
+    &#34;&#34;&#34;
+
+    # if report type name not specified here, use one from object initialization, if none was provided at initialization, raise error
+    if report_type_name is None:
+        if self.__type_name is None:
+            raise RuntimeError(
+                &#39;Must specify report type name in either object construction or via report_type_name. Both cannot be None.&#39;)
+        report_type_name = self.__type_name
+
+    if credentials is None:
+        if self.__creds is None:
+            raise RuntimeError(
+                &#39;Must specify credentials in either object construction or via credentials. Both cannot be None.&#39;)
+        self.__rep = Reports(credentials=self.__creds)
+    else:
+        self.__rep = Reports(credentials=credentials)
+
+    status = SpReportTrackingStatus.DONE_NOTHING
+    out = None
+
+    # if not report created of this type, marketplace, and date range - create one
+    if not self.__tracker.is_report_created(report_type_name, marketplace, start_ds, end_ds):
+        status = self.__create_report(
+            report_type_name, marketplace, start_ds, end_ds)
+    # if report is waiting to be processed - process it with __update_report_status
+    elif self.__tracker.get_report_status(report_type_name, marketplace, start_ds, end_ds) in SpTabReportRetrieval.__WAITING_STATUS:
+        status, out = self.__update_report_status(
+            report_type_name, marketplace, start_ds, end_ds, **output_kwargs)
+    # if report was already done, just get its document ID from the tracker and use it to get the document
+    elif self.__tracker.get_report_document_id(report_type_name, marketplace, start_ds, end_ds) is not None:
+        status = SpReportTrackingStatus.DOCUMENTED_RETURNED
+        doc_id = self.__tracker.get_report_document_id(
+            report_type_name, marketplace, start_ds, end_ds)
+        out = self.__get_document_df(
+            report_type_name, marketplace, start_ds, end_ds, doc_id, **output_kwargs)
+    # else : report has reached FATAL/CANCELLED status - do nothing
+
+    return status, out</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="amazon_sp_report_lib.TypeSampleRetrieval"><code class="flex name class">
+<span>class <span class="ident">TypeSampleRetrieval</span></span>
+<span>(</span><span>credentials, tracker)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class is used for the retrieval of tab reports.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>tracker</code></strong> :&ensp;<code><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></code></dt>
+<dd>Tracker for logging the creation of a report (and its ID), status and errors.</dd>
+<dt><strong><code>credentials</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary with necessary credentials for making report requests.</dd>
+<dt><strong><code>report_type_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>The name of the tab report type that will be retrieved using this object. Can leave this out if you wish to specify a particular types for each retrieval in <code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">SpTabReportRetrieval.retrieve_report()</a></code>.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>report_type_name</code> is not a valid tab report type. If <code>marketplace</code> is not a valid marketplace.</dd>
+<dt><code>TypeError </code></dt>
+<dd>If <code>tracker</code> is not a <code><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></code>.</dd>
+</dl>
+<h2 id="references">References</h2>
+<p><a href="https://github.com/saleweaver/python-amazon-sp-api/blob/master/sp_api/api/reports/reports.py">Reports class from saleweaver's Python sp-api wrapper</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TypeSampleRetrieval(SpTabReportRetrieval):
+
+    def __init__(self, credentials, tracker):
+        super().__init__(credentials, tracker)
+
+    def output_report_doc(self, marketplace, start_ds, end_ds, report_type_name, df, **kwargs):
+        df.to_excel(&#39;%s.xlsx&#39; % (report_type_name), index=False)
+        return df</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="amazon_sp_report_lib.SpTabReportRetrieval" href="#amazon_sp_report_lib.SpTabReportRetrieval">SpTabReportRetrieval</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="amazon_sp_report_lib.SpTabReportRetrieval" href="#amazon_sp_report_lib.SpTabReportRetrieval">SpTabReportRetrieval</a></b></code>:
+<ul class="hlist">
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.bulk_mode" href="#amazon_sp_report_lib.SpTabReportRetrieval.bulk_mode">bulk_mode</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.custom_mode" href="#amazon_sp_report_lib.SpTabReportRetrieval.custom_mode">custom_mode</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.get_report_type_name" href="#amazon_sp_report_lib.SpTabReportRetrieval.get_report_type_name">get_report_type_name</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc" href="#amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc">output_report_doc</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">retrieve_report</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-variables">Global variables</a></h3>
+<ul class="">
+<li><code><a title="amazon_sp_report_lib.CSV_REPORT_TYPES" href="#amazon_sp_report_lib.CSV_REPORT_TYPES">CSV_REPORT_TYPES</a></code></li>
+<li><code><a title="amazon_sp_report_lib.PDF_REPORT_TYPES" href="#amazon_sp_report_lib.PDF_REPORT_TYPES">PDF_REPORT_TYPES</a></code></li>
+<li><code><a title="amazon_sp_report_lib.TAB_REPORT_TYPES" href="#amazon_sp_report_lib.TAB_REPORT_TYPES">TAB_REPORT_TYPES</a></code></li>
+<li><code><a title="amazon_sp_report_lib.UNKNOWN_REPORT_TYPES" href="#amazon_sp_report_lib.UNKNOWN_REPORT_TYPES">UNKNOWN_REPORT_TYPES</a></code></li>
+<li><code><a title="amazon_sp_report_lib.XLSX_REPORT_TYPES" href="#amazon_sp_report_lib.XLSX_REPORT_TYPES">XLSX_REPORT_TYPES</a></code></li>
+<li><code><a title="amazon_sp_report_lib.XML_REPORT_TYPES" href="#amazon_sp_report_lib.XML_REPORT_TYPES">XML_REPORT_TYPES</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="amazon_sp_report_lib.DBTracker" href="#amazon_sp_report_lib.DBTracker">DBTracker</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_sp_report_lib.DBTracker.REQUIRED_COLUMNS" href="#amazon_sp_report_lib.DBTracker.REQUIRED_COLUMNS">REQUIRED_COLUMNS</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DBTracker.get_report_document_id" href="#amazon_sp_report_lib.DBTracker.get_report_document_id">get_report_document_id</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DBTracker.get_report_id" href="#amazon_sp_report_lib.DBTracker.get_report_id">get_report_id</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DBTracker.get_report_status" href="#amazon_sp_report_lib.DBTracker.get_report_status">get_report_status</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DBTracker.init_report_tracking" href="#amazon_sp_report_lib.DBTracker.init_report_tracking">init_report_tracking</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DBTracker.is_report_created" href="#amazon_sp_report_lib.DBTracker.is_report_created">is_report_created</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DBTracker.update_report_document_id" href="#amazon_sp_report_lib.DBTracker.update_report_document_id">update_report_document_id</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DBTracker.update_report_status" href="#amazon_sp_report_lib.DBTracker.update_report_status">update_report_status</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="amazon_sp_report_lib.DictTracker" href="#amazon_sp_report_lib.DictTracker">DictTracker</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_sp_report_lib.DictTracker.get_report_document_id" href="#amazon_sp_report_lib.DictTracker.get_report_document_id">get_report_document_id</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DictTracker.get_report_id" href="#amazon_sp_report_lib.DictTracker.get_report_id">get_report_id</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DictTracker.get_report_status" href="#amazon_sp_report_lib.DictTracker.get_report_status">get_report_status</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DictTracker.init_report_tracking" href="#amazon_sp_report_lib.DictTracker.init_report_tracking">init_report_tracking</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DictTracker.is_report_created" href="#amazon_sp_report_lib.DictTracker.is_report_created">is_report_created</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DictTracker.save" href="#amazon_sp_report_lib.DictTracker.save">save</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DictTracker.update_report_document_id" href="#amazon_sp_report_lib.DictTracker.update_report_document_id">update_report_document_id</a></code></li>
+<li><code><a title="amazon_sp_report_lib.DictTracker.update_report_status" href="#amazon_sp_report_lib.DictTracker.update_report_status">update_report_status</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="amazon_sp_report_lib.InventoryToSchemaRetrieval" href="#amazon_sp_report_lib.InventoryToSchemaRetrieval">InventoryToSchemaRetrieval</a></code></h4>
+</li>
+<li>
+<h4><code><a title="amazon_sp_report_lib.SpReportTracker" href="#amazon_sp_report_lib.SpReportTracker">SpReportTracker</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_sp_report_lib.SpReportTracker.get_report_document_id" href="#amazon_sp_report_lib.SpReportTracker.get_report_document_id">get_report_document_id</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTracker.get_report_id" href="#amazon_sp_report_lib.SpReportTracker.get_report_id">get_report_id</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTracker.get_report_status" href="#amazon_sp_report_lib.SpReportTracker.get_report_status">get_report_status</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTracker.init_report_tracking" href="#amazon_sp_report_lib.SpReportTracker.init_report_tracking">init_report_tracking</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTracker.is_report_created" href="#amazon_sp_report_lib.SpReportTracker.is_report_created">is_report_created</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTracker.update_report_document_id" href="#amazon_sp_report_lib.SpReportTracker.update_report_document_id">update_report_document_id</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTracker.update_report_status" href="#amazon_sp_report_lib.SpReportTracker.update_report_status">update_report_status</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="amazon_sp_report_lib.SpReportTrackingStatus" href="#amazon_sp_report_lib.SpReportTrackingStatus">SpReportTrackingStatus</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_sp_report_lib.SpReportTrackingStatus.DOCUMENTED_RETURNED" href="#amazon_sp_report_lib.SpReportTrackingStatus.DOCUMENTED_RETURNED">DOCUMENTED_RETURNED</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTrackingStatus.DONE_NOTHING" href="#amazon_sp_report_lib.SpReportTrackingStatus.DONE_NOTHING">DONE_NOTHING</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTrackingStatus.EXCEPTION_OCCURRED" href="#amazon_sp_report_lib.SpReportTrackingStatus.EXCEPTION_OCCURRED">EXCEPTION_OCCURRED</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTrackingStatus.REPORT_CREATED" href="#amazon_sp_report_lib.SpReportTrackingStatus.REPORT_CREATED">REPORT_CREATED</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpReportTrackingStatus.UPDATED_STATUS" href="#amazon_sp_report_lib.SpReportTrackingStatus.UPDATED_STATUS">UPDATED_STATUS</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="amazon_sp_report_lib.SpTabReportRetrieval" href="#amazon_sp_report_lib.SpTabReportRetrieval">SpTabReportRetrieval</a></code></h4>
+<ul class="">
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.bulk_mode" href="#amazon_sp_report_lib.SpTabReportRetrieval.bulk_mode">bulk_mode</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.custom_mode" href="#amazon_sp_report_lib.SpTabReportRetrieval.custom_mode">custom_mode</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.get_report_type_name" href="#amazon_sp_report_lib.SpTabReportRetrieval.get_report_type_name">get_report_type_name</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc" href="#amazon_sp_report_lib.SpTabReportRetrieval.output_report_doc">output_report_doc</a></code></li>
+<li><code><a title="amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report" href="#amazon_sp_report_lib.SpTabReportRetrieval.retrieve_report">retrieve_report</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="amazon_sp_report_lib.TypeSampleRetrieval" href="#amazon_sp_report_lib.TypeSampleRetrieval">TypeSampleRetrieval</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

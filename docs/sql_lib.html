@@ -1,0 +1,2628 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>sql_lib API documentation</title>
+<meta name="description" content="This file contains a group of classes to abstract pymysql operations. There are 3 primary ones: …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>sql_lib</code></h1>
+</header>
+<section id="section-intro">
+<p>This file contains a group of classes to abstract pymysql operations. There are 3 primary ones:</p>
+<ul>
+<li>The first is <code><a title="sql_lib.MySQL_DB_Connection" href="#sql_lib.MySQL_DB_Connection">MySQL_DB_Connection</a></code> which abstracts making a connection a MySQL database for performing queries. </li>
+<li>The second is <code><a title="sql_lib.MySQL_Table_Column" href="#sql_lib.MySQL_Table_Column">MySQL_Table_Column</a></code> which provides a represntation of a column in a schema. You can set the name, data type, whether it can be null, and extra attributes.</li>
+<li>The third is <code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code> used for quickly creating a table over a connection, checking if an instance exists on a schema, and if all integrity constraints are satisfied for a given instance.</li>
+</ul>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+This file contains a group of classes to abstract pymysql operations. There are 3 primary ones:
+
+* The first is `MySQL_DB_Connection` which abstracts making a connection a MySQL database for performing queries. 
+* The second is `MySQL_Table_Column` which provides a represntation of a column in a schema. You can set the name, data type, whether it can be null, and extra attributes.
+* The third is `MySQL_Table_Schema` used for quickly creating a table over a connection, checking if an instance exists on a schema, and if all integrity constraints are satisfied for a given instance. 
+&#34;&#34;&#34;
+
+# Author: Chami Lamelas
+# Last updated: 2/9/2021
+
+import pymysql.cursors
+import socket
+import pandas as pd
+from enum import Enum
+
+class MySQL_DB_Connection:
+    &#34;&#34;&#34;
+    This class represents a connection to a MySQL database. 
+    
+    It serves to wrap the various opening and clean up activities that must be performed in order to perform queries. 
+
+    Attributes
+    ----------
+    host : str
+        Host where the database server is located for which the connection should be established.
+    user : str 
+        Username to log in as to make connection.
+    password : str
+        Password to use to make connection 
+    port : int
+        MySQL port to use to connect, default (3306) is usually OK. 
+    database : 
+        Database to use to connect
+
+    Parameters
+    ----------
+    host : str
+        Host where the database server is located for which the connection should be established.
+    user : str 
+        Username to log in as to make connection.
+    password : str
+        Password to use to make connection 
+    port : int
+        MySQL port to use to connect, default (3306) is usually OK. 
+    database : 
+        Database to use to connect
+
+    References
+    ----------
+    [Connections in pymysql](https://pymysql.readthedocs.io/en/latest/modules/connections.html)
+    &#34;&#34;&#34;
+
+    READ_QUERY_KEYWORDS = [&#39;SELECT&#39;, &#39;SHOW&#39;, &#39;DESCRIBE&#39;]
+    &#34;&#34;&#34;
+    List of MySQL keywords for reading any information from a database.  
+    &#34;&#34;&#34;
+
+    DEFAULT_READ_LIMIT = 5
+    &#34;&#34;&#34;
+    Default number of rows returned in read query.
+    &#34;&#34;&#34;
+
+    def __init__(self, host, user, password, port, database):
+        self.host = host
+        self.database = database
+        self.user = user
+        self.password = password
+        self.port = port        
+
+    def query(self, q, args=None, update_many=False):
+        &#34;&#34;&#34;
+        Runs a query on the connected database with the parameters set either by the constructor.
+
+        Parameters
+        ----------
+        q : str
+            The query to be run on the database. Any argument values (as in INSERT, REPLACE, or DELETE commands) should be marked with %s and specified in the args parameter. 
+        args : iterable, optional
+            In the case of a single row being updated or for the parameter of a deletion, this will be an iterable such as a list or tuple. If a collection or rows are being added or updated, this will be a list of iterables and in this case `update_many` should be set to true. The default value is None.
+        update_many : bool, optional
+            When many rows are to be updated via INSERT or REPLACE, mark this parameter as true to improve update performance. The default value is False.
+
+        Returns
+        -------
+        result : int or iterable
+            If a read type query was performed (specified by READ_QUERY_KEYWORDS), the read results are returned (could be rows of a table with SELECT or table information via SHOW, DESCRIBE). Otherwise, in the case of an update to the database, the number of updated rows (int) are returned.
+
+        Raises
+        ------
+        RuntimeError
+            If the query fails in any way. One possible error is a pymysql.err.IntegrityError if a duplicate
+            entry tries to be inserted, it will have an error code (as per MySQL standard) of 1062.
+
+        References
+        -----
+        [Wikipedia Article on Cursors](https://en.wikipedia.org/wiki/Cursor_(databases))
+
+        [Examples of pymysql](https://pymysql.readthedocs.io/en/latest/user/examples.html)
+
+        [Cursors in pymysql](https://pymysql.readthedocs.io/en/latest/modules/cursors.html)
+        &#34;&#34;&#34;
+
+        result = None
+
+        # Establish connection to DB using pymysql
+        connection = pymysql.connect(
+            host=self.host, user=self.user, password=self.password, port=self.port, database=self.database)
+        try:
+
+            # Obtain cursor over Database and perform clean-up in any exit (exception or not) 
+            with connection.cursor() as cursor:
+
+                # Determines if we are doing a read query by seeing if query starts with one of keywords
+                doing_read_query = any(
+                    [q.startswith(r) for r in MySQL_DB_Connection.READ_QUERY_KEYWORDS])
+
+                # If we are doing an update query, and more specifically one that makes many updates, uses
+                # executemany() which provides better performance for multiple REPLACE or INSERT
+                if not doing_read_query and update_many:
+                    result = cursor.executemany(q, args)
+
+                # Otherwise, if we are doing a single update or a read query, run a regular execute()
+                else:
+                    result = cursor.execute(q, args)
+
+                # If doing a read query, will be returning the corresponding records as opposed to the number
+                # of rows that are updated (would be 0 for a read query).
+                if doing_read_query:
+                    result = cursor.fetchall()
+
+                # Otherwise, will be returning number of updated rows but need to commit the update over the
+                # connection
+                else:
+                    connection.commit()
+                return result
+                
+        # Make sure connection is closed as clean up
+        finally:
+            connection.close()
+
+    def insert(self,table,data,schema_cols=None,overwrite=False,status_check=True,constraint_check=True):
+        &#34;&#34;&#34;
+        Inserts the rows from a DataFrame onto a table on this database. By default, matching rows are not overwritten and a safety check is performed to ensure the table is on the database. 
+
+        Parameters
+        ----------
+
+        table : MySQL_Table_Schema
+            Schema object representing table to be updated
+        data : list or DataFrame  
+            Insertion data
+        schema_cols : list, optimal
+            Names of schema columns that are being inserted via `data`. By default, this is `table.get_column_names()`. 
+        overwrite : bool, optional
+            Whether to do overwrite (False -&gt; MySQL INSERT, True -&gt; MySQL REPLACE). By default, this is true. Note that if you have an auto incrementing primary key or if you are inserting non primary key columns, SQL INSERTS can still lead to duplicates (i.e. when overwite=False). 
+        status_check : bool, optional
+            Whether to check `table` status on `database`. By default, this is true.
+        constraint_check : bool, optional
+            Whether to check `table` constraints after insert. By default, this is true.
+
+        Returns
+        -------
+        q_res : int or iterable
+            Result of insertion if successful. 
+        
+        Raises
+        ------
+        ValueError
+            If DataFrame cannot be inserted (column mismatch), if `table` not on `database`, or insertion violated `table` constraints.
+        RuntimeError
+            If `MySQL_DB_Connection.query` fails.
+
+        Notes
+        -----
+        `schema_cols` should be a subset of the tables columns to make sure that the DataFrame you are uploading is valid for the schema. Don&#39;t just pass in `data.columns` for instance. You should use this to validate a DataFrame being built from data created by users.
+
+        See Also
+        --------
+        MySQL_DB_Connection.query
+        MySQL_Table_Schema
+        &#34;&#34;&#34;
+
+        if not (isinstance(data, pd.DataFrame) or isinstance(data, list)):
+          raise TypeError(&#39;data (type: %s) must be either a list (to represent 1 row) or a DataFrame (to represent many rows)&#39; % (type(data)))
+
+        if not schema_cols:
+            schema_cols = table.get_column_names()
+        if isinstance(data, pd.DataFrame):
+          df_cols = list(data.columns)
+          if len(schema_cols)!=len(df_cols) or any(schema_cols[i]!=df_cols[i] for i in range(len(df_cols))):
+            raise ValueError(&#39;Cannot insert DataFrame into table, columns do not match.&#39;)
+        elif len(schema_cols) != len(data):
+          raise ValueError(&#39;Cannot insert row into table, number of columns do not match.&#39;)
+          
+        if status_check:
+          table.check_on_db(self)
+        cols_to_update = &#34;,&#34;.join(&#34;`{0}`&#34;.format(c) for c in schema_cols)
+        arg_placeholders = (&#34;%s,&#34;*len(schema_cols))[:-1]
+        query_template = &#34;%s INTO `%s` (%s) VALUES(%s)&#34; % (&#39;REPLACE&#39; if overwrite else &#39;INSERT&#39;, table.name, cols_to_update, arg_placeholders)
+        update_type = type(data) == pd.DataFrame
+        ins_args = data.values.tolist() if update_type else data
+        q_res = self.query(query_template,args=ins_args,update_many=update_type)
+        if constraint_check:
+          table.check_constraints_on_db(self)
+        return q_res
+
+    def read(self,table,columns=None,where=None,limit=0,status_check=True):
+        &#34;&#34;&#34;
+        Performs a read on a provided table on the DB. One can specify columns, where clause, and limit. 
+
+        Parameters
+        ----------
+        table : MySQL_Table_Schema 
+            Table to read from
+        columns : list, optional 
+            List of columns to retrieve (None/[] -&gt; all columns). By default, it is None.
+        where : str, optional
+            Where clause (None -&gt; no where clause), must be valid MySQL. By default, it is None.
+        limit : int, optional
+            Limit (None -&gt; no limit), limit &lt; 1 =&gt; limit rows to 5. By default, it is 0.
+        status_check : bool, optional
+            Whether to check `table` status on `database`. By default, it is true.
+
+        Returns
+        -------
+        df : DataFrame
+            Result of read if successful.
+
+        Raises
+        ------
+        ValueError
+            If `table` not on `database`.
+        RuntimeError 
+            If `MySQL_DB_Connection.query` fails.
+
+        Warnings
+        --------
+        Be careful with what you allow a user to pass into `where` as it accepts any valid SQL and is vulnerable to a SQL injection.
+
+        See Also
+        --------
+        MySQL_DB_Connection.query
+        MySQL_Table_Schema        
+        &#34;&#34;&#34;
+
+        if limit is not None and (where is None or limit&lt;1):
+            limit=MySQL_DB_Connection.DEFAULT_READ_LIMIT
+          
+        if status_check:
+          table.check_on_db(self)
+        cols_s = &#39;*&#39; if not columns else &#39;,&#39;.join(columns)
+        where_s = &#39; WHERE %s&#39; % (where) if where is not None else &#39;&#39;
+        limit_s = &#39; LIMIT %d&#39; % (limit) if limit is not None else &#39;&#39;
+        query_template=&#39;SELECT %s FROM `%s`%s%s&#39; % (cols_s,table.name,where_s,limit_s)
+        df = pd.DataFrame(self.query(query_template),columns=columns if columns else table.get_column_names())
+        return df
+
+    def key_get(self,table,key_values,status_check=True):
+        &#34;&#34;&#34;
+        Performs a read on a provided table on the `database` and retrieves associated rows.
+
+        Parameters
+        ----------
+        table : MySQL_Table_Schema
+            Table to read from
+        key_values : list 
+            List of key values to match
+        status_check : bool, optional 
+            Whether to check `table` status on `database`. By default, it&#39;s true.
+
+        Returns
+        -------
+        df : DataFrame
+            `MySQL_DB_Connection.read` result on the provided `table` primary key 
+            
+        Raises
+        ------
+        ValueError 
+            If `len(key_values) != len(table.primary_key)` or reasons specified in `MySQL_DB_Connection.read`.
+        RuntimeError
+            If `MySQL_DB_Connection.read` fails. 
+        
+        See Also
+        --------
+        MySQL_DB_Connection.read
+        MySQL_Table_Schema
+        &#34;&#34;&#34;
+
+        if not table.primary_key:
+            raise ValueError(&#39;Input table has no primary key.&#39;)
+        if len(key_values) != len(table.primary_key):
+            raise ValueError(&#34;%d key values provided for primary key of length %d.&#34; % (len(key_values),len(table.priamry_key)))
+        
+        where_str = &#39; AND &#39;.join([&#39;%s=%s&#39; % (table.primary_key[i],&#39;\&#39;%s\&#39;&#39; % (key_values[i]) if isinstance(key_values[i],str) else key_values[i]) for i in range(len(key_values))])
+        df = self.read(table,None,where_str,0,status_check)
+        return df
+
+    def delete(self,table,where=None,delete_all=False,status_check=True,constraint_check=True):
+        &#34;&#34;&#34;
+        Performs a deletion operation on a provided table on the DB. One can specify a where clause. If no where clause is supplied, as a security precuation (to ensure that the caller really wants to delete everything, they must specify delete_all=True)
+
+        Parameters
+        ----------
+        table : MySQL_Table_Schema
+            Table to delete from
+        where : str, optional 
+            Where clause (None -&gt; no where clause, delete all), must be valid SQL. By default, it&#39;s None.
+        delete_all : bool, optional
+            If `where` is None, then `delete_all` must be True to perform a full deletion. If `where` is not None, `delete_all` is ignored. By default, it&#39;s false.
+        status_check : bool, optional
+            Whether to check `table` status on `database`. By default, it&#39;s true.
+        constraint_check : bool, optional
+            Whether to check `table` constraints after insert. By default, it&#39;s true.
+
+        Returns
+        -------
+        res : int
+            query result of the operation
+            
+        Raises
+        ------
+        ValueError 
+            If `table` is not on `database` or if `table` constraint checks fail after the deletion.
+        RuntimeError
+            If MySQL_DB_Connection.query() fails. 
+
+        Warnings
+        --------
+        Be careful with what you allow a user to pass into `where` as it accepts any valid SQL and is vulnerable to a SQL injection.
+        
+        See Also
+        --------
+        MySQL_DB_Connection.query()
+        MySQL_Table_Schema
+        &#34;&#34;&#34;
+
+        if not where and not delete_all:
+            raise ValueError(&#34;To delete all rows, you must specify delete_all=True&#34;)
+        
+        if status_check:
+          table.check_on_db(self)
+        where_s = &#39; WHERE %s&#39; % (where) if where is not None else &#39;&#39;
+        query_template = &#39;DELETE FROM `%s`%s&#39; % (table.name,where_s)
+        res = self.query(query_template)
+        if constraint_check:
+          table.check_constraints_on_db(self)
+        return res
+
+    def get_schema(self, schema_name):
+        &#34;&#34;&#34;
+        Given the name of a schema, this method will build a `MySQL_Table_Schema` object from the schema with the matching name on this connection.
+
+        Parameters
+        ----------
+        schema_name : str
+            Name of the schema from which to build schema object
+
+        Returns
+        -------
+        `MySQL_Table_Schema` object constructed from the schema associated with `schema_name` on this connection
+
+        Raises
+        ------
+        pymysql.err.ProgrammingError
+            If no schema with name `schema_name` exists on the associated database of this connection (MySQL error code 1146)
+        RuntimeError
+            If `MySQL_DB_Connection.query` fails for some other reason
+
+        Notes
+        -----
+        Any returned `MySQL_Table_Schema` object will not have any constraints as those are not stored on the database associated with the connection. You need to set the constraints yourself using the `constraints` attribute.
+        &#34;&#34;&#34;
+
+        res = self.query(&#34;SHOW COLUMNS IN %s&#34; % (schema_name))
+        cols = []
+        keys = []
+        for c in res:
+            cols.append(MySQL_Table_Column(c[0],c[1],c[2]==&#39;YES&#39;,c[5] if len(c[5])&gt;0 else None))
+            if c[3] == &#39;PRI&#39;:
+                keys.append(c[0])
+        return MySQL_Table_Schema(schema_name, cols, keys)
+
+class MySQL_Table_Status(Enum):
+    &#34;&#34;&#34;
+    Enum that represents 3 status types of the existence of a table on a database. This is used by `MySQL_Table_Schema` when creating and checking the status of a table on a database.
+
+    See Also
+    --------
+    MySQL_Table_Schema
+    &#34;&#34;&#34;
+
+    TABLE_NOT_ON_DB = 1
+    &#34;&#34;&#34;
+    Error status if schema does not exist on a database
+    &#34;&#34;&#34;
+
+    TABLE_ON_DB_DIFF_COLS = 2
+    &#34;&#34;&#34;
+    Error status if schema exists on a database but with different columns 
+    &#34;&#34;&#34;
+
+    TABLE_ON_DB_DIFF_KEY = 3
+    &#34;&#34;&#34;
+    Error status if schema exists on a database but with different primary key 
+    &#34;&#34;&#34;
+
+class MySQL_Table_Column:
+    &#34;&#34;&#34;
+    Represents a MySQL Table column. This is used in `MySQL_Table_Schema` for creating columns.
+
+    Attributes
+    ----------
+    name : str
+        Name of the column
+    allow_null : bool
+        Whether this column can have NULL values
+
+    Parameters
+    ----------
+    name : str
+        Name of the column
+    dtype : str
+        SQL data type of the column
+    allow_null : bool, optional
+        Whether this column can have NULL values
+    extra : str, optional
+        Extra information on the column
+
+    See Also
+    --------
+    MySQL_Table_Schema
+    &#34;&#34;&#34;
+
+    def __init__(self,name,dtype,allow_null=True,extra=None):
+        self.name = name
+        self.__dtype = dtype
+        self.allow_null = allow_null
+        self.__extra = extra
+
+    def __eq__(self,other):
+        if not isinstance(other,MySQL_Table_Column):
+            return False
+        return (
+            self.name == other.name and
+            self.__dtype == other.__dtype and
+            self.allow_null == other.allow_null and
+            self.__extra == other.__extra
+        )
+
+    def __ne__(self,other):
+        return not self.__eq__(other)
+
+    def to_sql(self):
+        &#34;&#34;&#34;
+        Converts this column to a string that would be used in a SQL creation query. 
+
+        Returns
+        -------
+        String representation of the column used in SQL.
+        &#34;&#34;&#34;
+
+        out = self.name + &#34; &#34; + self.__dtype
+        if not self.allow_null:
+            out += &#34; NOT NULL&#34;
+        if self.__extra:
+            out += &#34; &#34; + self.__extra
+        return out
+
+class MySQL_Table_Constraint:
+    &#34;&#34;&#34;
+    Represents a MySQL Table constraint. This is used in `MySQL_Table_Schema` for creating and enforcing constraints.
+
+    Attributes
+    ----------
+    query : str
+        The query used to check the constraint
+    pass_val : object
+        Output `query` should result in to signify the constraint passing
+    fail_msg : str
+        Failure message to display if `query` does not result in `pass_val`
+
+    Parameters
+    ----------
+    query : str
+        The query used to check the constraint
+    pass_val : object
+        Output `query` should result in to signify the constraint passing
+    fail_msg : str, optional
+        Failure message to display if `query` does not result in `pass_val`
+
+    See Also
+    --------
+    MySQL_Table_Schema
+    &#34;&#34;&#34;
+
+    def __init__(self,query,pass_val,fail_msg=&#34;&#34;):
+        self.query = query
+        self.pass_val = pass_val
+        self.fail_msg = fail_msg
+
+class MySQL_Table_Schema:
+    &#34;&#34;&#34;
+    Class that represents the schema of a MySQL table. This class offers functionality to create an instance of this schema on a database, check if an instance exists on a database, and check if all schema integrity constraints are upheld for a particular instance. 
+
+    Attributes
+    ----------
+    name : str 
+        Name of the schema 
+    primary_key : list
+        Column names that form a primary key over the schema
+    constraints : list
+        Constraints of the schema
+    
+    Parameters
+    ----------
+    name : str 
+        Name of the schema 
+    columns : list 
+        Columns of the schema 
+    primary_key : list or str, optional
+        Column names that form a primary key over the schema. By default, it&#39;s None. 
+    constraints : list, optional
+        Constraints of the schema
+    
+    Warnings
+    --------
+    Be careful with what you pass into `constraints` as those objects accept any valid SQL and is vulnerable to a SQL injection.
+
+    Notes
+    -----
+    If you do not want to provide any failure messages for the constraint checks, make sure you pass empty strings.
+    Whatever you pass as the primary_key will become a list when you access it later.
+    You can initialize a schema object from a schema with a specified name on a `MySQL_DB_Connection` using `MySQL_DB_Connection.get_schema`. Note, any schema created by this method will not have any constraints as those are not stored on the database associated with the connection. You can set the constraints yourself using the `constraints` attribute.
+
+    See Also
+    --------
+    MySQL_Table_Column
+    MySQL_Table_Constraint
+    MySQL_DB_Connection.get_schema()
+    &#34;&#34;&#34;
+
+    def __init__(self, name, columns, primary_key=None, constraints=[]):
+        self.name = name
+        self.__columns = columns
+        self.primary_key = primary_key if isinstance(primary_key,list) else [primary_key]
+        key_set = set(self.primary_key)
+        for c in self.__columns:
+            if c.name in key_set:
+                c.allow_null = False
+        self.constraints = constraints
+
+    @staticmethod
+    def __raise_exception(msg, detailed_err, err_type):
+        raise ValueError(msg if detailed_err else err_type.value)
+
+    def create_on_db(self, db_conn):
+        &#34;&#34;&#34;
+        Initializes an instance of this schema on a database 
+
+        Parameters
+        ----------
+        db_conn : MySQL_DB_Connection
+            Connection to database where schema should be initialized 
+
+        Returns
+        -------
+        res : int
+            Result of creation query if one is made.
+
+        Raises
+        ------
+        ValueError
+            If the schema exists on `db_conn` with different columns or primary key.
+        RuntimeError
+            If an error occurs running this creation query.
+
+        Notes
+        -----
+        If the schema (with the correct columns and primary key) exists on the connection, then nothing happens. If the schema does not exist on the connection, it is added as a new table on the connection. 
+
+        See Also
+        --------
+        check_on_db
+        &#34;&#34;&#34;
+
+        try:
+            # Run check with error code response
+            self.check_on_db(db_conn, False)
+        except ValueError as e:
+
+            # If table is not on database, create it
+            if int(str(e)) == MySQL_Table_Status.TABLE_NOT_ON_DB.value:
+
+                # Create table with name and primary key if one exists
+                query = &#34;CREATE TABLE &#34; + self.name + &#34; (&#34; + &#34;, &#34;.join([c.to_sql() for c in self.__columns])
+                if self.primary_key:
+                    query += &#34;, PRIMARY KEY(&#34; + \
+                        &#34;, &#34;.join(self.primary_key) + &#34;)&#34;
+                query += &#34;)&#34;
+                res = db_conn.query(query)
+                return res
+            else:
+                # If schema is different on db
+                raise ValueError(&#34;An instance of the schema {schema_name} already exists on database {db_name}.\nFor more information, run check_on_db() to compare invoking schema instance with schema on {db_name}.&#34;.format(
+                    schema_name=self.name, db_name=db_conn.database))
+
+    def check_on_db(self, db_conn, detailed_err=True):
+        &#34;&#34;&#34;
+        Checks if there is an instance of this schema on a database
+
+        Parameters
+        ----------
+        db_conn : MySQL_DB_Connection
+            Database to check 
+        detailed_err : bool, optional
+            Whether to raise detailed error messages or not. By default it&#39;s True.
+
+        Returns
+        -------
+        str :
+            If the schema exists on a database, then the string representation of the schema is returned 
+
+        Raises
+        ------
+        ValueError 
+            If the schema does not exist, has different columns, or has a different primary key. If `detailed_err` = True, then the error is raised with a detailed message. Otherwise, an error code specified by `MySQL_Table_Status` is passed as the message.
+
+        References
+        ----------
+        [MySQL Column Retrieval](https://dev.mysql.com/doc/refman/8.0/en/show-columns.html)
+
+        See Also
+        --------
+        MySQL_Table_Status
+        MySQL_DB_Connection
+        &#34;&#34;&#34;
+
+        # Get tables with matching name
+        table_on_db = db_conn.query(&#34;SHOW TABLES LIKE %s&#34;, args=self.name)
+
+        # If none exist, return detailed error or with code 1 based on detailed_err
+        if len(table_on_db) == 0:
+            MySQL_Table_Schema.__raise_exception(
+                &#34;Instance of schema {0} is not on database.&#34;.format(self.name),
+                detailed_err,
+                MySQL_Table_Status.TABLE_NOT_ON_DB
+            )
+
+        # Get the columns the schema on the database (iterable of tuples)
+        cols_in_db_table = db_conn.query(&#34;SHOW COLUMNS FROM &#34; + self.name)
+
+        cols_in_db = dict()
+        for c in cols_in_db_table:
+            # c[0]: name, c[1]: type, c[2]: null allowed (YES/NO), c[5]: extra
+            cols_in_db[c[0]] = MySQL_Table_Column(
+                c[0],
+                c[1],
+                c[2]==&#39;YES&#39;,
+                None if len(c[5])==0 else c[5]
+            )
+
+        if len(cols_in_db) != len(self.__columns):
+            MySQL_Table_Schema.__raise_exception(
+                &#34;Number of columns of %s on %s does not match.\nInstance columns length: %d\nDatabase columns length: %d&#34; % (
+                    self.name,
+                    db_conn.database,
+                    len(self.__columns),
+                    len(cols_in_db)
+                ),
+                detailed_err,
+                MySQL_Table_Status.TABLE_NOT_ON_DB
+            )
+
+        for c in self.__columns:
+            match = cols_in_db.get(c.name)
+            if not match:
+                MySQL_Table_Schema.__raise_exception(
+                    &#34;Column %s not on %s.&#34; % (c.name, db_conn.database),
+                    detailed_err,
+                    MySQL_Table_Status.TABLE_ON_DB_DIFF_COLS
+                )
+            if match != c:
+                MySQL_Table_Schema.__raise_exception(
+                    &#34;Column %s has different properties on %s.\nSchema column:%s\nDatabase column:%s&#34; % (c.name,db_conn.database,c.to_sql(),match.to_sql()),
+                    detailed_err,
+                    MySQL_Table_Status.TABLE_ON_DB_DIFF_COLS
+                )
+
+        # Collect primary key information from table as a list of tuples
+        primary_key_in_db_table = db_conn.query(
+            &#34;SHOW KEYS FROM &#34; + self.name + &#34; WHERE Key_name = %s&#34;, args=(&#39;PRIMARY&#39;,))
+        keys_in_db = {k[4] for k in primary_key_in_db_table}
+
+        if len(keys_in_db) != len(self.primary_key):
+            MySQL_Table_Schema.__raise_exception(
+                &#34;Number of primary key components of %s on %s does not match.\nInstance primary key length: %d\nDatabase primary key length: %d&#34; % (
+                    self.name,
+                    db_conn.database,
+                    len(self.primary_key),
+                    len(keys_in_db)
+                ),
+                detailed_err,
+                MySQL_Table_Status.TABLE_NOT_ON_DB
+            )
+
+        for k in self.primary_key:
+            if k not in keys_in_db:
+                MySQL_Table_Schema.__raise_exception(
+                    &#34;Element %s of primary key not found on %s.&#34; % (k, db_conn.database),
+                    detailed_err,
+                    MySQL_Table_Status.TABLE_ON_DB_DIFF_KEY
+                )
+        return str(self)
+
+    def check_constraints_on_db(self, db_conn):
+        &#34;&#34;&#34;
+        Checks if the instance of this schema on a database meets all the integrity constraints
+
+        Parameters
+        ----------
+        db_conn : MySQL_DB_Connection 
+            Database to check constraints 
+
+        Raises
+        ------
+        ValueError
+            If one of the constraints is violated (with a fail message , if a message exists in `constraint_fail_msgs`). 
+        &#34;&#34;&#34;
+
+        # For each constraint query, run it and see if matches the pass value. If not a ValueError is raised with &#34;&#34; or the corresponding failure message
+        for i in range(len(self.constraints)):
+            res = db_conn.query(self.constraints[i].query)
+            if res != self.constraints[i].pass_val:
+                raise ValueError(&#34;Integrity constraint {0} violated.\nReceived: {1}\nExpected: {2}\nAdditional info: {3}&#34;.format(
+                    i, res, self.constraints[i].pass_val, self.constraints[i].fail_msg))
+
+    def get_column_names(self):
+        return [c.name for c in self.__columns]
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Gets a string representation of the schema which includes the name, the columns and types, and the primary key. 
+
+        Returns
+        -------
+        out : str
+            A string representation of the schema. 
+        &#34;&#34;&#34;
+
+        out = &#34;NAME: %s\nCOLUMNS:\n&#34; % (self.name)
+        out += &#34;\n&#34;.join(c.to_sql() for c in self.__columns)
+        out += &#34;\nPRIMARY KEY:&#34; + &#34;, &#34;.join(self.primary_key) if self.primary_key else &#34;&#34;
+        return out</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="sql_lib.MySQL_DB_Connection"><code class="flex name class">
+<span>class <span class="ident">MySQL_DB_Connection</span></span>
+<span>(</span><span>host, user, password, port, database)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This class represents a connection to a MySQL database. </p>
+<p>It serves to wrap the various opening and clean up activities that must be performed in order to perform queries. </p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>host</code></strong> :&ensp;<code>str</code></dt>
+<dd>Host where the database server is located for which the connection should be established.</dd>
+<dt><strong><code>user</code></strong> :&ensp;<code>str </code></dt>
+<dd>Username to log in as to make connection.</dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
+<dd>Password to use to make connection</dd>
+<dt><strong><code>port</code></strong> :&ensp;<code>int</code></dt>
+<dd>MySQL port to use to connect, default (3306) is usually OK.</dd>
+<dt><strong><code>database</code></strong></dt>
+<dd>Database to use to connect</dd>
+</dl>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>host</code></strong> :&ensp;<code>str</code></dt>
+<dd>Host where the database server is located for which the connection should be established.</dd>
+<dt><strong><code>user</code></strong> :&ensp;<code>str </code></dt>
+<dd>Username to log in as to make connection.</dd>
+<dt><strong><code>password</code></strong> :&ensp;<code>str</code></dt>
+<dd>Password to use to make connection</dd>
+<dt><strong><code>port</code></strong> :&ensp;<code>int</code></dt>
+<dd>MySQL port to use to connect, default (3306) is usually OK.</dd>
+<dt><strong><code>database</code></strong></dt>
+<dd>Database to use to connect</dd>
+</dl>
+<h2 id="references">References</h2>
+<p><a href="https://pymysql.readthedocs.io/en/latest/modules/connections.html">Connections in pymysql</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MySQL_DB_Connection:
+    &#34;&#34;&#34;
+    This class represents a connection to a MySQL database. 
+    
+    It serves to wrap the various opening and clean up activities that must be performed in order to perform queries. 
+
+    Attributes
+    ----------
+    host : str
+        Host where the database server is located for which the connection should be established.
+    user : str 
+        Username to log in as to make connection.
+    password : str
+        Password to use to make connection 
+    port : int
+        MySQL port to use to connect, default (3306) is usually OK. 
+    database : 
+        Database to use to connect
+
+    Parameters
+    ----------
+    host : str
+        Host where the database server is located for which the connection should be established.
+    user : str 
+        Username to log in as to make connection.
+    password : str
+        Password to use to make connection 
+    port : int
+        MySQL port to use to connect, default (3306) is usually OK. 
+    database : 
+        Database to use to connect
+
+    References
+    ----------
+    [Connections in pymysql](https://pymysql.readthedocs.io/en/latest/modules/connections.html)
+    &#34;&#34;&#34;
+
+    READ_QUERY_KEYWORDS = [&#39;SELECT&#39;, &#39;SHOW&#39;, &#39;DESCRIBE&#39;]
+    &#34;&#34;&#34;
+    List of MySQL keywords for reading any information from a database.  
+    &#34;&#34;&#34;
+
+    DEFAULT_READ_LIMIT = 5
+    &#34;&#34;&#34;
+    Default number of rows returned in read query.
+    &#34;&#34;&#34;
+
+    def __init__(self, host, user, password, port, database):
+        self.host = host
+        self.database = database
+        self.user = user
+        self.password = password
+        self.port = port        
+
+    def query(self, q, args=None, update_many=False):
+        &#34;&#34;&#34;
+        Runs a query on the connected database with the parameters set either by the constructor.
+
+        Parameters
+        ----------
+        q : str
+            The query to be run on the database. Any argument values (as in INSERT, REPLACE, or DELETE commands) should be marked with %s and specified in the args parameter. 
+        args : iterable, optional
+            In the case of a single row being updated or for the parameter of a deletion, this will be an iterable such as a list or tuple. If a collection or rows are being added or updated, this will be a list of iterables and in this case `update_many` should be set to true. The default value is None.
+        update_many : bool, optional
+            When many rows are to be updated via INSERT or REPLACE, mark this parameter as true to improve update performance. The default value is False.
+
+        Returns
+        -------
+        result : int or iterable
+            If a read type query was performed (specified by READ_QUERY_KEYWORDS), the read results are returned (could be rows of a table with SELECT or table information via SHOW, DESCRIBE). Otherwise, in the case of an update to the database, the number of updated rows (int) are returned.
+
+        Raises
+        ------
+        RuntimeError
+            If the query fails in any way. One possible error is a pymysql.err.IntegrityError if a duplicate
+            entry tries to be inserted, it will have an error code (as per MySQL standard) of 1062.
+
+        References
+        -----
+        [Wikipedia Article on Cursors](https://en.wikipedia.org/wiki/Cursor_(databases))
+
+        [Examples of pymysql](https://pymysql.readthedocs.io/en/latest/user/examples.html)
+
+        [Cursors in pymysql](https://pymysql.readthedocs.io/en/latest/modules/cursors.html)
+        &#34;&#34;&#34;
+
+        result = None
+
+        # Establish connection to DB using pymysql
+        connection = pymysql.connect(
+            host=self.host, user=self.user, password=self.password, port=self.port, database=self.database)
+        try:
+
+            # Obtain cursor over Database and perform clean-up in any exit (exception or not) 
+            with connection.cursor() as cursor:
+
+                # Determines if we are doing a read query by seeing if query starts with one of keywords
+                doing_read_query = any(
+                    [q.startswith(r) for r in MySQL_DB_Connection.READ_QUERY_KEYWORDS])
+
+                # If we are doing an update query, and more specifically one that makes many updates, uses
+                # executemany() which provides better performance for multiple REPLACE or INSERT
+                if not doing_read_query and update_many:
+                    result = cursor.executemany(q, args)
+
+                # Otherwise, if we are doing a single update or a read query, run a regular execute()
+                else:
+                    result = cursor.execute(q, args)
+
+                # If doing a read query, will be returning the corresponding records as opposed to the number
+                # of rows that are updated (would be 0 for a read query).
+                if doing_read_query:
+                    result = cursor.fetchall()
+
+                # Otherwise, will be returning number of updated rows but need to commit the update over the
+                # connection
+                else:
+                    connection.commit()
+                return result
+                
+        # Make sure connection is closed as clean up
+        finally:
+            connection.close()
+
+    def insert(self,table,data,schema_cols=None,overwrite=False,status_check=True,constraint_check=True):
+        &#34;&#34;&#34;
+        Inserts the rows from a DataFrame onto a table on this database. By default, matching rows are not overwritten and a safety check is performed to ensure the table is on the database. 
+
+        Parameters
+        ----------
+
+        table : MySQL_Table_Schema
+            Schema object representing table to be updated
+        data : list or DataFrame  
+            Insertion data
+        schema_cols : list, optimal
+            Names of schema columns that are being inserted via `data`. By default, this is `table.get_column_names()`. 
+        overwrite : bool, optional
+            Whether to do overwrite (False -&gt; MySQL INSERT, True -&gt; MySQL REPLACE). By default, this is true. Note that if you have an auto incrementing primary key or if you are inserting non primary key columns, SQL INSERTS can still lead to duplicates (i.e. when overwite=False). 
+        status_check : bool, optional
+            Whether to check `table` status on `database`. By default, this is true.
+        constraint_check : bool, optional
+            Whether to check `table` constraints after insert. By default, this is true.
+
+        Returns
+        -------
+        q_res : int or iterable
+            Result of insertion if successful. 
+        
+        Raises
+        ------
+        ValueError
+            If DataFrame cannot be inserted (column mismatch), if `table` not on `database`, or insertion violated `table` constraints.
+        RuntimeError
+            If `MySQL_DB_Connection.query` fails.
+
+        Notes
+        -----
+        `schema_cols` should be a subset of the tables columns to make sure that the DataFrame you are uploading is valid for the schema. Don&#39;t just pass in `data.columns` for instance. You should use this to validate a DataFrame being built from data created by users.
+
+        See Also
+        --------
+        MySQL_DB_Connection.query
+        MySQL_Table_Schema
+        &#34;&#34;&#34;
+
+        if not (isinstance(data, pd.DataFrame) or isinstance(data, list)):
+          raise TypeError(&#39;data (type: %s) must be either a list (to represent 1 row) or a DataFrame (to represent many rows)&#39; % (type(data)))
+
+        if not schema_cols:
+            schema_cols = table.get_column_names()
+        if isinstance(data, pd.DataFrame):
+          df_cols = list(data.columns)
+          if len(schema_cols)!=len(df_cols) or any(schema_cols[i]!=df_cols[i] for i in range(len(df_cols))):
+            raise ValueError(&#39;Cannot insert DataFrame into table, columns do not match.&#39;)
+        elif len(schema_cols) != len(data):
+          raise ValueError(&#39;Cannot insert row into table, number of columns do not match.&#39;)
+          
+        if status_check:
+          table.check_on_db(self)
+        cols_to_update = &#34;,&#34;.join(&#34;`{0}`&#34;.format(c) for c in schema_cols)
+        arg_placeholders = (&#34;%s,&#34;*len(schema_cols))[:-1]
+        query_template = &#34;%s INTO `%s` (%s) VALUES(%s)&#34; % (&#39;REPLACE&#39; if overwrite else &#39;INSERT&#39;, table.name, cols_to_update, arg_placeholders)
+        update_type = type(data) == pd.DataFrame
+        ins_args = data.values.tolist() if update_type else data
+        q_res = self.query(query_template,args=ins_args,update_many=update_type)
+        if constraint_check:
+          table.check_constraints_on_db(self)
+        return q_res
+
+    def read(self,table,columns=None,where=None,limit=0,status_check=True):
+        &#34;&#34;&#34;
+        Performs a read on a provided table on the DB. One can specify columns, where clause, and limit. 
+
+        Parameters
+        ----------
+        table : MySQL_Table_Schema 
+            Table to read from
+        columns : list, optional 
+            List of columns to retrieve (None/[] -&gt; all columns). By default, it is None.
+        where : str, optional
+            Where clause (None -&gt; no where clause), must be valid MySQL. By default, it is None.
+        limit : int, optional
+            Limit (None -&gt; no limit), limit &lt; 1 =&gt; limit rows to 5. By default, it is 0.
+        status_check : bool, optional
+            Whether to check `table` status on `database`. By default, it is true.
+
+        Returns
+        -------
+        df : DataFrame
+            Result of read if successful.
+
+        Raises
+        ------
+        ValueError
+            If `table` not on `database`.
+        RuntimeError 
+            If `MySQL_DB_Connection.query` fails.
+
+        Warnings
+        --------
+        Be careful with what you allow a user to pass into `where` as it accepts any valid SQL and is vulnerable to a SQL injection.
+
+        See Also
+        --------
+        MySQL_DB_Connection.query
+        MySQL_Table_Schema        
+        &#34;&#34;&#34;
+
+        if limit is not None and (where is None or limit&lt;1):
+            limit=MySQL_DB_Connection.DEFAULT_READ_LIMIT
+          
+        if status_check:
+          table.check_on_db(self)
+        cols_s = &#39;*&#39; if not columns else &#39;,&#39;.join(columns)
+        where_s = &#39; WHERE %s&#39; % (where) if where is not None else &#39;&#39;
+        limit_s = &#39; LIMIT %d&#39; % (limit) if limit is not None else &#39;&#39;
+        query_template=&#39;SELECT %s FROM `%s`%s%s&#39; % (cols_s,table.name,where_s,limit_s)
+        df = pd.DataFrame(self.query(query_template),columns=columns if columns else table.get_column_names())
+        return df
+
+    def key_get(self,table,key_values,status_check=True):
+        &#34;&#34;&#34;
+        Performs a read on a provided table on the `database` and retrieves associated rows.
+
+        Parameters
+        ----------
+        table : MySQL_Table_Schema
+            Table to read from
+        key_values : list 
+            List of key values to match
+        status_check : bool, optional 
+            Whether to check `table` status on `database`. By default, it&#39;s true.
+
+        Returns
+        -------
+        df : DataFrame
+            `MySQL_DB_Connection.read` result on the provided `table` primary key 
+            
+        Raises
+        ------
+        ValueError 
+            If `len(key_values) != len(table.primary_key)` or reasons specified in `MySQL_DB_Connection.read`.
+        RuntimeError
+            If `MySQL_DB_Connection.read` fails. 
+        
+        See Also
+        --------
+        MySQL_DB_Connection.read
+        MySQL_Table_Schema
+        &#34;&#34;&#34;
+
+        if not table.primary_key:
+            raise ValueError(&#39;Input table has no primary key.&#39;)
+        if len(key_values) != len(table.primary_key):
+            raise ValueError(&#34;%d key values provided for primary key of length %d.&#34; % (len(key_values),len(table.priamry_key)))
+        
+        where_str = &#39; AND &#39;.join([&#39;%s=%s&#39; % (table.primary_key[i],&#39;\&#39;%s\&#39;&#39; % (key_values[i]) if isinstance(key_values[i],str) else key_values[i]) for i in range(len(key_values))])
+        df = self.read(table,None,where_str,0,status_check)
+        return df
+
+    def delete(self,table,where=None,delete_all=False,status_check=True,constraint_check=True):
+        &#34;&#34;&#34;
+        Performs a deletion operation on a provided table on the DB. One can specify a where clause. If no where clause is supplied, as a security precuation (to ensure that the caller really wants to delete everything, they must specify delete_all=True)
+
+        Parameters
+        ----------
+        table : MySQL_Table_Schema
+            Table to delete from
+        where : str, optional 
+            Where clause (None -&gt; no where clause, delete all), must be valid SQL. By default, it&#39;s None.
+        delete_all : bool, optional
+            If `where` is None, then `delete_all` must be True to perform a full deletion. If `where` is not None, `delete_all` is ignored. By default, it&#39;s false.
+        status_check : bool, optional
+            Whether to check `table` status on `database`. By default, it&#39;s true.
+        constraint_check : bool, optional
+            Whether to check `table` constraints after insert. By default, it&#39;s true.
+
+        Returns
+        -------
+        res : int
+            query result of the operation
+            
+        Raises
+        ------
+        ValueError 
+            If `table` is not on `database` or if `table` constraint checks fail after the deletion.
+        RuntimeError
+            If MySQL_DB_Connection.query() fails. 
+
+        Warnings
+        --------
+        Be careful with what you allow a user to pass into `where` as it accepts any valid SQL and is vulnerable to a SQL injection.
+        
+        See Also
+        --------
+        MySQL_DB_Connection.query()
+        MySQL_Table_Schema
+        &#34;&#34;&#34;
+
+        if not where and not delete_all:
+            raise ValueError(&#34;To delete all rows, you must specify delete_all=True&#34;)
+        
+        if status_check:
+          table.check_on_db(self)
+        where_s = &#39; WHERE %s&#39; % (where) if where is not None else &#39;&#39;
+        query_template = &#39;DELETE FROM `%s`%s&#39; % (table.name,where_s)
+        res = self.query(query_template)
+        if constraint_check:
+          table.check_constraints_on_db(self)
+        return res
+
+    def get_schema(self, schema_name):
+        &#34;&#34;&#34;
+        Given the name of a schema, this method will build a `MySQL_Table_Schema` object from the schema with the matching name on this connection.
+
+        Parameters
+        ----------
+        schema_name : str
+            Name of the schema from which to build schema object
+
+        Returns
+        -------
+        `MySQL_Table_Schema` object constructed from the schema associated with `schema_name` on this connection
+
+        Raises
+        ------
+        pymysql.err.ProgrammingError
+            If no schema with name `schema_name` exists on the associated database of this connection (MySQL error code 1146)
+        RuntimeError
+            If `MySQL_DB_Connection.query` fails for some other reason
+
+        Notes
+        -----
+        Any returned `MySQL_Table_Schema` object will not have any constraints as those are not stored on the database associated with the connection. You need to set the constraints yourself using the `constraints` attribute.
+        &#34;&#34;&#34;
+
+        res = self.query(&#34;SHOW COLUMNS IN %s&#34; % (schema_name))
+        cols = []
+        keys = []
+        for c in res:
+            cols.append(MySQL_Table_Column(c[0],c[1],c[2]==&#39;YES&#39;,c[5] if len(c[5])&gt;0 else None))
+            if c[3] == &#39;PRI&#39;:
+                keys.append(c[0])
+        return MySQL_Table_Schema(schema_name, cols, keys)</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="sql_lib.MySQL_DB_Connection.DEFAULT_READ_LIMIT"><code class="name">var <span class="ident">DEFAULT_READ_LIMIT</span></code></dt>
+<dd>
+<div class="desc"><p>Default number of rows returned in read query.</p></div>
+</dd>
+<dt id="sql_lib.MySQL_DB_Connection.READ_QUERY_KEYWORDS"><code class="name">var <span class="ident">READ_QUERY_KEYWORDS</span></code></dt>
+<dd>
+<div class="desc"><p>List of MySQL keywords for reading any information from a database.</p></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="sql_lib.MySQL_DB_Connection.delete"><code class="name flex">
+<span>def <span class="ident">delete</span></span>(<span>self, table, where=None, delete_all=False, status_check=True, constraint_check=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Performs a deletion operation on a provided table on the DB. One can specify a where clause. If no where clause is supplied, as a security precuation (to ensure that the caller really wants to delete everything, they must specify delete_all=True)</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>table</code></strong> :&ensp;<code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></dt>
+<dd>Table to delete from</dd>
+<dt><strong><code>where</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Where clause (None -&gt; no where clause, delete all), must be valid SQL. By default, it's None.</dd>
+<dt><strong><code>delete_all</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>If <code>where</code> is None, then <code>delete_all</code> must be True to perform a full deletion. If <code>where</code> is not None, <code>delete_all</code> is ignored. By default, it's false.</dd>
+<dt><strong><code>status_check</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to check <code>table</code> status on <code>database</code>. By default, it's true.</dd>
+<dt><strong><code>constraint_check</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to check <code>table</code> constraints after insert. By default, it's true.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>res</code></strong> :&ensp;<code>int</code></dt>
+<dd>query result of the operation</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError </code></dt>
+<dd>If <code>table</code> is not on <code>database</code> or if <code>table</code> constraint checks fail after the deletion.</dd>
+<dt><code>RuntimeError</code></dt>
+<dd>If MySQL_DB_Connection.query() fails.</dd>
+</dl>
+<h2 id="warnings">Warnings</h2>
+<p>Be careful with what you allow a user to pass into <code>where</code> as it accepts any valid SQL and is vulnerable to a SQL injection.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="sql_lib.MySQL_DB_Connection.query" href="#sql_lib.MySQL_DB_Connection.query">MySQL_DB_Connection.query()</a></code>
+<code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def delete(self,table,where=None,delete_all=False,status_check=True,constraint_check=True):
+    &#34;&#34;&#34;
+    Performs a deletion operation on a provided table on the DB. One can specify a where clause. If no where clause is supplied, as a security precuation (to ensure that the caller really wants to delete everything, they must specify delete_all=True)
+
+    Parameters
+    ----------
+    table : MySQL_Table_Schema
+        Table to delete from
+    where : str, optional 
+        Where clause (None -&gt; no where clause, delete all), must be valid SQL. By default, it&#39;s None.
+    delete_all : bool, optional
+        If `where` is None, then `delete_all` must be True to perform a full deletion. If `where` is not None, `delete_all` is ignored. By default, it&#39;s false.
+    status_check : bool, optional
+        Whether to check `table` status on `database`. By default, it&#39;s true.
+    constraint_check : bool, optional
+        Whether to check `table` constraints after insert. By default, it&#39;s true.
+
+    Returns
+    -------
+    res : int
+        query result of the operation
+        
+    Raises
+    ------
+    ValueError 
+        If `table` is not on `database` or if `table` constraint checks fail after the deletion.
+    RuntimeError
+        If MySQL_DB_Connection.query() fails. 
+
+    Warnings
+    --------
+    Be careful with what you allow a user to pass into `where` as it accepts any valid SQL and is vulnerable to a SQL injection.
+    
+    See Also
+    --------
+    MySQL_DB_Connection.query()
+    MySQL_Table_Schema
+    &#34;&#34;&#34;
+
+    if not where and not delete_all:
+        raise ValueError(&#34;To delete all rows, you must specify delete_all=True&#34;)
+    
+    if status_check:
+      table.check_on_db(self)
+    where_s = &#39; WHERE %s&#39; % (where) if where is not None else &#39;&#39;
+    query_template = &#39;DELETE FROM `%s`%s&#39; % (table.name,where_s)
+    res = self.query(query_template)
+    if constraint_check:
+      table.check_constraints_on_db(self)
+    return res</code></pre>
+</details>
+</dd>
+<dt id="sql_lib.MySQL_DB_Connection.get_schema"><code class="name flex">
+<span>def <span class="ident">get_schema</span></span>(<span>self, schema_name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Given the name of a schema, this method will build a <code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code> object from the schema with the matching name on this connection.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>schema_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the schema from which to build schema object</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p><code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code> object constructed from the schema associated with <code>schema_name</code> on this connection</p>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>pymysql.err.ProgrammingError</code></dt>
+<dd>If no schema with name <code>schema_name</code> exists on the associated database of this connection (MySQL error code 1146)</dd>
+<dt><code>RuntimeError</code></dt>
+<dd>If <code><a title="sql_lib.MySQL_DB_Connection.query" href="#sql_lib.MySQL_DB_Connection.query">MySQL_DB_Connection.query()</a></code> fails for some other reason</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>Any returned <code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code> object will not have any constraints as those are not stored on the database associated with the connection. You need to set the constraints yourself using the <code>constraints</code> attribute.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_schema(self, schema_name):
+    &#34;&#34;&#34;
+    Given the name of a schema, this method will build a `MySQL_Table_Schema` object from the schema with the matching name on this connection.
+
+    Parameters
+    ----------
+    schema_name : str
+        Name of the schema from which to build schema object
+
+    Returns
+    -------
+    `MySQL_Table_Schema` object constructed from the schema associated with `schema_name` on this connection
+
+    Raises
+    ------
+    pymysql.err.ProgrammingError
+        If no schema with name `schema_name` exists on the associated database of this connection (MySQL error code 1146)
+    RuntimeError
+        If `MySQL_DB_Connection.query` fails for some other reason
+
+    Notes
+    -----
+    Any returned `MySQL_Table_Schema` object will not have any constraints as those are not stored on the database associated with the connection. You need to set the constraints yourself using the `constraints` attribute.
+    &#34;&#34;&#34;
+
+    res = self.query(&#34;SHOW COLUMNS IN %s&#34; % (schema_name))
+    cols = []
+    keys = []
+    for c in res:
+        cols.append(MySQL_Table_Column(c[0],c[1],c[2]==&#39;YES&#39;,c[5] if len(c[5])&gt;0 else None))
+        if c[3] == &#39;PRI&#39;:
+            keys.append(c[0])
+    return MySQL_Table_Schema(schema_name, cols, keys)</code></pre>
+</details>
+</dd>
+<dt id="sql_lib.MySQL_DB_Connection.insert"><code class="name flex">
+<span>def <span class="ident">insert</span></span>(<span>self, table, data, schema_cols=None, overwrite=False, status_check=True, constraint_check=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Inserts the rows from a DataFrame onto a table on this database. By default, matching rows are not overwritten and a safety check is performed to ensure the table is on the database. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>table</code></strong> :&ensp;<code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></dt>
+<dd>Schema object representing table to be updated</dd>
+<dt><strong><code>data</code></strong> :&ensp;<code>list</code> or <code>DataFrame
+</code></dt>
+<dd>Insertion data</dd>
+<dt><strong><code>schema_cols</code></strong> :&ensp;<code>list, optimal</code></dt>
+<dd>Names of schema columns that are being inserted via <code>data</code>. By default, this is <code>table.get_column_names()</code>.</dd>
+<dt><strong><code>overwrite</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to do overwrite (False -&gt; MySQL INSERT, True -&gt; MySQL REPLACE). By default, this is true. Note that if you have an auto incrementing primary key or if you are inserting non primary key columns, SQL INSERTS can still lead to duplicates (i.e. when overwite=False).</dd>
+<dt><strong><code>status_check</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to check <code>table</code> status on <code>database</code>. By default, this is true.</dd>
+<dt><strong><code>constraint_check</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to check <code>table</code> constraints after insert. By default, this is true.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>q_res</code></strong> :&ensp;<code>int</code> or <code>iterable</code></dt>
+<dd>Result of insertion if successful.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If DataFrame cannot be inserted (column mismatch), if <code>table</code> not on <code>database</code>, or insertion violated <code>table</code> constraints.</dd>
+<dt><code>RuntimeError</code></dt>
+<dd>If <code><a title="sql_lib.MySQL_DB_Connection.query" href="#sql_lib.MySQL_DB_Connection.query">MySQL_DB_Connection.query()</a></code> fails.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p><code>schema_cols</code> should be a subset of the tables columns to make sure that the DataFrame you are uploading is valid for the schema. Don't just pass in <code>data.columns</code> for instance. You should use this to validate a DataFrame being built from data created by users.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="sql_lib.MySQL_DB_Connection.query" href="#sql_lib.MySQL_DB_Connection.query">MySQL_DB_Connection.query()</a></code>
+<code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insert(self,table,data,schema_cols=None,overwrite=False,status_check=True,constraint_check=True):
+    &#34;&#34;&#34;
+    Inserts the rows from a DataFrame onto a table on this database. By default, matching rows are not overwritten and a safety check is performed to ensure the table is on the database. 
+
+    Parameters
+    ----------
+
+    table : MySQL_Table_Schema
+        Schema object representing table to be updated
+    data : list or DataFrame  
+        Insertion data
+    schema_cols : list, optimal
+        Names of schema columns that are being inserted via `data`. By default, this is `table.get_column_names()`. 
+    overwrite : bool, optional
+        Whether to do overwrite (False -&gt; MySQL INSERT, True -&gt; MySQL REPLACE). By default, this is true. Note that if you have an auto incrementing primary key or if you are inserting non primary key columns, SQL INSERTS can still lead to duplicates (i.e. when overwite=False). 
+    status_check : bool, optional
+        Whether to check `table` status on `database`. By default, this is true.
+    constraint_check : bool, optional
+        Whether to check `table` constraints after insert. By default, this is true.
+
+    Returns
+    -------
+    q_res : int or iterable
+        Result of insertion if successful. 
+    
+    Raises
+    ------
+    ValueError
+        If DataFrame cannot be inserted (column mismatch), if `table` not on `database`, or insertion violated `table` constraints.
+    RuntimeError
+        If `MySQL_DB_Connection.query` fails.
+
+    Notes
+    -----
+    `schema_cols` should be a subset of the tables columns to make sure that the DataFrame you are uploading is valid for the schema. Don&#39;t just pass in `data.columns` for instance. You should use this to validate a DataFrame being built from data created by users.
+
+    See Also
+    --------
+    MySQL_DB_Connection.query
+    MySQL_Table_Schema
+    &#34;&#34;&#34;
+
+    if not (isinstance(data, pd.DataFrame) or isinstance(data, list)):
+      raise TypeError(&#39;data (type: %s) must be either a list (to represent 1 row) or a DataFrame (to represent many rows)&#39; % (type(data)))
+
+    if not schema_cols:
+        schema_cols = table.get_column_names()
+    if isinstance(data, pd.DataFrame):
+      df_cols = list(data.columns)
+      if len(schema_cols)!=len(df_cols) or any(schema_cols[i]!=df_cols[i] for i in range(len(df_cols))):
+        raise ValueError(&#39;Cannot insert DataFrame into table, columns do not match.&#39;)
+    elif len(schema_cols) != len(data):
+      raise ValueError(&#39;Cannot insert row into table, number of columns do not match.&#39;)
+      
+    if status_check:
+      table.check_on_db(self)
+    cols_to_update = &#34;,&#34;.join(&#34;`{0}`&#34;.format(c) for c in schema_cols)
+    arg_placeholders = (&#34;%s,&#34;*len(schema_cols))[:-1]
+    query_template = &#34;%s INTO `%s` (%s) VALUES(%s)&#34; % (&#39;REPLACE&#39; if overwrite else &#39;INSERT&#39;, table.name, cols_to_update, arg_placeholders)
+    update_type = type(data) == pd.DataFrame
+    ins_args = data.values.tolist() if update_type else data
+    q_res = self.query(query_template,args=ins_args,update_many=update_type)
+    if constraint_check:
+      table.check_constraints_on_db(self)
+    return q_res</code></pre>
+</details>
+</dd>
+<dt id="sql_lib.MySQL_DB_Connection.key_get"><code class="name flex">
+<span>def <span class="ident">key_get</span></span>(<span>self, table, key_values, status_check=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Performs a read on a provided table on the <code>database</code> and retrieves associated rows.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>table</code></strong> :&ensp;<code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></dt>
+<dd>Table to read from</dd>
+<dt><strong><code>key_values</code></strong> :&ensp;<code>list </code></dt>
+<dd>List of key values to match</dd>
+<dt><strong><code>status_check</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to check <code>table</code> status on <code>database</code>. By default, it's true.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd><code><a title="sql_lib.MySQL_DB_Connection.read" href="#sql_lib.MySQL_DB_Connection.read">MySQL_DB_Connection.read()</a></code> result on the provided <code>table</code> primary key</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError </code></dt>
+<dd>If <code>len(key_values) != len(table.primary_key)</code> or reasons specified in <code><a title="sql_lib.MySQL_DB_Connection.read" href="#sql_lib.MySQL_DB_Connection.read">MySQL_DB_Connection.read()</a></code>.</dd>
+<dt><code>RuntimeError</code></dt>
+<dd>If <code><a title="sql_lib.MySQL_DB_Connection.read" href="#sql_lib.MySQL_DB_Connection.read">MySQL_DB_Connection.read()</a></code> fails.</dd>
+</dl>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="sql_lib.MySQL_DB_Connection.read" href="#sql_lib.MySQL_DB_Connection.read">MySQL_DB_Connection.read()</a></code>
+<code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def key_get(self,table,key_values,status_check=True):
+    &#34;&#34;&#34;
+    Performs a read on a provided table on the `database` and retrieves associated rows.
+
+    Parameters
+    ----------
+    table : MySQL_Table_Schema
+        Table to read from
+    key_values : list 
+        List of key values to match
+    status_check : bool, optional 
+        Whether to check `table` status on `database`. By default, it&#39;s true.
+
+    Returns
+    -------
+    df : DataFrame
+        `MySQL_DB_Connection.read` result on the provided `table` primary key 
+        
+    Raises
+    ------
+    ValueError 
+        If `len(key_values) != len(table.primary_key)` or reasons specified in `MySQL_DB_Connection.read`.
+    RuntimeError
+        If `MySQL_DB_Connection.read` fails. 
+    
+    See Also
+    --------
+    MySQL_DB_Connection.read
+    MySQL_Table_Schema
+    &#34;&#34;&#34;
+
+    if not table.primary_key:
+        raise ValueError(&#39;Input table has no primary key.&#39;)
+    if len(key_values) != len(table.primary_key):
+        raise ValueError(&#34;%d key values provided for primary key of length %d.&#34; % (len(key_values),len(table.priamry_key)))
+    
+    where_str = &#39; AND &#39;.join([&#39;%s=%s&#39; % (table.primary_key[i],&#39;\&#39;%s\&#39;&#39; % (key_values[i]) if isinstance(key_values[i],str) else key_values[i]) for i in range(len(key_values))])
+    df = self.read(table,None,where_str,0,status_check)
+    return df</code></pre>
+</details>
+</dd>
+<dt id="sql_lib.MySQL_DB_Connection.query"><code class="name flex">
+<span>def <span class="ident">query</span></span>(<span>self, q, args=None, update_many=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Runs a query on the connected database with the parameters set either by the constructor.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>q</code></strong> :&ensp;<code>str</code></dt>
+<dd>The query to be run on the database. Any argument values (as in INSERT, REPLACE, or DELETE commands) should be marked with %s and specified in the args parameter.</dd>
+<dt><strong><code>args</code></strong> :&ensp;<code>iterable</code>, optional</dt>
+<dd>In the case of a single row being updated or for the parameter of a deletion, this will be an iterable such as a list or tuple. If a collection or rows are being added or updated, this will be a list of iterables and in this case <code>update_many</code> should be set to true. The default value is None.</dd>
+<dt><strong><code>update_many</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>When many rows are to be updated via INSERT or REPLACE, mark this parameter as true to improve update performance. The default value is False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>result</code></strong> :&ensp;<code>int</code> or <code>iterable</code></dt>
+<dd>If a read type query was performed (specified by READ_QUERY_KEYWORDS), the read results are returned (could be rows of a table with SELECT or table information via SHOW, DESCRIBE). Otherwise, in the case of an update to the database, the number of updated rows (int) are returned.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>RuntimeError</code></dt>
+<dd>If the query fails in any way. One possible error is a pymysql.err.IntegrityError if a duplicate
+entry tries to be inserted, it will have an error code (as per MySQL standard) of 1062.</dd>
+</dl>
+<h2 id="references">References</h2>
+<p><a href="https://en.wikipedia.org/wiki/Cursor_(databases)">Wikipedia Article on Cursors</a></p>
+<p><a href="https://pymysql.readthedocs.io/en/latest/user/examples.html">Examples of pymysql</a></p>
+<p><a href="https://pymysql.readthedocs.io/en/latest/modules/cursors.html">Cursors in pymysql</a></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def query(self, q, args=None, update_many=False):
+    &#34;&#34;&#34;
+    Runs a query on the connected database with the parameters set either by the constructor.
+
+    Parameters
+    ----------
+    q : str
+        The query to be run on the database. Any argument values (as in INSERT, REPLACE, or DELETE commands) should be marked with %s and specified in the args parameter. 
+    args : iterable, optional
+        In the case of a single row being updated or for the parameter of a deletion, this will be an iterable such as a list or tuple. If a collection or rows are being added or updated, this will be a list of iterables and in this case `update_many` should be set to true. The default value is None.
+    update_many : bool, optional
+        When many rows are to be updated via INSERT or REPLACE, mark this parameter as true to improve update performance. The default value is False.
+
+    Returns
+    -------
+    result : int or iterable
+        If a read type query was performed (specified by READ_QUERY_KEYWORDS), the read results are returned (could be rows of a table with SELECT or table information via SHOW, DESCRIBE). Otherwise, in the case of an update to the database, the number of updated rows (int) are returned.
+
+    Raises
+    ------
+    RuntimeError
+        If the query fails in any way. One possible error is a pymysql.err.IntegrityError if a duplicate
+        entry tries to be inserted, it will have an error code (as per MySQL standard) of 1062.
+
+    References
+    -----
+    [Wikipedia Article on Cursors](https://en.wikipedia.org/wiki/Cursor_(databases))
+
+    [Examples of pymysql](https://pymysql.readthedocs.io/en/latest/user/examples.html)
+
+    [Cursors in pymysql](https://pymysql.readthedocs.io/en/latest/modules/cursors.html)
+    &#34;&#34;&#34;
+
+    result = None
+
+    # Establish connection to DB using pymysql
+    connection = pymysql.connect(
+        host=self.host, user=self.user, password=self.password, port=self.port, database=self.database)
+    try:
+
+        # Obtain cursor over Database and perform clean-up in any exit (exception or not) 
+        with connection.cursor() as cursor:
+
+            # Determines if we are doing a read query by seeing if query starts with one of keywords
+            doing_read_query = any(
+                [q.startswith(r) for r in MySQL_DB_Connection.READ_QUERY_KEYWORDS])
+
+            # If we are doing an update query, and more specifically one that makes many updates, uses
+            # executemany() which provides better performance for multiple REPLACE or INSERT
+            if not doing_read_query and update_many:
+                result = cursor.executemany(q, args)
+
+            # Otherwise, if we are doing a single update or a read query, run a regular execute()
+            else:
+                result = cursor.execute(q, args)
+
+            # If doing a read query, will be returning the corresponding records as opposed to the number
+            # of rows that are updated (would be 0 for a read query).
+            if doing_read_query:
+                result = cursor.fetchall()
+
+            # Otherwise, will be returning number of updated rows but need to commit the update over the
+            # connection
+            else:
+                connection.commit()
+            return result
+            
+    # Make sure connection is closed as clean up
+    finally:
+        connection.close()</code></pre>
+</details>
+</dd>
+<dt id="sql_lib.MySQL_DB_Connection.read"><code class="name flex">
+<span>def <span class="ident">read</span></span>(<span>self, table, columns=None, where=None, limit=0, status_check=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Performs a read on a provided table on the DB. One can specify columns, where clause, and limit. </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>table</code></strong> :&ensp;<code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a> </code></dt>
+<dd>Table to read from</dd>
+<dt><strong><code>columns</code></strong> :&ensp;<code>list</code>, optional</dt>
+<dd>List of columns to retrieve (None/[] -&gt; all columns). By default, it is None.</dd>
+<dt><strong><code>where</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Where clause (None -&gt; no where clause), must be valid MySQL. By default, it is None.</dd>
+<dt><strong><code>limit</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Limit (None -&gt; no limit), limit &lt; 1 =&gt; limit rows to 5. By default, it is 0.</dd>
+<dt><strong><code>status_check</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to check <code>table</code> status on <code>database</code>. By default, it is true.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>df</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Result of read if successful.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If <code>table</code> not on <code>database</code>.</dd>
+<dt><code>RuntimeError </code></dt>
+<dd>If <code><a title="sql_lib.MySQL_DB_Connection.query" href="#sql_lib.MySQL_DB_Connection.query">MySQL_DB_Connection.query()</a></code> fails.</dd>
+</dl>
+<h2 id="warnings">Warnings</h2>
+<p>Be careful with what you allow a user to pass into <code>where</code> as it accepts any valid SQL and is vulnerable to a SQL injection.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="sql_lib.MySQL_DB_Connection.query" href="#sql_lib.MySQL_DB_Connection.query">MySQL_DB_Connection.query()</a></code>
+<code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def read(self,table,columns=None,where=None,limit=0,status_check=True):
+    &#34;&#34;&#34;
+    Performs a read on a provided table on the DB. One can specify columns, where clause, and limit. 
+
+    Parameters
+    ----------
+    table : MySQL_Table_Schema 
+        Table to read from
+    columns : list, optional 
+        List of columns to retrieve (None/[] -&gt; all columns). By default, it is None.
+    where : str, optional
+        Where clause (None -&gt; no where clause), must be valid MySQL. By default, it is None.
+    limit : int, optional
+        Limit (None -&gt; no limit), limit &lt; 1 =&gt; limit rows to 5. By default, it is 0.
+    status_check : bool, optional
+        Whether to check `table` status on `database`. By default, it is true.
+
+    Returns
+    -------
+    df : DataFrame
+        Result of read if successful.
+
+    Raises
+    ------
+    ValueError
+        If `table` not on `database`.
+    RuntimeError 
+        If `MySQL_DB_Connection.query` fails.
+
+    Warnings
+    --------
+    Be careful with what you allow a user to pass into `where` as it accepts any valid SQL and is vulnerable to a SQL injection.
+
+    See Also
+    --------
+    MySQL_DB_Connection.query
+    MySQL_Table_Schema        
+    &#34;&#34;&#34;
+
+    if limit is not None and (where is None or limit&lt;1):
+        limit=MySQL_DB_Connection.DEFAULT_READ_LIMIT
+      
+    if status_check:
+      table.check_on_db(self)
+    cols_s = &#39;*&#39; if not columns else &#39;,&#39;.join(columns)
+    where_s = &#39; WHERE %s&#39; % (where) if where is not None else &#39;&#39;
+    limit_s = &#39; LIMIT %d&#39; % (limit) if limit is not None else &#39;&#39;
+    query_template=&#39;SELECT %s FROM `%s`%s%s&#39; % (cols_s,table.name,where_s,limit_s)
+    df = pd.DataFrame(self.query(query_template),columns=columns if columns else table.get_column_names())
+    return df</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="sql_lib.MySQL_Table_Column"><code class="flex name class">
+<span>class <span class="ident">MySQL_Table_Column</span></span>
+<span>(</span><span>name, dtype, allow_null=True, extra=None)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents a MySQL Table column. This is used in <code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code> for creating columns.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the column</dd>
+<dt><strong><code>allow_null</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Whether this column can have NULL values</dd>
+</dl>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the column</dd>
+<dt><strong><code>dtype</code></strong> :&ensp;<code>str</code></dt>
+<dd>SQL data type of the column</dd>
+<dt><strong><code>allow_null</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether this column can have NULL values</dd>
+<dt><strong><code>extra</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Extra information on the column</dd>
+</dl>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MySQL_Table_Column:
+    &#34;&#34;&#34;
+    Represents a MySQL Table column. This is used in `MySQL_Table_Schema` for creating columns.
+
+    Attributes
+    ----------
+    name : str
+        Name of the column
+    allow_null : bool
+        Whether this column can have NULL values
+
+    Parameters
+    ----------
+    name : str
+        Name of the column
+    dtype : str
+        SQL data type of the column
+    allow_null : bool, optional
+        Whether this column can have NULL values
+    extra : str, optional
+        Extra information on the column
+
+    See Also
+    --------
+    MySQL_Table_Schema
+    &#34;&#34;&#34;
+
+    def __init__(self,name,dtype,allow_null=True,extra=None):
+        self.name = name
+        self.__dtype = dtype
+        self.allow_null = allow_null
+        self.__extra = extra
+
+    def __eq__(self,other):
+        if not isinstance(other,MySQL_Table_Column):
+            return False
+        return (
+            self.name == other.name and
+            self.__dtype == other.__dtype and
+            self.allow_null == other.allow_null and
+            self.__extra == other.__extra
+        )
+
+    def __ne__(self,other):
+        return not self.__eq__(other)
+
+    def to_sql(self):
+        &#34;&#34;&#34;
+        Converts this column to a string that would be used in a SQL creation query. 
+
+        Returns
+        -------
+        String representation of the column used in SQL.
+        &#34;&#34;&#34;
+
+        out = self.name + &#34; &#34; + self.__dtype
+        if not self.allow_null:
+            out += &#34; NOT NULL&#34;
+        if self.__extra:
+            out += &#34; &#34; + self.__extra
+        return out</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="sql_lib.MySQL_Table_Column.to_sql"><code class="name flex">
+<span>def <span class="ident">to_sql</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts this column to a string that would be used in a SQL creation query. </p>
+<h2 id="returns">Returns</h2>
+<p>String representation of the column used in SQL.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def to_sql(self):
+    &#34;&#34;&#34;
+    Converts this column to a string that would be used in a SQL creation query. 
+
+    Returns
+    -------
+    String representation of the column used in SQL.
+    &#34;&#34;&#34;
+
+    out = self.name + &#34; &#34; + self.__dtype
+    if not self.allow_null:
+        out += &#34; NOT NULL&#34;
+    if self.__extra:
+        out += &#34; &#34; + self.__extra
+    return out</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="sql_lib.MySQL_Table_Constraint"><code class="flex name class">
+<span>class <span class="ident">MySQL_Table_Constraint</span></span>
+<span>(</span><span>query, pass_val, fail_msg='')</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Represents a MySQL Table constraint. This is used in <code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code> for creating and enforcing constraints.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>query</code></strong> :&ensp;<code>str</code></dt>
+<dd>The query used to check the constraint</dd>
+<dt><strong><code>pass_val</code></strong> :&ensp;<code>object</code></dt>
+<dd>Output <code>query</code> should result in to signify the constraint passing</dd>
+<dt><strong><code>fail_msg</code></strong> :&ensp;<code>str</code></dt>
+<dd>Failure message to display if <code>query</code> does not result in <code>pass_val</code></dd>
+</dl>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>query</code></strong> :&ensp;<code>str</code></dt>
+<dd>The query used to check the constraint</dd>
+<dt><strong><code>pass_val</code></strong> :&ensp;<code>object</code></dt>
+<dd>Output <code>query</code> should result in to signify the constraint passing</dd>
+<dt><strong><code>fail_msg</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Failure message to display if <code>query</code> does not result in <code>pass_val</code></dd>
+</dl>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MySQL_Table_Constraint:
+    &#34;&#34;&#34;
+    Represents a MySQL Table constraint. This is used in `MySQL_Table_Schema` for creating and enforcing constraints.
+
+    Attributes
+    ----------
+    query : str
+        The query used to check the constraint
+    pass_val : object
+        Output `query` should result in to signify the constraint passing
+    fail_msg : str
+        Failure message to display if `query` does not result in `pass_val`
+
+    Parameters
+    ----------
+    query : str
+        The query used to check the constraint
+    pass_val : object
+        Output `query` should result in to signify the constraint passing
+    fail_msg : str, optional
+        Failure message to display if `query` does not result in `pass_val`
+
+    See Also
+    --------
+    MySQL_Table_Schema
+    &#34;&#34;&#34;
+
+    def __init__(self,query,pass_val,fail_msg=&#34;&#34;):
+        self.query = query
+        self.pass_val = pass_val
+        self.fail_msg = fail_msg</code></pre>
+</details>
+</dd>
+<dt id="sql_lib.MySQL_Table_Schema"><code class="flex name class">
+<span>class <span class="ident">MySQL_Table_Schema</span></span>
+<span>(</span><span>name, columns, primary_key=None, constraints=[])</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class that represents the schema of a MySQL table. This class offers functionality to create an instance of this schema on a database, check if an instance exists on a database, and check if all schema integrity constraints are upheld for a particular instance. </p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str </code></dt>
+<dd>Name of the schema</dd>
+<dt><strong><code>primary_key</code></strong> :&ensp;<code>list</code></dt>
+<dd>Column names that form a primary key over the schema</dd>
+<dt><strong><code>constraints</code></strong> :&ensp;<code>list</code></dt>
+<dd>Constraints of the schema</dd>
+</dl>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str </code></dt>
+<dd>Name of the schema</dd>
+<dt><strong><code>columns</code></strong> :&ensp;<code>list </code></dt>
+<dd>Columns of the schema</dd>
+<dt><strong><code>primary_key</code></strong> :&ensp;<code>list</code> or <code>str</code>, optional</dt>
+<dd>Column names that form a primary key over the schema. By default, it's None.</dd>
+<dt><strong><code>constraints</code></strong> :&ensp;<code>list</code>, optional</dt>
+<dd>Constraints of the schema</dd>
+</dl>
+<h2 id="warnings">Warnings</h2>
+<p>Be careful with what you pass into <code>constraints</code> as those objects accept any valid SQL and is vulnerable to a SQL injection.</p>
+<h2 id="notes">Notes</h2>
+<p>If you do not want to provide any failure messages for the constraint checks, make sure you pass empty strings.
+Whatever you pass as the primary_key will become a list when you access it later.
+You can initialize a schema object from a schema with a specified name on a <code><a title="sql_lib.MySQL_DB_Connection" href="#sql_lib.MySQL_DB_Connection">MySQL_DB_Connection</a></code> using <code><a title="sql_lib.MySQL_DB_Connection.get_schema" href="#sql_lib.MySQL_DB_Connection.get_schema">MySQL_DB_Connection.get_schema()</a></code>. Note, any schema created by this method will not have any constraints as those are not stored on the database associated with the connection. You can set the constraints yourself using the <code>constraints</code> attribute.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="sql_lib.MySQL_Table_Column" href="#sql_lib.MySQL_Table_Column">MySQL_Table_Column</a></code>
+<code><a title="sql_lib.MySQL_Table_Constraint" href="#sql_lib.MySQL_Table_Constraint">MySQL_Table_Constraint</a></code>
+<code><a title="sql_lib.MySQL_DB_Connection.get_schema" href="#sql_lib.MySQL_DB_Connection.get_schema">MySQL_DB_Connection.get_schema()</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MySQL_Table_Schema:
+    &#34;&#34;&#34;
+    Class that represents the schema of a MySQL table. This class offers functionality to create an instance of this schema on a database, check if an instance exists on a database, and check if all schema integrity constraints are upheld for a particular instance. 
+
+    Attributes
+    ----------
+    name : str 
+        Name of the schema 
+    primary_key : list
+        Column names that form a primary key over the schema
+    constraints : list
+        Constraints of the schema
+    
+    Parameters
+    ----------
+    name : str 
+        Name of the schema 
+    columns : list 
+        Columns of the schema 
+    primary_key : list or str, optional
+        Column names that form a primary key over the schema. By default, it&#39;s None. 
+    constraints : list, optional
+        Constraints of the schema
+    
+    Warnings
+    --------
+    Be careful with what you pass into `constraints` as those objects accept any valid SQL and is vulnerable to a SQL injection.
+
+    Notes
+    -----
+    If you do not want to provide any failure messages for the constraint checks, make sure you pass empty strings.
+    Whatever you pass as the primary_key will become a list when you access it later.
+    You can initialize a schema object from a schema with a specified name on a `MySQL_DB_Connection` using `MySQL_DB_Connection.get_schema`. Note, any schema created by this method will not have any constraints as those are not stored on the database associated with the connection. You can set the constraints yourself using the `constraints` attribute.
+
+    See Also
+    --------
+    MySQL_Table_Column
+    MySQL_Table_Constraint
+    MySQL_DB_Connection.get_schema()
+    &#34;&#34;&#34;
+
+    def __init__(self, name, columns, primary_key=None, constraints=[]):
+        self.name = name
+        self.__columns = columns
+        self.primary_key = primary_key if isinstance(primary_key,list) else [primary_key]
+        key_set = set(self.primary_key)
+        for c in self.__columns:
+            if c.name in key_set:
+                c.allow_null = False
+        self.constraints = constraints
+
+    @staticmethod
+    def __raise_exception(msg, detailed_err, err_type):
+        raise ValueError(msg if detailed_err else err_type.value)
+
+    def create_on_db(self, db_conn):
+        &#34;&#34;&#34;
+        Initializes an instance of this schema on a database 
+
+        Parameters
+        ----------
+        db_conn : MySQL_DB_Connection
+            Connection to database where schema should be initialized 
+
+        Returns
+        -------
+        res : int
+            Result of creation query if one is made.
+
+        Raises
+        ------
+        ValueError
+            If the schema exists on `db_conn` with different columns or primary key.
+        RuntimeError
+            If an error occurs running this creation query.
+
+        Notes
+        -----
+        If the schema (with the correct columns and primary key) exists on the connection, then nothing happens. If the schema does not exist on the connection, it is added as a new table on the connection. 
+
+        See Also
+        --------
+        check_on_db
+        &#34;&#34;&#34;
+
+        try:
+            # Run check with error code response
+            self.check_on_db(db_conn, False)
+        except ValueError as e:
+
+            # If table is not on database, create it
+            if int(str(e)) == MySQL_Table_Status.TABLE_NOT_ON_DB.value:
+
+                # Create table with name and primary key if one exists
+                query = &#34;CREATE TABLE &#34; + self.name + &#34; (&#34; + &#34;, &#34;.join([c.to_sql() for c in self.__columns])
+                if self.primary_key:
+                    query += &#34;, PRIMARY KEY(&#34; + \
+                        &#34;, &#34;.join(self.primary_key) + &#34;)&#34;
+                query += &#34;)&#34;
+                res = db_conn.query(query)
+                return res
+            else:
+                # If schema is different on db
+                raise ValueError(&#34;An instance of the schema {schema_name} already exists on database {db_name}.\nFor more information, run check_on_db() to compare invoking schema instance with schema on {db_name}.&#34;.format(
+                    schema_name=self.name, db_name=db_conn.database))
+
+    def check_on_db(self, db_conn, detailed_err=True):
+        &#34;&#34;&#34;
+        Checks if there is an instance of this schema on a database
+
+        Parameters
+        ----------
+        db_conn : MySQL_DB_Connection
+            Database to check 
+        detailed_err : bool, optional
+            Whether to raise detailed error messages or not. By default it&#39;s True.
+
+        Returns
+        -------
+        str :
+            If the schema exists on a database, then the string representation of the schema is returned 
+
+        Raises
+        ------
+        ValueError 
+            If the schema does not exist, has different columns, or has a different primary key. If `detailed_err` = True, then the error is raised with a detailed message. Otherwise, an error code specified by `MySQL_Table_Status` is passed as the message.
+
+        References
+        ----------
+        [MySQL Column Retrieval](https://dev.mysql.com/doc/refman/8.0/en/show-columns.html)
+
+        See Also
+        --------
+        MySQL_Table_Status
+        MySQL_DB_Connection
+        &#34;&#34;&#34;
+
+        # Get tables with matching name
+        table_on_db = db_conn.query(&#34;SHOW TABLES LIKE %s&#34;, args=self.name)
+
+        # If none exist, return detailed error or with code 1 based on detailed_err
+        if len(table_on_db) == 0:
+            MySQL_Table_Schema.__raise_exception(
+                &#34;Instance of schema {0} is not on database.&#34;.format(self.name),
+                detailed_err,
+                MySQL_Table_Status.TABLE_NOT_ON_DB
+            )
+
+        # Get the columns the schema on the database (iterable of tuples)
+        cols_in_db_table = db_conn.query(&#34;SHOW COLUMNS FROM &#34; + self.name)
+
+        cols_in_db = dict()
+        for c in cols_in_db_table:
+            # c[0]: name, c[1]: type, c[2]: null allowed (YES/NO), c[5]: extra
+            cols_in_db[c[0]] = MySQL_Table_Column(
+                c[0],
+                c[1],
+                c[2]==&#39;YES&#39;,
+                None if len(c[5])==0 else c[5]
+            )
+
+        if len(cols_in_db) != len(self.__columns):
+            MySQL_Table_Schema.__raise_exception(
+                &#34;Number of columns of %s on %s does not match.\nInstance columns length: %d\nDatabase columns length: %d&#34; % (
+                    self.name,
+                    db_conn.database,
+                    len(self.__columns),
+                    len(cols_in_db)
+                ),
+                detailed_err,
+                MySQL_Table_Status.TABLE_NOT_ON_DB
+            )
+
+        for c in self.__columns:
+            match = cols_in_db.get(c.name)
+            if not match:
+                MySQL_Table_Schema.__raise_exception(
+                    &#34;Column %s not on %s.&#34; % (c.name, db_conn.database),
+                    detailed_err,
+                    MySQL_Table_Status.TABLE_ON_DB_DIFF_COLS
+                )
+            if match != c:
+                MySQL_Table_Schema.__raise_exception(
+                    &#34;Column %s has different properties on %s.\nSchema column:%s\nDatabase column:%s&#34; % (c.name,db_conn.database,c.to_sql(),match.to_sql()),
+                    detailed_err,
+                    MySQL_Table_Status.TABLE_ON_DB_DIFF_COLS
+                )
+
+        # Collect primary key information from table as a list of tuples
+        primary_key_in_db_table = db_conn.query(
+            &#34;SHOW KEYS FROM &#34; + self.name + &#34; WHERE Key_name = %s&#34;, args=(&#39;PRIMARY&#39;,))
+        keys_in_db = {k[4] for k in primary_key_in_db_table}
+
+        if len(keys_in_db) != len(self.primary_key):
+            MySQL_Table_Schema.__raise_exception(
+                &#34;Number of primary key components of %s on %s does not match.\nInstance primary key length: %d\nDatabase primary key length: %d&#34; % (
+                    self.name,
+                    db_conn.database,
+                    len(self.primary_key),
+                    len(keys_in_db)
+                ),
+                detailed_err,
+                MySQL_Table_Status.TABLE_NOT_ON_DB
+            )
+
+        for k in self.primary_key:
+            if k not in keys_in_db:
+                MySQL_Table_Schema.__raise_exception(
+                    &#34;Element %s of primary key not found on %s.&#34; % (k, db_conn.database),
+                    detailed_err,
+                    MySQL_Table_Status.TABLE_ON_DB_DIFF_KEY
+                )
+        return str(self)
+
+    def check_constraints_on_db(self, db_conn):
+        &#34;&#34;&#34;
+        Checks if the instance of this schema on a database meets all the integrity constraints
+
+        Parameters
+        ----------
+        db_conn : MySQL_DB_Connection 
+            Database to check constraints 
+
+        Raises
+        ------
+        ValueError
+            If one of the constraints is violated (with a fail message , if a message exists in `constraint_fail_msgs`). 
+        &#34;&#34;&#34;
+
+        # For each constraint query, run it and see if matches the pass value. If not a ValueError is raised with &#34;&#34; or the corresponding failure message
+        for i in range(len(self.constraints)):
+            res = db_conn.query(self.constraints[i].query)
+            if res != self.constraints[i].pass_val:
+                raise ValueError(&#34;Integrity constraint {0} violated.\nReceived: {1}\nExpected: {2}\nAdditional info: {3}&#34;.format(
+                    i, res, self.constraints[i].pass_val, self.constraints[i].fail_msg))
+
+    def get_column_names(self):
+        return [c.name for c in self.__columns]
+
+    def __str__(self):
+        &#34;&#34;&#34;
+        Gets a string representation of the schema which includes the name, the columns and types, and the primary key. 
+
+        Returns
+        -------
+        out : str
+            A string representation of the schema. 
+        &#34;&#34;&#34;
+
+        out = &#34;NAME: %s\nCOLUMNS:\n&#34; % (self.name)
+        out += &#34;\n&#34;.join(c.to_sql() for c in self.__columns)
+        out += &#34;\nPRIMARY KEY:&#34; + &#34;, &#34;.join(self.primary_key) if self.primary_key else &#34;&#34;
+        return out</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="sql_lib.MySQL_Table_Schema.check_constraints_on_db"><code class="name flex">
+<span>def <span class="ident">check_constraints_on_db</span></span>(<span>self, db_conn)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if the instance of this schema on a database meets all the integrity constraints</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>db_conn</code></strong> :&ensp;<code><a title="sql_lib.MySQL_DB_Connection" href="#sql_lib.MySQL_DB_Connection">MySQL_DB_Connection</a> </code></dt>
+<dd>Database to check constraints</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If one of the constraints is violated (with a fail message , if a message exists in <code>constraint_fail_msgs</code>).</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_constraints_on_db(self, db_conn):
+    &#34;&#34;&#34;
+    Checks if the instance of this schema on a database meets all the integrity constraints
+
+    Parameters
+    ----------
+    db_conn : MySQL_DB_Connection 
+        Database to check constraints 
+
+    Raises
+    ------
+    ValueError
+        If one of the constraints is violated (with a fail message , if a message exists in `constraint_fail_msgs`). 
+    &#34;&#34;&#34;
+
+    # For each constraint query, run it and see if matches the pass value. If not a ValueError is raised with &#34;&#34; or the corresponding failure message
+    for i in range(len(self.constraints)):
+        res = db_conn.query(self.constraints[i].query)
+        if res != self.constraints[i].pass_val:
+            raise ValueError(&#34;Integrity constraint {0} violated.\nReceived: {1}\nExpected: {2}\nAdditional info: {3}&#34;.format(
+                i, res, self.constraints[i].pass_val, self.constraints[i].fail_msg))</code></pre>
+</details>
+</dd>
+<dt id="sql_lib.MySQL_Table_Schema.check_on_db"><code class="name flex">
+<span>def <span class="ident">check_on_db</span></span>(<span>self, db_conn, detailed_err=True)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Checks if there is an instance of this schema on a database</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>db_conn</code></strong> :&ensp;<code><a title="sql_lib.MySQL_DB_Connection" href="#sql_lib.MySQL_DB_Connection">MySQL_DB_Connection</a></code></dt>
+<dd>Database to check</dd>
+<dt><strong><code>detailed_err</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to raise detailed error messages or not. By default it's True.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str :</code></dt>
+<dd>If the schema exists on a database, then the string representation of the schema is returned</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError </code></dt>
+<dd>If the schema does not exist, has different columns, or has a different primary key. If <code>detailed_err</code> = True, then the error is raised with a detailed message. Otherwise, an error code specified by <code><a title="sql_lib.MySQL_Table_Status" href="#sql_lib.MySQL_Table_Status">MySQL_Table_Status</a></code> is passed as the message.</dd>
+</dl>
+<h2 id="references">References</h2>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/show-columns.html">MySQL Column Retrieval</a></p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="sql_lib.MySQL_Table_Status" href="#sql_lib.MySQL_Table_Status">MySQL_Table_Status</a></code>
+<code><a title="sql_lib.MySQL_DB_Connection" href="#sql_lib.MySQL_DB_Connection">MySQL_DB_Connection</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def check_on_db(self, db_conn, detailed_err=True):
+    &#34;&#34;&#34;
+    Checks if there is an instance of this schema on a database
+
+    Parameters
+    ----------
+    db_conn : MySQL_DB_Connection
+        Database to check 
+    detailed_err : bool, optional
+        Whether to raise detailed error messages or not. By default it&#39;s True.
+
+    Returns
+    -------
+    str :
+        If the schema exists on a database, then the string representation of the schema is returned 
+
+    Raises
+    ------
+    ValueError 
+        If the schema does not exist, has different columns, or has a different primary key. If `detailed_err` = True, then the error is raised with a detailed message. Otherwise, an error code specified by `MySQL_Table_Status` is passed as the message.
+
+    References
+    ----------
+    [MySQL Column Retrieval](https://dev.mysql.com/doc/refman/8.0/en/show-columns.html)
+
+    See Also
+    --------
+    MySQL_Table_Status
+    MySQL_DB_Connection
+    &#34;&#34;&#34;
+
+    # Get tables with matching name
+    table_on_db = db_conn.query(&#34;SHOW TABLES LIKE %s&#34;, args=self.name)
+
+    # If none exist, return detailed error or with code 1 based on detailed_err
+    if len(table_on_db) == 0:
+        MySQL_Table_Schema.__raise_exception(
+            &#34;Instance of schema {0} is not on database.&#34;.format(self.name),
+            detailed_err,
+            MySQL_Table_Status.TABLE_NOT_ON_DB
+        )
+
+    # Get the columns the schema on the database (iterable of tuples)
+    cols_in_db_table = db_conn.query(&#34;SHOW COLUMNS FROM &#34; + self.name)
+
+    cols_in_db = dict()
+    for c in cols_in_db_table:
+        # c[0]: name, c[1]: type, c[2]: null allowed (YES/NO), c[5]: extra
+        cols_in_db[c[0]] = MySQL_Table_Column(
+            c[0],
+            c[1],
+            c[2]==&#39;YES&#39;,
+            None if len(c[5])==0 else c[5]
+        )
+
+    if len(cols_in_db) != len(self.__columns):
+        MySQL_Table_Schema.__raise_exception(
+            &#34;Number of columns of %s on %s does not match.\nInstance columns length: %d\nDatabase columns length: %d&#34; % (
+                self.name,
+                db_conn.database,
+                len(self.__columns),
+                len(cols_in_db)
+            ),
+            detailed_err,
+            MySQL_Table_Status.TABLE_NOT_ON_DB
+        )
+
+    for c in self.__columns:
+        match = cols_in_db.get(c.name)
+        if not match:
+            MySQL_Table_Schema.__raise_exception(
+                &#34;Column %s not on %s.&#34; % (c.name, db_conn.database),
+                detailed_err,
+                MySQL_Table_Status.TABLE_ON_DB_DIFF_COLS
+            )
+        if match != c:
+            MySQL_Table_Schema.__raise_exception(
+                &#34;Column %s has different properties on %s.\nSchema column:%s\nDatabase column:%s&#34; % (c.name,db_conn.database,c.to_sql(),match.to_sql()),
+                detailed_err,
+                MySQL_Table_Status.TABLE_ON_DB_DIFF_COLS
+            )
+
+    # Collect primary key information from table as a list of tuples
+    primary_key_in_db_table = db_conn.query(
+        &#34;SHOW KEYS FROM &#34; + self.name + &#34; WHERE Key_name = %s&#34;, args=(&#39;PRIMARY&#39;,))
+    keys_in_db = {k[4] for k in primary_key_in_db_table}
+
+    if len(keys_in_db) != len(self.primary_key):
+        MySQL_Table_Schema.__raise_exception(
+            &#34;Number of primary key components of %s on %s does not match.\nInstance primary key length: %d\nDatabase primary key length: %d&#34; % (
+                self.name,
+                db_conn.database,
+                len(self.primary_key),
+                len(keys_in_db)
+            ),
+            detailed_err,
+            MySQL_Table_Status.TABLE_NOT_ON_DB
+        )
+
+    for k in self.primary_key:
+        if k not in keys_in_db:
+            MySQL_Table_Schema.__raise_exception(
+                &#34;Element %s of primary key not found on %s.&#34; % (k, db_conn.database),
+                detailed_err,
+                MySQL_Table_Status.TABLE_ON_DB_DIFF_KEY
+            )
+    return str(self)</code></pre>
+</details>
+</dd>
+<dt id="sql_lib.MySQL_Table_Schema.create_on_db"><code class="name flex">
+<span>def <span class="ident">create_on_db</span></span>(<span>self, db_conn)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initializes an instance of this schema on a database </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>db_conn</code></strong> :&ensp;<code><a title="sql_lib.MySQL_DB_Connection" href="#sql_lib.MySQL_DB_Connection">MySQL_DB_Connection</a></code></dt>
+<dd>Connection to database where schema should be initialized</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>res</code></strong> :&ensp;<code>int</code></dt>
+<dd>Result of creation query if one is made.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>ValueError</code></dt>
+<dd>If the schema exists on <code>db_conn</code> with different columns or primary key.</dd>
+<dt><code>RuntimeError</code></dt>
+<dd>If an error occurs running this creation query.</dd>
+</dl>
+<h2 id="notes">Notes</h2>
+<p>If the schema (with the correct columns and primary key) exists on the connection, then nothing happens. If the schema does not exist on the connection, it is added as a new table on the connection. </p>
+<h2 id="see-also">See Also</h2>
+<p><code>check_on_db</code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def create_on_db(self, db_conn):
+    &#34;&#34;&#34;
+    Initializes an instance of this schema on a database 
+
+    Parameters
+    ----------
+    db_conn : MySQL_DB_Connection
+        Connection to database where schema should be initialized 
+
+    Returns
+    -------
+    res : int
+        Result of creation query if one is made.
+
+    Raises
+    ------
+    ValueError
+        If the schema exists on `db_conn` with different columns or primary key.
+    RuntimeError
+        If an error occurs running this creation query.
+
+    Notes
+    -----
+    If the schema (with the correct columns and primary key) exists on the connection, then nothing happens. If the schema does not exist on the connection, it is added as a new table on the connection. 
+
+    See Also
+    --------
+    check_on_db
+    &#34;&#34;&#34;
+
+    try:
+        # Run check with error code response
+        self.check_on_db(db_conn, False)
+    except ValueError as e:
+
+        # If table is not on database, create it
+        if int(str(e)) == MySQL_Table_Status.TABLE_NOT_ON_DB.value:
+
+            # Create table with name and primary key if one exists
+            query = &#34;CREATE TABLE &#34; + self.name + &#34; (&#34; + &#34;, &#34;.join([c.to_sql() for c in self.__columns])
+            if self.primary_key:
+                query += &#34;, PRIMARY KEY(&#34; + \
+                    &#34;, &#34;.join(self.primary_key) + &#34;)&#34;
+            query += &#34;)&#34;
+            res = db_conn.query(query)
+            return res
+        else:
+            # If schema is different on db
+            raise ValueError(&#34;An instance of the schema {schema_name} already exists on database {db_name}.\nFor more information, run check_on_db() to compare invoking schema instance with schema on {db_name}.&#34;.format(
+                schema_name=self.name, db_name=db_conn.database))</code></pre>
+</details>
+</dd>
+<dt id="sql_lib.MySQL_Table_Schema.get_column_names"><code class="name flex">
+<span>def <span class="ident">get_column_names</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_column_names(self):
+    return [c.name for c in self.__columns]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="sql_lib.MySQL_Table_Status"><code class="flex name class">
+<span>class <span class="ident">MySQL_Table_Status</span></span>
+<span>(</span><span>value, names=None, *, module=None, qualname=None, type=None, start=1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Enum that represents 3 status types of the existence of a table on a database. This is used by <code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code> when creating and checking the status of a table on a database.</p>
+<h2 id="see-also">See Also</h2>
+<p><code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class MySQL_Table_Status(Enum):
+    &#34;&#34;&#34;
+    Enum that represents 3 status types of the existence of a table on a database. This is used by `MySQL_Table_Schema` when creating and checking the status of a table on a database.
+
+    See Also
+    --------
+    MySQL_Table_Schema
+    &#34;&#34;&#34;
+
+    TABLE_NOT_ON_DB = 1
+    &#34;&#34;&#34;
+    Error status if schema does not exist on a database
+    &#34;&#34;&#34;
+
+    TABLE_ON_DB_DIFF_COLS = 2
+    &#34;&#34;&#34;
+    Error status if schema exists on a database but with different columns 
+    &#34;&#34;&#34;
+
+    TABLE_ON_DB_DIFF_KEY = 3
+    &#34;&#34;&#34;
+    Error status if schema exists on a database but with different primary key 
+    &#34;&#34;&#34;</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>enum.Enum</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="sql_lib.MySQL_Table_Status.TABLE_NOT_ON_DB"><code class="name">var <span class="ident">TABLE_NOT_ON_DB</span></code></dt>
+<dd>
+<div class="desc"><p>Error status if schema does not exist on a database</p></div>
+</dd>
+<dt id="sql_lib.MySQL_Table_Status.TABLE_ON_DB_DIFF_COLS"><code class="name">var <span class="ident">TABLE_ON_DB_DIFF_COLS</span></code></dt>
+<dd>
+<div class="desc"><p>Error status if schema exists on a database but with different columns</p></div>
+</dd>
+<dt id="sql_lib.MySQL_Table_Status.TABLE_ON_DB_DIFF_KEY"><code class="name">var <span class="ident">TABLE_ON_DB_DIFF_KEY</span></code></dt>
+<dd>
+<div class="desc"><p>Error status if schema exists on a database but with different primary key</p></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="sql_lib.MySQL_DB_Connection" href="#sql_lib.MySQL_DB_Connection">MySQL_DB_Connection</a></code></h4>
+<ul class="two-column">
+<li><code><a title="sql_lib.MySQL_DB_Connection.DEFAULT_READ_LIMIT" href="#sql_lib.MySQL_DB_Connection.DEFAULT_READ_LIMIT">DEFAULT_READ_LIMIT</a></code></li>
+<li><code><a title="sql_lib.MySQL_DB_Connection.READ_QUERY_KEYWORDS" href="#sql_lib.MySQL_DB_Connection.READ_QUERY_KEYWORDS">READ_QUERY_KEYWORDS</a></code></li>
+<li><code><a title="sql_lib.MySQL_DB_Connection.delete" href="#sql_lib.MySQL_DB_Connection.delete">delete</a></code></li>
+<li><code><a title="sql_lib.MySQL_DB_Connection.get_schema" href="#sql_lib.MySQL_DB_Connection.get_schema">get_schema</a></code></li>
+<li><code><a title="sql_lib.MySQL_DB_Connection.insert" href="#sql_lib.MySQL_DB_Connection.insert">insert</a></code></li>
+<li><code><a title="sql_lib.MySQL_DB_Connection.key_get" href="#sql_lib.MySQL_DB_Connection.key_get">key_get</a></code></li>
+<li><code><a title="sql_lib.MySQL_DB_Connection.query" href="#sql_lib.MySQL_DB_Connection.query">query</a></code></li>
+<li><code><a title="sql_lib.MySQL_DB_Connection.read" href="#sql_lib.MySQL_DB_Connection.read">read</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sql_lib.MySQL_Table_Column" href="#sql_lib.MySQL_Table_Column">MySQL_Table_Column</a></code></h4>
+<ul class="">
+<li><code><a title="sql_lib.MySQL_Table_Column.to_sql" href="#sql_lib.MySQL_Table_Column.to_sql">to_sql</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sql_lib.MySQL_Table_Constraint" href="#sql_lib.MySQL_Table_Constraint">MySQL_Table_Constraint</a></code></h4>
+</li>
+<li>
+<h4><code><a title="sql_lib.MySQL_Table_Schema" href="#sql_lib.MySQL_Table_Schema">MySQL_Table_Schema</a></code></h4>
+<ul class="">
+<li><code><a title="sql_lib.MySQL_Table_Schema.check_constraints_on_db" href="#sql_lib.MySQL_Table_Schema.check_constraints_on_db">check_constraints_on_db</a></code></li>
+<li><code><a title="sql_lib.MySQL_Table_Schema.check_on_db" href="#sql_lib.MySQL_Table_Schema.check_on_db">check_on_db</a></code></li>
+<li><code><a title="sql_lib.MySQL_Table_Schema.create_on_db" href="#sql_lib.MySQL_Table_Schema.create_on_db">create_on_db</a></code></li>
+<li><code><a title="sql_lib.MySQL_Table_Schema.get_column_names" href="#sql_lib.MySQL_Table_Schema.get_column_names">get_column_names</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="sql_lib.MySQL_Table_Status" href="#sql_lib.MySQL_Table_Status">MySQL_Table_Status</a></code></h4>
+<ul class="">
+<li><code><a title="sql_lib.MySQL_Table_Status.TABLE_NOT_ON_DB" href="#sql_lib.MySQL_Table_Status.TABLE_NOT_ON_DB">TABLE_NOT_ON_DB</a></code></li>
+<li><code><a title="sql_lib.MySQL_Table_Status.TABLE_ON_DB_DIFF_COLS" href="#sql_lib.MySQL_Table_Status.TABLE_ON_DB_DIFF_COLS">TABLE_ON_DB_DIFF_COLS</a></code></li>
+<li><code><a title="sql_lib.MySQL_Table_Status.TABLE_ON_DB_DIFF_KEY" href="#sql_lib.MySQL_Table_Status.TABLE_ON_DB_DIFF_KEY">TABLE_ON_DB_DIFF_KEY</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
